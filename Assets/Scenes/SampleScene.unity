@@ -2671,7 +2671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3262955337315638311, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Mariusz
       objectReference: {fileID: 0}
     - target: {fileID: 3478930077091405240, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: m_GravityScale
