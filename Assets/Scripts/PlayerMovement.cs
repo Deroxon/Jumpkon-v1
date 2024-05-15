@@ -6,10 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 9f;
-    
     [SerializeField] private float jumpingPower = 18f;
     private bool isFacingRight = true;
-
+    [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -29,8 +28,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-
-        Flip();
+        Animations();
     }
 
     private void FixedUpdate()
@@ -43,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer2);
     }
 
-    private void Flip()
+    private void Animations()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
@@ -52,5 +50,7 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+        animator.SetBool("grounded", IsGrounded());
+        animator.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
     }
 }

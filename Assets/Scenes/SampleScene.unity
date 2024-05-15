@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Follow: {fileID: 124590904}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 6
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -245,6 +245,11 @@ Transform:
 --- !u!4 &124590904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3190346394941309630, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
+  m_PrefabInstance: {fileID: 1772902687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &161266122 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4913155597952408565, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
   m_PrefabInstance: {fileID: 1772902687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &311558255
@@ -2468,7 +2473,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2677,6 +2682,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 161266122}
     - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: groundLayer2.m_Bits
       value: 256
