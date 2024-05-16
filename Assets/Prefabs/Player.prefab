@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -184,11 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba08397579784e54e8c8b9dcabfe9777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpingPower: 18
+  animator: {fileID: 0}
   rb: {fileID: 3478930077091405240}
   groundCheck: {fileID: 2821050748412504723}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  groundLayer2:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &7114877660815710052
 GameObject:
   m_ObjectHideFlags: 0
