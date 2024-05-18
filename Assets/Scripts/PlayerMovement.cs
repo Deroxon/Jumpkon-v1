@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.2f, obstacleLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.2f, platformsLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer) );
     }
 
     private void Animations()
