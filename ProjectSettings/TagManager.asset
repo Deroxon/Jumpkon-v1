@@ -14,7 +14,7 @@ TagManager:
   - ObstacleLayer
   - BackgroundLayer
   - GroundLayer
-  - Platforms
+  - PlatformsLayer
   - 
   - 
   - 
