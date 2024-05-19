@@ -21,29 +21,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if(GameManager.Instance.isAlive)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
+            horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-
-        // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
-        if (Input.GetAxisRaw("Vertical") < 0 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, platformsLayer))
-        {
-            if (currentGameObject != null)
+            if (Input.GetButtonDown("Jump") && IsGrounded())
             {
-                StartCoroutine(DisableCollision());
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
-        }
-       
 
-        Animations();
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
+            // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
+            if (Input.GetAxisRaw("Vertical") < 0 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, platformsLayer))
+            {
+                if (currentGameObject != null)
+                {
+                    StartCoroutine(DisableCollision());
+                }
+            }
+
+
+            Animations();
+        }
     }
 
     private void FixedUpdate()
@@ -79,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentGameObject = collision.gameObject;
         }
-     
+        currentGameObject = collision.gameObject;
 
     }
 
