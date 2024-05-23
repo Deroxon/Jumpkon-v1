@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Start is called before the first frame update
+    void Start()
     {
-        GameManager.Instance.LoseHealth();
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
