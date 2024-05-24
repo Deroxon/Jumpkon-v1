@@ -68,3 +68,4 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(currentSceneName);
     }
 }
+// zrób aby dzia³a³ przycisk restart tam coœ trzeba zrobiæ z funkcj¹
