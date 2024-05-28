@@ -9,7 +9,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.LoseHealth(1);
+            StartCoroutine(GameManager.Instance.LoseHealth(1));
         }
     }
 }
+

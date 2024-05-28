@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     private int health;
     public bool isAlive;
     public GameObject backgroundGameOver;
+   
+    private Vector3 checkpoinposition;
 
     [SerializeField]
     private Text healthTxt;
@@ -33,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     {
         health = 5;
         isAlive = true;
+        checkpoinposition = new Vector3(-18, -3, 1);
     }
 
     // Update is called once per frame
@@ -42,9 +45,17 @@ public class GameManager : Singleton<GameManager>
     }
 
     [ContextMenu("Minus Health")]
-    public void LoseHealth(int i)
+    public IEnumerator LoseHealth(int i)
     {
-        Health = Health - i;
+        if(Health > 0)
+        {
+            Health = Health - i;
+
+            // Start coroutine with a delay  
+            StartCoroutine(backToCheckPoint());
+            yield return new WaitForSeconds(0.1f);
+        }
+        
 
         if (Health <= 0)
         {
@@ -67,5 +78,20 @@ public class GameManager : Singleton<GameManager>
 
         SceneManager.LoadScene(currentSceneName);
     }
+
+
+    public void setCheckPoint()
+    {
+        // there would be needed the script which set the position from the GameObject "checkpoint"
+    }
+
+
+    public IEnumerator backToCheckPoint()
+    {
+        // there is need to make the animation of losing health
+        yield return new WaitForSeconds(0.1f);
+        PlayerManager.Instance.player.transform.position = checkpoinposition;
+        
+    }
+
 }
-// zrób aby dzia³a³ przycisk restart tam coœ trzeba zrobiæ z funkcj¹

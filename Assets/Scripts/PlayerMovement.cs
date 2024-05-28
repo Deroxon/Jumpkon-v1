@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     private float horizontal;
     private float speed = 9f;
     [SerializeField] private float jumpingPower = 18f;
     private bool isFacingRight = true;
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb; // needs to be moved to PlayerManager
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
 
     [SerializeField] private CapsuleCollider2D playerCollider;
-    [SerializeField] private GameObject currentGameObject;
+    [SerializeField] public GameObject currentGameObject;
 
     // Update is called once per frame
     void Update()
@@ -40,7 +40,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (currentGameObject != null)
                 {
-                    StartCoroutine(DisableCollision());
+                    string layerName = LayerMask.LayerToName(currentGameObject.layer);
+                    if (layerName == "PlatformsLayer")
+                    {
+                        StartCoroutine(DisableCollision());
+                    } 
                 }
             }
 
@@ -78,10 +82,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Checking if currently LayerMask is a PlatformsLayer
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "PlatformsLayer")
-        {
             currentGameObject = collision.gameObject;
-        }
+
      
 
     }
@@ -90,10 +92,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Checking if player exit from collider (platformLayer)
         // New implementation idea? Can we ue Physic2D.OverlapCircle instead this implementation?
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "PlatformsLayer")
-        {
             currentGameObject = null;
-        }
+
     }
 
     // this function can be useful when we wanna Disable any collision
