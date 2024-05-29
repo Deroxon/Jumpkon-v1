@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 4splitted_8
+  m_Name: 4_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -187244119, guid: e6ed955531f7c1d4ab3f595eebc1a982, type: 3}
+  m_Sprite: {fileID: -1444536214, guid: a1e12baadc173534585fab86813b5429, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
