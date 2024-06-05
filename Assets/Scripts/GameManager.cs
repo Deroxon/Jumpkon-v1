@@ -10,7 +10,8 @@ public class GameManager : Singleton<GameManager>
     private int health;
     public bool isAlive;
     public GameObject backgroundGameOver;
-   
+    [SerializeField] private GameObject backgroundVictory;
+
     private Vector3 checkpoinposition;
 
     [SerializeField]
@@ -69,6 +70,11 @@ public class GameManager : Singleton<GameManager>
     {
         backgroundGameOver.SetActive(true);
 
+    }
+
+    public void Victory()
+    {
+        backgroundVictory.SetActive(true);
     }
 
     // i think we need to change location of this function, also function for itself, for now it is only for testing

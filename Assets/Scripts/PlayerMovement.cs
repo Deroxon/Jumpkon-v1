@@ -9,7 +9,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private float jumpingPower = 18f;
     private bool isFacingRight = true;
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb; // needs to be moved to PlayerManager
+    [SerializeField] private Rigidbody2D rigidbody2D; // needs to be moved to PlayerManager
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
@@ -27,12 +27,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
             if (Input.GetButtonDown("Jump") && IsGrounded())
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpingPower);
             }
 
-            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            if (Input.GetButtonUp("Jump") && rigidbody2D.velocity.y > 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y * 0.5f);
             }
 
             // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
@@ -55,7 +55,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rigidbody2D.velocity = new Vector2(horizontal * speed, rigidbody2D.velocity.y);
     }
 
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
@@ -74,7 +74,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             transform.localScale = localScale;
         }
         animator.SetBool("grounded", IsGrounded());
-        animator.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("velocityX", Mathf.Abs(rigidbody2D.velocity.x));
     }
 
 
