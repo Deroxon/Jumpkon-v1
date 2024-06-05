@@ -7,12 +7,26 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    // All section
     private int health;
     public bool isAlive;
     public GameObject backgroundGameOver;
-   
-    private Vector3 checkpoinposition;
 
+
+    // Checkpoints section
+    private Vector3Double checkpointposition;
+    [SerializeField]
+    private GameObject prefabCheckpoint, CheckpointLister;
+
+    // positions of checkpoint of the double type
+    List<Vector3Double> checkPointsList = new List<Vector3Double>
+    {
+    new Vector3Double(12.95, 33.52, 0),
+    new Vector3Double(6.99, 79.53, 0),
+    };
+
+
+    // Health section
     [SerializeField]
     private Text healthTxt;
 
@@ -35,7 +49,8 @@ public class GameManager : Singleton<GameManager>
     {
         health = 5;
         isAlive = true;
-        checkpoinposition = new Vector3(-18, -3, 1);
+        checkpointposition = new Vector3Double(-18, -3, 1);
+        SpawnCheckPoints();
     }
 
     // Update is called once per frame
@@ -51,17 +66,17 @@ public class GameManager : Singleton<GameManager>
         {
             Health = Health - i;
 
+            if(Health <= 0)
+            {
+                isAlive = false;
+                Death();
+            }
+
             // Start coroutine with a delay  
             StartCoroutine(backToCheckPoint());
             yield return new WaitForSeconds(0.1f);
         }
         
-
-        if (Health <= 0)
-        {
-            isAlive = false;
-            Death();
-        }
 
     }
 
@@ -80,17 +95,32 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void setCheckPoint()
+    public void SpawnCheckPoints()
     {
-        // there would be needed the script which set the position from the GameObject "checkpoint"
+
+        for (int i = 0; i < checkPointsList.Count; i++)
+        {
+            // Quaternion - no rotation
+            Instantiate(prefabCheckpoint, checkPointsList[i].ToVector3(), Quaternion.identity, CheckpointLister.transform);
+        }
+
+    }
+
+
+    public void setCheckPoint(Transform transform)
+    {
+        checkpointposition = new Vector3Double(transform.position.x, transform.position.y, 0);
     }
 
 
     public IEnumerator backToCheckPoint()
     {
-        // there is need to make the animation of losing health
-        yield return new WaitForSeconds(0.1f);
-        PlayerManager.Instance.player.transform.position = checkpoinposition;
+        if (isAlive)
+        {
+            // there is need to make the animation of losing health
+            yield return new WaitForSeconds(0.1f);
+            PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
+        }
         
     }
 
