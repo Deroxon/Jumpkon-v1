@@ -59801,6 +59801,7 @@ MonoBehaviour:
   player: {fileID: 1772902688}
   CountFalled: 0
   rigidbody2D: {fileID: 1833296814}
+  playerCollider: {fileID: 1833296812}
 --- !u!1 &1887648202
 GameObject:
   m_ObjectHideFlags: 0

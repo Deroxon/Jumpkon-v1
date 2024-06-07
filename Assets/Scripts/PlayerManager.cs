@@ -6,7 +6,8 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject player;
     public double CountFalled;
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] public Rigidbody2D rigidbody2D;
+    [SerializeField] public CapsuleCollider2D playerCollider;
 
     // Start is called before the first frame update
     void Start()

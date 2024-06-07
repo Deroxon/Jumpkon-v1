@@ -9,14 +9,20 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private float jumpingPower = 18f;
     private bool isFacingRight = true;
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rigidbody2D; // needs to be moved to PlayerManager
+    private Rigidbody2D rigidbody2D;
+    private CapsuleCollider2D playerCollider;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
-
-    [SerializeField] private CapsuleCollider2D playerCollider;
     [SerializeField] public GameObject currentGameObject;
+
+    void Start()
+    {
+        rigidbody2D = PlayerManager.Instance.rigidbody2D;
+        playerCollider = PlayerManager.Instance.playerCollider;
+    }
+
 
     // Update is called once per frame
     void Update()
