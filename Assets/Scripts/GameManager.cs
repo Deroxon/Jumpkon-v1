@@ -64,6 +64,8 @@ public class GameManager : Singleton<GameManager>
     {
         if(Health > 0)
         {
+            // jumping after getting damage
+            PlayerManager.Instance.rb.velocity = new Vector2(PlayerManager.Instance.rb.velocity.x, 12);
             Health = Health - i;
 
             if(Health <= 0)
