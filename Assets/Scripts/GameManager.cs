@@ -117,8 +117,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (isAlive)
         {
-            // there is need to make the animation of losing health
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
         
