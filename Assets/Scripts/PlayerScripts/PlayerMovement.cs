@@ -17,6 +17,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     [SerializeField] private CapsuleCollider2D playerCollider;
     [SerializeField] public GameObject currentGameObject;
+    [SerializeField] private bool isHit;
 
     // Update is called once per frame
     void Update()
@@ -109,6 +110,15 @@ public class PlayerMovement : Singleton<PlayerMovement>
         yield return new WaitForSeconds(0.5f);
         // No longer ignore the collission
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+
+    }
+
+  
+    public IEnumerator AnimationDamage()
+    {
+        animator.SetBool("isHitted", true);
+        yield return new WaitForSeconds(0.4f);
+        animator.SetBool("isHitted", false);
 
     }
 
