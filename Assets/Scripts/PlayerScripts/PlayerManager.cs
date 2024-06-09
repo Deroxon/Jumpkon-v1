@@ -6,7 +6,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject player;
     public double CountFalled;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if(PlayerMovement.Instance.currentGameObject != null)
         {
+            StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             StartCoroutine(GameManager.Instance.LoseHealth(1));
             CountFalled = 0;
         }
