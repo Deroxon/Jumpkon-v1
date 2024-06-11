@@ -6296,7 +6296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3213e51f68860d5498e479143788abe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victroryScreen: {fileID: 0}
 --- !u!4 &885837414
 Transform:
   m_ObjectHideFlags: 0
