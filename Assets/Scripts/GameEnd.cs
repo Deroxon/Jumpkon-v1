@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameEnd : MonoBehaviour
 {
-    [SerializeField] private LogicScript logic;
     [SerializeField] private Animator endAnimation;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        logic.victory();
+        GameManager.Instance.Victory();
+        GameManager.Instance.isAlive = false;
         endAnimation.SetTrigger("Interact");
     }
 }

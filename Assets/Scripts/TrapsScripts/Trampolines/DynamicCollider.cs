@@ -62,7 +62,7 @@ public class DynamicCollider : MonoBehaviour
             trampolineAnimator.SetBool("isStand", true);
             yield return new WaitForSeconds(0.2f);
 
-            PlayerManager.Instance.rb.velocity = new Vector2(PlayerManager.Instance.rb.velocity.x, 40);
+            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 40);
             trampolineAnimator.SetBool("isStand", false);
             extracted = false;
 
