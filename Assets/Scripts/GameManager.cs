@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     private int health;
     public bool isAlive;
     public GameObject backgroundGameOver;
+    [SerializeField] private GameObject backgroundVictory;
 
 
     // Checkpoints section
@@ -65,7 +66,7 @@ public class GameManager : Singleton<GameManager>
         if(Health > 0)
         {
             // jumping after getting damage
-            PlayerManager.Instance.rb.velocity = new Vector2(PlayerManager.Instance.rb.velocity.x, 12);
+            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 12);
             Health = Health - i;
 
             if(Health <= 0)
@@ -80,6 +81,11 @@ public class GameManager : Singleton<GameManager>
         }
         
 
+    }
+
+    public void Victory()
+    {
+        backgroundVictory.SetActive(true);
     }
 
     public void Death()
