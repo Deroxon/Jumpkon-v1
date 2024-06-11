@@ -9,15 +9,22 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private float jumpingPower = 18f;
     private bool isFacingRight = true;
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb; // needs to be moved to PlayerManager
+    private Rigidbody2D playerRigidbody2D;
+    private CapsuleCollider2D playerCollider;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
-
-    [SerializeField] private CapsuleCollider2D playerCollider;
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
+
+    void Start()
+    {
+        playerRigidbody2D = PlayerManager.Instance.playerRigidbody2D;
+        playerCollider = PlayerManager.Instance.playerCollider;
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -28,12 +35,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
             if (Input.GetButtonDown("Jump") && IsGrounded())
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, jumpingPower);
             }
 
-            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            if (Input.GetButtonUp("Jump") && playerRigidbody2D.velocity.y > 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, playerRigidbody2D.velocity.y * 0.5f);
             }
 
             // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
@@ -56,7 +63,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
     }
 
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
@@ -75,7 +82,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             transform.localScale = localScale;
         }
         animator.SetBool("grounded", IsGrounded());
-        animator.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("velocityX", Mathf.Abs(playerRigidbody2D.velocity.x));
     }
 
 

@@ -6,7 +6,8 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject player;
     public double CountFalled;
-    [SerializeField] public Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D playerRigidbody2D;
+    [SerializeField] public CapsuleCollider2D playerCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if(PlayerMovement.Instance.currentGameObject == null)
         {
             // saving the velocity number, i need to think if we should use the OnCollisionExit instead of this
-            CountFalled = rb.velocity.y;
+            CountFalled = playerRigidbody2D.velocity.y;
 
         } 
 
