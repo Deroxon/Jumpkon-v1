@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    // add colliders to the falling platform collider, make it same logic to disable collision from it, and if player stands on it, delete this gameobject from the game (czat podpowiada jak to zrobiæ)
+
     // All section
     private int health;
     public bool isAlive;
