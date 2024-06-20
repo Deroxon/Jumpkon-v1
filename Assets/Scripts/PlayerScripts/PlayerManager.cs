@@ -23,7 +23,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             // saving the velocity number, i need to think if we should use the OnCollisionExit instead of this
             CountFalled = playerRigidbody2D.velocity.y;
-
+            PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         } 
 
         if (CountFalled < -30)
