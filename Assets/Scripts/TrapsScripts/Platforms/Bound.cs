@@ -9,7 +9,6 @@ public class Bound : MonoBehaviour
     {
         if (platform.CompareTag("Platform"))
         {
-            Debug.Log("hit");
             MovingPlatforms.Instance.Bound();
         }
     }
