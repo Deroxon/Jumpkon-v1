@@ -8,10 +8,6 @@ public class MovingPlatforms : Singleton<MovingPlatforms>
     [SerializeField] private float platformSpeedHorizontal = 0f;
     [SerializeField] private float platformSpeedVertical = 0f;
 
-    void Start()
-    {
-        
-    }
     void Update()
     {
         platform.velocity = new Vector2(platformSpeedHorizontal, platformSpeedVertical);
