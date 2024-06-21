@@ -8,8 +8,11 @@ public class GameEnd : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager.Instance.Victory();
-        GameManager.Instance.isAlive = false;
-        endAnimation.SetTrigger("Interact");
+        if (collision.CompareTag("Player"))
+        {
+            GameManager.Instance.Victory();
+            GameManager.Instance.isAlive = false;
+            endAnimation.SetTrigger("Interact");
+        }
     }
 }
