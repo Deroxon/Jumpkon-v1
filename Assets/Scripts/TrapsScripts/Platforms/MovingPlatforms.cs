@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatforms : Singleton<MovingPlatforms>
+public class MovingPlatforms : MonoBehaviour
 { 
-    [SerializeField] private Rigidbody2D platform;
+    private Rigidbody2D platform;
+    //initial platforms speed
     [SerializeField] private float platformSpeedHorizontal = 0f;
     [SerializeField] private float platformSpeedVertical = 0f;
 
     void Start()
     {
-        this.platform.velocity = new Vector2(platformSpeedHorizontal, platformSpeedVertical);
+        platform = this.gameObject.GetComponent<Rigidbody2D>();
+        platform.velocity = new Vector2(platformSpeedHorizontal, platformSpeedVertical);
     }
-    public void Bound()
+    public void Bounce()
     {
-       // platformSpeedHorizontal *= -1f;
-       // platformSpeedVertical *= -1f;
-        this.platform.velocity = new Vector2(platformSpeedHorizontal *= -1f, platformSpeedVertical *= -1f);
+        platform.velocity = new Vector2(platformSpeedHorizontal *= -1f, platformSpeedVertical *= -1f);
     }
 }
