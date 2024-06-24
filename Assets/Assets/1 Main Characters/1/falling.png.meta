@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cfebc0eed0badfa4cb303d4e1475cf3c
+guid: 97ba6666266f3c442b8fe1404af1b08b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,165 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 5_0
+      name: falling_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -1, y: 0}
-        - {x: -15, y: 0}
-        - {x: -15, y: 4}
-        - {x: 15, y: 4}
-        - {x: 15, y: 0}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43b3aa7ddf5d415408c0c48db8e79ead
-      internalID: 329851082
+      spriteID: 8181c6a817fb57e4ebd8c2c2e871e5d2
+      internalID: 101388801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5_1
+      name: falling_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: 0}
-        - {x: -16, y: 4}
-        - {x: 16, y: 4}
-        - {x: 16, y: 0}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40440fb85bf62394db484869cf743da9
-      internalID: 432573964
+      spriteID: 9e013a69dbaed424abf3df8da02135d6
+      internalID: -1035186240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5_2
+      name: falling_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c8779ca9e43974289b42cf83b66143
+      internalID: 1323760720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: falling_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -15, y: 0}
-        - {x: -15, y: 4}
-        - {x: 16, y: 4}
-        - {x: 16, y: 0}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47c219c683885cc448bea3648efa8cea
-      internalID: -1828590496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -15, y: 0}
-        - {x: -15, y: 1}
-        - {x: 15, y: 1}
-        - {x: 15, y: 0}
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6867070437d20849af9a8cfd37fffd3
-      internalID: 727618179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b3476b291bddaf47b76304b3fbd1298
-      internalID: 584267340
+      spriteID: b5196e22bbea0404cb375c682e35a80f
+      internalID: 97330986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5_5
+      name: falling_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 128
         y: 0
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed6aa9b4d6f4a3944886c256814aed67
-      internalID: 263631287
+      spriteID: b0bf092fabe3fc24bb30102b11f97bdd
+      internalID: -1133525101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5_6
+      name: falling_5
       rect:
         serializedVersion: 2
-        x: 288
+        x: 160
         y: 0
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b2eb7b3b612bb44682a337ac10689b7
-      internalID: 334582936
+      spriteID: ef7af6d4d81edcc4a8fdf3902593ab65
+      internalID: -1634215693
       vertices: []
       indices: 
       edges: []
@@ -284,13 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      5_0: 329851082
-      5_1: 432573964
-      5_2: -1828590496
-      5_3: 727618179
-      5_4: 584267340
-      5_5: 263631287
-      5_6: 334582936
+      falling_0: 101388801
+      falling_1: -1035186240
+      falling_2: 1323760720
+      falling_3: 97330986
+      falling_4: -1133525101
+      falling_5: -1634215693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
