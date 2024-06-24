@@ -5546,6 +5546,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2057096244}
+  - {fileID: 1831838850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504369268
@@ -5715,8 +5716,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: -2, z: 0}
-  m_Size: {x: 24, y: 5, z: 1}
+  m_Origin: {x: -12, y: -3, z: 0}
+  m_Size: {x: 36, y: 6, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -5775,53 +5776,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 504369273}
     m_ColliderPaths:
-    - - X: 190000000
-        Y: -13750000
-      - X: 190624992
-        Y: -14375000
-      - X: 199375008
-        Y: -14375000
-      - X: 200000000
-        Y: -13750000
-      - X: 200624992
-        Y: -14375000
-      - X: 209375008
-        Y: -14375000
-      - X: 210000000
-        Y: -13750000
-      - X: 210624992
-        Y: -14375000
-      - X: 219375008
-        Y: -14375000
-      - X: 220000000
-        Y: -13750000
-      - X: 220000000
+    - - X: 220000000
         Y: -10000000
       - X: 180000000
         Y: -10000000
       - X: 180000000
-        Y: -13750000
-      - X: 180624992
-        Y: -14375000
-      - X: 189375008
-        Y: -14375000
+        Y: -11875000
+      - X: 220000000
+        Y: -11875000
   m_CompositePaths:
     m_Paths:
-    - - {x: 18.93749, y: -1.4375}
-      - {x: 19.000021, y: -1.3750209}
-      - {x: 19.062511, y: -1.4375}
-      - {x: 19.93751, y: -1.4374924}
-      - {x: 20.000021, y: -1.3750209}
-      - {x: 20.062511, y: -1.4375}
-      - {x: 20.93751, y: -1.4374924}
-      - {x: 21.000021, y: -1.3750209}
-      - {x: 21.062511, y: -1.4375}
-      - {x: 21.93751, y: -1.4374924}
-      - {x: 22, y: -1.3749893}
+    - - {x: 21.999971, y: -1.1875}
       - {x: 21.999971, y: -1}
       - {x: 18, y: -1.0000293}
-      - {x: 18.000008, y: -1.3750076}
-      - {x: 18.062511, y: -1.4375}
+      - {x: 18.000029, y: -1.1875}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -60107,6 +60075,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830945046}
   m_CullTransparentMesh: 1
+--- !u!1 &1831838849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831838850}
+  m_Layer: 0
+  m_Name: FallingPlatforms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831838850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831838849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 345189411}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832020475
 GameObject:
   m_ObjectHideFlags: 0
@@ -60656,8 +60655,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1035408783}
+  m_Children: []
   m_Father: {fileID: 345189411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065979537
@@ -65182,7 +65180,7 @@ PrefabInstance:
     - target: {fileID: 4594482317186237357, guid: 618235f587190da419e81a2d03fce791, type: 3}
       propertyPath: logic
       value: 
-      objectReference: {fileID: 885837413}
+      objectReference: {fileID: 0}
     - target: {fileID: 5416086230424929799, guid: 618235f587190da419e81a2d03fce791, type: 3}
       propertyPath: m_Name
       value: End
@@ -65203,7 +65201,6 @@ SceneRoots:
   - {fileID: 99693486}
   - {fileID: 1405718065}
   - {fileID: 106700897}
-  - {fileID: 885837414}
   - {fileID: 2065979539}
   - {fileID: 1693144884}
   - {fileID: 345189411}
