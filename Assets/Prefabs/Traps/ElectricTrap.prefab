@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 865553535866928852}
   - component: {fileID: 5170617615306578492}
   - component: {fileID: 7002135424342220606}
+  - component: {fileID: 6103996084870694274}
   m_Layer: 0
   m_Name: ElectricTrap
   m_TagString: Untagged
@@ -210,3 +211,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1103a13f2cbe08f4390bb313fbb70705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6103996084870694274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724948539278895583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f350451468d9ccb46b92dd8b9fc167f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5170617615306578492}
+  triggerName: isDelayed
+  delay: 2
