@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     // All section
     private int health;
     public bool isAlive;
+    private bool isImmortal;
     public GameObject backgroundGameOver;
     [SerializeField] private GameObject backgroundVictory;
 
@@ -51,6 +52,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         health = 5;
+        isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
         SpawnCheckPoints();
@@ -65,8 +67,9 @@ public class GameManager : Singleton<GameManager>
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
     {
-        if(Health > 0)
+        if(Health > 0 && !isImmortal)
         {
+            isImmortal = true;
             // jumping after getting damage
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 12);
             Health = Health - i;
@@ -79,7 +82,8 @@ public class GameManager : Singleton<GameManager>
 
             // Start coroutine with a delay  
             StartCoroutine(backToCheckPoint());
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
+            isImmortal = false;
         }
         
 
