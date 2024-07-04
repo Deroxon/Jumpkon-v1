@@ -21,11 +21,6 @@ public class FrogScript : Singleton<FrogScript>
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     IEnumerator move()
     {
@@ -33,6 +28,8 @@ public class FrogScript : Singleton<FrogScript>
         frogAnimator.SetBool("isMoving", true);
         frogRigidBody2D.velocity = new Vector2(frogSpeedHorizontal, 0f);
     }
+
+   
 
     public IEnumerator Bounce()
     {
