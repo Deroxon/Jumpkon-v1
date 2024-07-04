@@ -68,9 +68,9 @@ public class FrogScript : Singleton<FrogScript>
 
         isFacingRight = !isFacingRight;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);
         frogAnimator.SetBool("isMoving", true);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         frogRigidBody2D.velocity = new Vector2(frogSpeedHorizontal *= -1f, 0);
         
 
