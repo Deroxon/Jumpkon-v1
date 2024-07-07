@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - Platform
+  - Frog
   layers:
   - Default
   - TransparentFX
