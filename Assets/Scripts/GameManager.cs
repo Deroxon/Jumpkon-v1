@@ -28,6 +28,12 @@ public class GameManager : Singleton<GameManager>
     new Vector3Double(12.95, 33.52, 0),
     new Vector3Double(6.99, 79.53, 0),
     };
+    // All valids tags of enemies
+    public List<string> EnemiesTags = new List<string>
+    {
+        "Frog",
+        "Explosiver"
+    };
 
 
     // Health section
