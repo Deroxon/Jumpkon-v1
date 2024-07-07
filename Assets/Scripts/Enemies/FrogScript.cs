@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrogScript : Singleton<FrogScript>
+public class FrogScript : MonoBehaviour
 {
     public Rigidbody2D frogRigidBody2D;
     public Animator frogAnimator;
