@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b241baf1743e748b533681431c18aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frog: {fileID: 3770345493319949945}
 --- !u!1 &3770345493319949945
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b241baf1743e748b533681431c18aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frog: {fileID: 3770345493319949945}
 --- !u!1 &5522564047133544908
 GameObject:
   m_ObjectHideFlags: 0
