@@ -6,14 +6,16 @@ public class FrogBoundScript : MonoBehaviour
 {
     private FrogScript frogscript;
     public GameObject frog;
-     void Start()
+    private Transform EnemyContainer;
+    void Start()
     {
         frogscript = frog.GetComponent<FrogScript>();
+        EnemyContainer = transform.parent;
     }
 
-    private void OnTriggerEnter2D(Collider2D platform)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (platform.CompareTag("Frog"))
+        if (GameManager.Instance.EnemiesTags.Contains(collision.tag) &&  collision.transform.IsChildOf(EnemyContainer))
         {
            StartCoroutine(frogscript.Bounce());
         }
