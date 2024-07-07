@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     // All section
     private int health;
     public bool isAlive;
-    private bool isImmortal;
+    public bool isImmortal;
     public GameObject backgroundGameOver;
     [SerializeField] private GameObject backgroundVictory;
 
@@ -27,6 +27,12 @@ public class GameManager : Singleton<GameManager>
     {
     new Vector3Double(12.95, 33.52, 0),
     new Vector3Double(6.99, 79.53, 0),
+    };
+    // All valids tags of enemies
+    public List<string> EnemiesTags = new List<string>
+    {
+        "Frog",
+        "Explosiver"
     };
 
 
@@ -71,7 +77,7 @@ public class GameManager : Singleton<GameManager>
         {
             isImmortal = true;
             // jumping after getting damage
-            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 12);
+            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
             Health = Health - i;
 
             if(Health <= 0)
