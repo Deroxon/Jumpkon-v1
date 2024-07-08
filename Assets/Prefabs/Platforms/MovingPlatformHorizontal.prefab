@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4998143089123258116}
   - component: {fileID: 5672559439498796759}
   - component: {fileID: 6063658282369748827}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RightBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8851275826421967130}
   - component: {fileID: 1449234328694586805}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: PlatformL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8532267353986867550}
   - component: {fileID: 4946484492965977048}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: PlatformM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 628616174564132179}
   - component: {fileID: 3116786602739093092}
   - component: {fileID: 1933978853335588561}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: LeftBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803006754977107100}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: MovingPlatformHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 5030535413395969119}
   - component: {fileID: 3837976165668819694}
   - component: {fileID: 4495941249398259329}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: PlatformMain
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3461669558195680797}
   - component: {fileID: 2697403182385257235}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: PlatformR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
