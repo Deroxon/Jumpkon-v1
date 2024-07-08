@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrogScript : MonoBehaviour
+public class EnemyLogicScript : MonoBehaviour
 {
     public Rigidbody2D frogRigidBody2D;
     public Animator frogAnimator;
     private bool isFacingRight = true;
     public Vector2 rightSpriteOffset; // offset right
     public Vector2 leftSpriteOffset;  // offset left
+    public EnemyStructure currentEnemy;
+    private bool isEnemyGetted = false;
 
     [SerializeField] private float frogSpeedHorizontal = 2f;
 
@@ -16,17 +18,35 @@ public class FrogScript : MonoBehaviour
     void Start()
     {
 
-        StartCoroutine(move());
-        isFacingRight = !isFacingRight;
-
+        if (!isEnemyGetted)
+        {
+            StartCoroutine(loadEnemy());
+            Debug.Log(this.gameObject.tag);
+            StartCoroutine(move(0.5f, 2f));
+            isFacingRight = !isFacingRight;
+            isEnemyGetted = true;
+        }
     }
 
 
-    IEnumerator move()
+    private void Update()
     {
-        yield return new WaitForSeconds(0.5f);
+ 
+    }
+
+    IEnumerator loadEnemy()
+    {
+        yield return new WaitForSeconds(0.4f);
+        currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.tag == this.gameObject.tag);
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log(currentEnemy);
+    }
+
+    IEnumerator move(float offsetMoveAnimation, float moveVelocity)
+    {
+        yield return new WaitForSeconds(offsetMoveAnimation);
         frogAnimator.SetBool("isMoving", true);
-        frogRigidBody2D.velocity = new Vector2(frogSpeedHorizontal, 0f);
+        frogRigidBody2D.velocity = new Vector2(moveVelocity, 0f);
     }
 
    
