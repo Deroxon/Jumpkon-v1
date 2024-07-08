@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FrogBoundScript : MonoBehaviour
 {
-    private FrogScript frogscript;
+    private EnemyLogicScript frogscript;
     public GameObject frog;
     private Transform EnemyContainer;
     void Start()
     {
-        frogscript = frog.GetComponent<FrogScript>();
+        frogscript = frog.GetComponent<EnemyLogicScript>();
         EnemyContainer = transform.parent;
     }
 
