@@ -92,10 +92,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         if (PlatformCheck.Instance.currentPlatform != null)
         {
             platformRigidbody2D = PlatformCheck.Instance.currentPlatform.GetComponent<Rigidbody2D>();
-            if (horizontal != 0)
-                playerRigidbody2D.velocity = new Vector2(horizontal * speed + platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
-            else
-                playerRigidbody2D.velocity = new Vector2(platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
+            playerRigidbody2D.velocity = new Vector2(horizontal * speed + platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
         }
         else
             playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
