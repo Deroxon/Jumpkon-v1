@@ -23,7 +23,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         playerRigidbody2D = PlayerManager.Instance.playerRigidbody2D;
         playerCollider = PlayerManager.Instance.playerCollider;
-}
+    }
 
 
 
@@ -64,16 +64,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void FixedUpdate()
     {
-        if (PlatformCheck.Instance.currentPlatform != null && PlatformCheck.Instance.currentPlatform.name == "PlatformMain")
-        {
-            platformRigidbody2D = PlatformCheck.Instance.currentPlatform.GetComponent<Rigidbody2D>();
-            if (horizontal != 0)
-                playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
-            else
-                playerRigidbody2D.velocity = new Vector2(platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
-        }
-        else
-            playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
+        Movement();
     }
 
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
@@ -95,6 +86,20 @@ public class PlayerMovement : Singleton<PlayerMovement>
         animator.SetInteger("horizontal", Mathf.Abs((int) horizontal));
     }
 
+    //Checking if platform player is standing on is moving and adjusting velocity accordingly.
+    private void Movement()
+    {
+        if (PlatformCheck.Instance.currentPlatform != null)
+        {
+            platformRigidbody2D = PlatformCheck.Instance.currentPlatform.GetComponent<Rigidbody2D>();
+            if (horizontal != 0)
+                playerRigidbody2D.velocity = new Vector2(horizontal * speed + platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
+            else
+                playerRigidbody2D.velocity = new Vector2(platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
+        }
+        else
+            playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
