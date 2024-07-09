@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3478930077091405240}
   - component: {fileID: 3431777838285163184}
   - component: {fileID: 8818782837513406445}
+  - component: {fileID: 7534624601975336980}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +137,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3431777838285163184
 CapsuleCollider2D:
@@ -186,19 +187,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpingPower: 18
-  animator: {fileID: 0}
+  animator: {fileID: 4913155597952408565}
   groundCheck: {fileID: 2821050748412504723}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   platformsLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  movingPlatformsLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   currentGameObject: {fileID: 0}
   isHit: 0
+--- !u!114 &7534624601975336980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3262955337315638311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee74e8f595e7634a8dd1c3393d6e356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3262955337315638311}
+  CountFalled: 0
+  playerRigidbody2D: {fileID: 3478930077091405240}
+  playerCollider: {fileID: 3431777838285163184}
 --- !u!1 &5261010188078534220
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +286,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.06
 --- !u!114 &5248642470242615277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5105869f7f4cf3d409db1a963285ef67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGameObject: {fileID: 5261010188078534220}
+  currentPlatform: {fileID: 0}
 --- !u!1 &7114877660815710052
 GameObject:
   m_ObjectHideFlags: 0
