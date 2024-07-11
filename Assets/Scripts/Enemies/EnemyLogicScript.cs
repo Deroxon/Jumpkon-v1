@@ -36,8 +36,11 @@ public class EnemyLogicScript : MonoBehaviour
 
     IEnumerator loadEnemy()
     {
+        Debug.Log("Load enemy");
+        Debug.Log(GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == "Frog"));
         yield return new WaitForSeconds(0.4f);
-        currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.tag == this.gameObject.tag);
+        currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
+        
         yield return new WaitForSeconds(0.2f);
         Debug.Log(currentEnemy);
     }
