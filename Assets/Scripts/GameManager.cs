@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(initalizeEnemies()); // testing
+        initalizeEnemies(); // testing
         health = 5;
         isImmortal = false;
         isAlive = true;
@@ -152,7 +152,7 @@ public class GameManager : Singleton<GameManager>
         
     }
 
-     private IEnumerator initalizeEnemies()
+     private void initalizeEnemies()
     {
             enemiesList.Add(
             new EnemyStructure(
@@ -166,7 +166,6 @@ public class GameManager : Singleton<GameManager>
 
         Debug.Log("Initialized");
 
-        yield return new WaitForSeconds(1f);
         foreach (EnemyStructure enemy in enemiesList)
         {
             Debug.Log("Tag: " + enemy.Tag);
@@ -175,7 +174,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         initalisedEnemys = true;
-
+        // to niejest problem z inicjalizacja tylko w loadEnemy coœ jest nie tak
     }
 
 }
