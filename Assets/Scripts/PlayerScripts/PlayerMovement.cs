@@ -15,9 +15,10 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
+    [SerializeField] private LayerMask movingPlatformsLayer;
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
-
+    private Rigidbody2D platformRigidbody2D;
     void Start()
     {
         playerRigidbody2D = PlayerManager.Instance.playerRigidbody2D;
@@ -63,13 +64,13 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void FixedUpdate()
     {
-        playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
+        Movement();
     }
 
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer) );
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer) );
     }
 
     private void Animations()
@@ -82,9 +83,20 @@ public class PlayerMovement : Singleton<PlayerMovement>
             transform.localScale = localScale;
         }
         animator.SetBool("grounded", IsGrounded());
-        animator.SetFloat("velocityX", Mathf.Abs(playerRigidbody2D.velocity.x));
+        animator.SetInteger("horizontal", Mathf.Abs((int) horizontal));
     }
 
+    //Checking if platform player is standing on is moving and adjusting velocity accordingly.
+    private void Movement()
+    {
+        if (PlatformCheck.Instance.currentPlatform != null)
+        {
+            platformRigidbody2D = PlatformCheck.Instance.currentPlatform.GetComponent<Rigidbody2D>();
+            playerRigidbody2D.velocity = new Vector2(horizontal * speed + platformRigidbody2D.velocity.x, playerRigidbody2D.velocity.y);
+        }
+        else
+            playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -113,10 +125,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         // Ignore collision
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
+        Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider);
         // wait a small amount of time
         yield return new WaitForSeconds(0.5f);
         // No longer ignore the collission
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+        Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider, false);
 
     }
 
