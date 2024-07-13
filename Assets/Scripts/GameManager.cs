@@ -160,21 +160,15 @@ public class GameManager : Singleton<GameManager>
                 0.5f,
                 0.2f,
                 2f,
-                Resources.Load<GameObject>("Prefabs/Enemies/FrogEnemy").transform.Find("Frog").GetComponent<Animator>(),
-                5f,
-                3f));
+                2f,
+                0.2f));
 
-        Debug.Log("Initialized");
-
-        foreach (EnemyStructure enemy in enemiesList)
-        {
-            Debug.Log("Tag: " + enemy.Tag);
-            Debug.Log("Animator Name: " + enemy.EnemyAnimator.name);
-            Debug.Log("-----------------------");
-        }
+       
 
         initalisedEnemys = true;
-        // to niejest problem z inicjalizacja tylko w loadEnemy coœ jest nie tak
+
+        if(enemiesList.Count > 0) { Debug.Log("Initialized"); }
+        else { throw new System.Exception("The enemies were not initialized"); }
     }
 
 }
