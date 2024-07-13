@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyLogicScript : MonoBehaviour
@@ -21,13 +22,19 @@ public class EnemyLogicScript : MonoBehaviour
         if (!isEnemyGetted)
         {
             StartCoroutine(loadEnemy());
-            Debug.Log(this.gameObject.tag);
-            StartCoroutine(move(0.5f, 2f));
+            
             isFacingRight = !isFacingRight;
             isEnemyGetted = true;
+
+            StartCoroutine(lol());
         }
     }
 
+    IEnumerator lol()
+    {
+        yield return new WaitForSeconds(0f);
+        Debug.Log("hello");
+    }
 
     private void Update()
     {
@@ -36,13 +43,10 @@ public class EnemyLogicScript : MonoBehaviour
 
     IEnumerator loadEnemy()
     {
-        Debug.Log("Load enemy");
-        Debug.Log(GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == "Frog"));
         yield return new WaitForSeconds(0.4f);
         currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
-        
-        yield return new WaitForSeconds(0.2f);
-        Debug.Log(currentEnemy);
+        yield return StartCoroutine(move(currentEnemy.OffsetMoveAnimation, currentEnemy.MoveVelocity));
+
     }
 
     IEnumerator move(float offsetMoveAnimation, float moveVelocity)
@@ -50,6 +54,7 @@ public class EnemyLogicScript : MonoBehaviour
         yield return new WaitForSeconds(offsetMoveAnimation);
         frogAnimator.SetBool("isMoving", true);
         frogRigidBody2D.velocity = new Vector2(moveVelocity, 0f);
+        Debug.Log("End move couroutine");
     }
 
    
