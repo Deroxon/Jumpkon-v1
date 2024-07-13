@@ -5,36 +5,32 @@ using UnityEngine;
 
 public class EnemyLogicScript : MonoBehaviour
 {
-    public Rigidbody2D frogRigidBody2D;
-    public Animator frogAnimator;
+    [SerializeField]
+    private Rigidbody2D EnemyRigidBody2D;
+    [SerializeField]
+    private Animator EnemyAnimator;
+
     private bool isFacingRight = true;
     public Vector2 rightSpriteOffset; // offset right
     public Vector2 leftSpriteOffset;  // offset left
-    public EnemyStructure currentEnemy;
-    private bool isEnemyGetted = false;
 
-    [SerializeField] private float frogSpeedHorizontal = 2f;
+    private EnemyStructure currentEnemy;
+    private bool isEnemyGetted = false;
 
     // Start is called before the first frame update
     void Start()
     {
+       
 
         if (!isEnemyGetted)
         {
             StartCoroutine(loadEnemy());
             
             isFacingRight = !isFacingRight;
-            isEnemyGetted = true;
-
-            StartCoroutine(lol());
+            
         }
     }
 
-    IEnumerator lol()
-    {
-        yield return new WaitForSeconds(0f);
-        Debug.Log("hello");
-    }
 
     private void Update()
     {
@@ -43,34 +39,51 @@ public class EnemyLogicScript : MonoBehaviour
 
     IEnumerator loadEnemy()
     {
+        // get Animator
+        EnemyAnimator = gameObject.GetComponent<Animator>();
+        // get rigidBody
+        EnemyRigidBody2D = gameObject.GetComponent<Rigidbody2D>();
+
         yield return new WaitForSeconds(0.4f);
+        // find the Enemy by Current tag
         currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
-        yield return StartCoroutine(move(currentEnemy.OffsetMoveAnimation, currentEnemy.MoveVelocity));
+
+
+        if (currentEnemy.Tag != null)
+        {
+            yield return StartCoroutine(move(currentEnemy.OffsetMoveAnimation, currentEnemy.MoveVelocity));
+            Debug.Log("Enemy loaded Correctly");
+            
+        }
+        else
+        {
+            throw new System.Exception("The enemy couldn't be found: ");
+        }
 
     }
 
     IEnumerator move(float offsetMoveAnimation, float moveVelocity)
     {
         yield return new WaitForSeconds(offsetMoveAnimation);
-        frogAnimator.SetBool("isMoving", true);
-        frogRigidBody2D.velocity = new Vector2(moveVelocity, 0f);
-        Debug.Log("End move couroutine");
+        // frogAnimator.SetBool("isMoving", true);
+        EnemyAnimator.SetBool("isMoving", true);
+        EnemyRigidBody2D.velocity = new Vector2(moveVelocity, 0f);
     }
 
    
-
+   
     public IEnumerator Bounce()
     {
         // Changing the animation from  moving to Idle
-        frogRigidBody2D.velocity = new Vector2(0, 0);
-        frogAnimator.SetBool("isMoving", false);
+        EnemyRigidBody2D.velocity = new Vector2(0, 0);
+        EnemyAnimator.SetBool("isMoving", false);
 
         // Attack Animation
-        yield return new WaitForSeconds(0.2f);
-        frogAnimator.SetTrigger("Attack");
+        yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+        EnemyAnimator.SetTrigger("Attack");
 
-        // Reverse velocity and positionof the frog
-        yield return new WaitForSeconds(2.0f);
+        // Reverse frog and position of the frog
+        yield return new WaitForSeconds(currentEnemy.OffsetChangePosition);
         transform.Rotate(0f, 180f, 0f);
 
 
@@ -93,14 +106,11 @@ public class EnemyLogicScript : MonoBehaviour
 
         isFacingRight = !isFacingRight;
 
-        yield return new WaitForSeconds(0.2f);
-        frogAnimator.SetBool("isMoving", true);
-        yield return new WaitForSeconds(0.2f);
-        frogRigidBody2D.velocity = new Vector2(frogSpeedHorizontal *= -1f, 0);
-        
+        yield return new WaitForSeconds(currentEnemy.OffsetVelocityDifferentWay);
+        EnemyAnimator.SetBool("isMoving", true);
+        EnemyRigidBody2D.velocity = new Vector2(currentEnemy.MoveVelocity *= -1f, 0);
 
     }
-
 
 
 }

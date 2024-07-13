@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class FrogBoundScript : MonoBehaviour
 {
-    private EnemyLogicScript frogscript;
-    public GameObject frog;
+    private EnemyLogicScript enemyLogicScript;
+    public GameObject Enemy;
     private Transform EnemyContainer;
     void Start()
     {
-        frogscript = frog.GetComponent<EnemyLogicScript>();
+        enemyLogicScript = Enemy.GetComponent<EnemyLogicScript>();
         EnemyContainer = transform.parent;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // need to think if we need to change it to finding by "Tag" in the Objects list
         if (GameManager.Instance.EnemiesTags.Contains(collision.tag) &&  collision.transform.IsChildOf(EnemyContainer))
         {
-           StartCoroutine(frogscript.Bounce());
+           StartCoroutine(enemyLogicScript.Bounce());
         }
     }
 }

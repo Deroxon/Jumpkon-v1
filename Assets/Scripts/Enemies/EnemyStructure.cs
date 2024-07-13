@@ -9,8 +9,7 @@ public class EnemyStructure : Singleton<EnemyStructure>
     public float OffsetMoveAnimation { get; set; }
     public float OffsetAttackAnimation { get; set; }
     public float MoveVelocity { get; set; }
-    public Animator EnemyAnimator { get; set; }
-    public float OffsetMoveAnimationAfterChangeFacing { get; set;}
+    public float OffsetChangePosition { get; set;}
     public float OffsetVelocityDifferentWay { get; set; }
 
 
@@ -20,8 +19,7 @@ public class EnemyStructure : Singleton<EnemyStructure>
         float offsetMoveAnimation,
         float offsetAttackAnimation,
         float moveVelocity, 
-        Animator enemyAnimator,
-        float offsetMoveAnimationAfterChangeFacing,
+        float offsetChangePosition,
         float offsetVelocityDifferentWay
         )
     {
@@ -29,8 +27,7 @@ public class EnemyStructure : Singleton<EnemyStructure>
         OffsetMoveAnimation = offsetMoveAnimation;
         OffsetAttackAnimation = offsetAttackAnimation;
         MoveVelocity = moveVelocity;
-        EnemyAnimator = enemyAnimator;
-        OffsetMoveAnimationAfterChangeFacing = offsetMoveAnimationAfterChangeFacing;
+        OffsetChangePosition = offsetChangePosition;
         OffsetVelocityDifferentWay = offsetVelocityDifferentWay;
 
     }
