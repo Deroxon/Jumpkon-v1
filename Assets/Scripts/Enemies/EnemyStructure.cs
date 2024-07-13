@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStructure : MonoBehaviour
+public class EnemyStructure : Singleton<EnemyStructure>
 {
     // In future there could be implemented, health, attack etc, for now its basic for EnemyLogicScript
     public string Tag { get; set; }
