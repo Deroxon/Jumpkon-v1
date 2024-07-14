@@ -78,9 +78,19 @@ public class EnemyLogicScript : MonoBehaviour
         EnemyRigidBody2D.velocity = new Vector2(0, 0);
         EnemyAnimator.SetBool("isMoving", false);
 
-        // Attack Animation
-        yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
-        EnemyAnimator.SetTrigger("Attack");
+        // Attack Animation/ Separate stun action for Barrel
+        if(currentEnemy.Tag != "Barrel")
+        {
+            yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+            EnemyAnimator.SetTrigger("Attack");
+        }
+        else // Additional Action for Barrels enemies
+        {
+            EnemyAnimator.SetBool("isStunned", true);
+            yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+            EnemyAnimator.SetBool("isStunned", false);
+
+        }
 
         // Reverse frog and position of the frog
         yield return new WaitForSeconds(currentEnemy.OffsetChangePosition);
