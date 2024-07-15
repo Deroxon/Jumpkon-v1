@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     // All valids tags of enemies
     public List<string> EnemiesTags = new List<string>();
 
-    public List<EnemyStructure> enemiesList;
+    public List<EnemyStructure> enemiesList = new List<EnemyStructure>();
     public bool initalisedEnemys = false;
 
 
@@ -166,8 +166,7 @@ public class GameManager : Singleton<GameManager>
                2f,
                10f,
                1.7f,
-               0.2f));
-
+               0.4f));
 
         initalisedEnemys = true;
 
