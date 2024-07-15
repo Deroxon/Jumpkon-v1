@@ -34,7 +34,6 @@ public class EnemyLogicScript : MonoBehaviour
 
     private void Update()
     {
- 
     }
 
     IEnumerator loadEnemy()
@@ -46,8 +45,11 @@ public class EnemyLogicScript : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
         // find the Enemy by Current tag
-        currentEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
-
+        EnemyStructure foundEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
+        if(foundEnemy  != null)
+        {
+            currentEnemy = new EnemyStructure(foundEnemy); // Skopiowanie obiektu
+        }
 
         if (currentEnemy.Tag != null)
         {
@@ -119,7 +121,6 @@ public class EnemyLogicScript : MonoBehaviour
         yield return new WaitForSeconds(currentEnemy.OffsetVelocityDifferentWay);
         EnemyAnimator.SetBool("isMoving", true);
         EnemyRigidBody2D.velocity = new Vector2(currentEnemy.MoveVelocity *= -1f, 0);
-
     }
 
 
