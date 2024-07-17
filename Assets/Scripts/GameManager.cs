@@ -166,7 +166,7 @@ public class GameManager : Singleton<GameManager>
                2f,
                10f,
                1.7f,
-               0.4f));
+               0.1f));
 
         initalisedEnemys = true;
 
