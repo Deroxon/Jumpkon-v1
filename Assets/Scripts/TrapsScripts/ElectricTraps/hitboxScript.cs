@@ -6,7 +6,7 @@ public class hitboxScript : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !GameManager.Instance.isImmortal)
         {
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             StartCoroutine(GameManager.Instance.LoseHealth(1));
