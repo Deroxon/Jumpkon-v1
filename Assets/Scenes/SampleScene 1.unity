@@ -60441,8 +60441,7 @@ MonoBehaviour:
   CheckpointLister: {fileID: 1693144883}
   EnemiesTags:
   - Frog
-  - Explosiver
-  enemiesList: []
+  - Barrel
   initalisedEnemys: 0
   healthTxt: {fileID: 5859449}
 --- !u!4 &2065979539
