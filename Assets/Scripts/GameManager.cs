@@ -29,13 +29,9 @@ public class GameManager : Singleton<GameManager>
     new Vector3Double(6.99, 79.53, 0),
     };
     // All valids tags of enemies
-    public List<string> EnemiesTags = new List<string>
-    {
-        "Frog",
-        "Explosiver"
-    };
+    public List<string> EnemiesTags = new List<string>();
 
-    public List<EnemyStructure> enemiesList;
+    public List<EnemyStructure> enemiesList = new List<EnemyStructure>();
     public bool initalisedEnemys = false;
 
 
@@ -70,7 +66,7 @@ public class GameManager : Singleton<GameManager>
         isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
-        SpawnCheckPoints();
+        SpawnCheckPoints();  
     }
 
     // Update is called once per frame
@@ -163,7 +159,14 @@ public class GameManager : Singleton<GameManager>
                 2f,
                 0.2f));
 
-       
+        enemiesList.Add(
+           new EnemyStructure(
+               "Barrel",
+               0.5f,
+               2f,
+               10f,
+               1.7f,
+               0.1f));
 
         initalisedEnemys = true;
 
