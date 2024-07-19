@@ -35,6 +35,9 @@ public class GameManager : Singleton<GameManager>
         "Explosiver"
     };
 
+    public List<EnemyStructure> enemiesList;
+    public bool initalisedEnemys = false;
+
 
     // Health section
     [SerializeField]
@@ -54,9 +57,15 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        initalizeEnemies(); // testing
         health = 5;
         isImmortal = false;
         isAlive = true;
@@ -141,6 +150,25 @@ public class GameManager : Singleton<GameManager>
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
         
+    }
+
+     private void initalizeEnemies()
+    {
+            enemiesList.Add(
+            new EnemyStructure(
+                "Frog",
+                0.5f,
+                0.2f,
+                2f,
+                2f,
+                0.2f));
+
+       
+
+        initalisedEnemys = true;
+
+        if(enemiesList.Count > 0) { Debug.Log("Initialized"); }
+        else { throw new System.Exception("The enemies were not initialized"); }
     }
 
 }
