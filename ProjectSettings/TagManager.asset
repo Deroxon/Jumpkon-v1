@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - Frog
   - Barrel
+  - Cannon
   layers:
   - Default
   - TransparentFX

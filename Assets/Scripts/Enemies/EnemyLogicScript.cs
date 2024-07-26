@@ -17,6 +17,8 @@ public class EnemyLogicScript : MonoBehaviour
     private EnemyStructure currentEnemy;
     private bool isEnemyGetted = false;
 
+    public GameObject cannonBall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,16 +83,23 @@ public class EnemyLogicScript : MonoBehaviour
         EnemyAnimator.SetBool("isMoving", false);
 
         // Attack Animation/ Separate stun action for Barrel
-        if(currentEnemy.Tag != "Barrel")
-        {
-            yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
-            EnemyAnimator.SetTrigger("Attack");
-        }
-        else // Additional Action for Barrels enemies
+        if(currentEnemy.Tag == "Barrel")
         {
             EnemyAnimator.SetBool("isStunned", true);
             yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
             EnemyAnimator.SetBool("isStunned", false);
+        }
+        else 
+        {
+            yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+            EnemyAnimator.SetTrigger("Attack");
+
+            // Additional Cannon attack for cannon enemys
+            if (currentEnemy.Tag == "Cannon")
+            {
+                yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+                StartCoroutine(CannonBallAtack());
+            }
 
         }
 
@@ -123,5 +132,24 @@ public class EnemyLogicScript : MonoBehaviour
         EnemyRigidBody2D.velocity = new Vector2(currentEnemy.MoveVelocity *= -1f, 0);
     }
 
+
+    private IEnumerator CannonBallAtack()
+    {
+       Transform EnemySpawner = gameObject.transform.Find("CannonSpawner");
+
+       GameObject bullet = Instantiate(cannonBall, new Vector3(EnemySpawner.position.x,  EnemySpawner.position.y), Quaternion.identity );
+
+        Rigidbody2D cannonRigidBody2d = bullet.GetComponent<Rigidbody2D>();
+
+        if(isFacingRight)
+        {
+            cannonRigidBody2d.velocity = new Vector2(-10f, 0);
+        } else if (!isFacingRight)
+        {
+            cannonRigidBody2d.velocity = new Vector2(10f, 0);
+        }
+
+        yield return new WaitForSeconds(1f);
+    }
 
 }

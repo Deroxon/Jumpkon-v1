@@ -38,7 +38,6 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if(PlayerMovement.Instance.currentGameObject != null)
         {
-            StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             StartCoroutine(GameManager.Instance.LoseHealth(1));
             CountFalled = 0;
         }
