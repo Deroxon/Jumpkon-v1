@@ -15,8 +15,6 @@ public class CheckPointScript : MonoBehaviour
     void Start()
     {
         checkPoint = this.gameObject;
-        Debug.Log("on mariusz");
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
