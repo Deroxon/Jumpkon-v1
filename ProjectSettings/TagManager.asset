@@ -21,7 +21,7 @@ TagManager:
   - GroundLayer
   - PlatformsLayer
   - MovingPlatformsLayer
-  - 
+  - BoundLayer
   - 
   - 
   - 
