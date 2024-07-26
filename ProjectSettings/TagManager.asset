@@ -22,7 +22,7 @@ TagManager:
   - PlatformsLayer
   - MovingPlatformsLayer
   - BoundLayer
-  - 
+  - CheckPointLayer
   - 
   - 
   - 
