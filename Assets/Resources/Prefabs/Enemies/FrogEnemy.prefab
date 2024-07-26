@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b241baf1743e748b533681431c18aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frog: {fileID: 3770345493319949945}
+  Enemy: {fileID: 3770345493319949945}
 --- !u!1 &3770345493319949945
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,11 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f78d8b93069a84594a3d676dec3ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frogRigidBody2D: {fileID: 7216087255914738037}
-  frogAnimator: {fileID: 2293138189988195506}
+  EnemyRigidBody2D: {fileID: 0}
+  EnemyAnimator: {fileID: 0}
   rightSpriteOffset: {x: -1.8, y: 0}
   leftSpriteOffset: {x: 1.8, y: 0}
-  frogSpeedHorizontal: 2
 --- !u!61 &8744835506623982856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -518,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b241baf1743e748b533681431c18aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frog: {fileID: 3770345493319949945}
+  Enemy: {fileID: 3770345493319949945}
 --- !u!1 &5522564047133544908
 GameObject:
   m_ObjectHideFlags: 0

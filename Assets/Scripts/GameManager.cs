@@ -29,11 +29,10 @@ public class GameManager : Singleton<GameManager>
     new Vector3Double(6.99, 79.53, 0),
     };
     // All valids tags of enemies
-    public List<string> EnemiesTags = new List<string>
-    {
-        "Frog",
-        "Explosiver"
-    };
+    public List<string> EnemiesTags = new List<string>();
+
+    public List<EnemyStructure> enemiesList = new List<EnemyStructure>();
+    public bool initalisedEnemys = false;
 
 
     // Health section
@@ -54,14 +53,20 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        initalizeEnemies(); // testing
         health = 5;
         isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
-        SpawnCheckPoints();
+        SpawnCheckPoints();  
     }
 
     // Update is called once per frame
@@ -141,6 +146,32 @@ public class GameManager : Singleton<GameManager>
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
         
+    }
+
+     private void initalizeEnemies()
+    {
+            enemiesList.Add(
+            new EnemyStructure(
+                "Frog",
+                0.5f,
+                0.2f,
+                2f,
+                2f,
+                0.2f));
+
+        enemiesList.Add(
+           new EnemyStructure(
+               "Barrel",
+               0.5f,
+               2f,
+               10f,
+               1.7f,
+               0.1f));
+
+        initalisedEnemys = true;
+
+        if(enemiesList.Count > 0) { Debug.Log("Initialized"); }
+        else { throw new System.Exception("The enemies were not initialized"); }
     }
 
 }
