@@ -9,7 +9,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !GameManager.Instance.isImmortal)
         {
-            StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             StartCoroutine(GameManager.Instance.LoseHealth(1));
         }
     }

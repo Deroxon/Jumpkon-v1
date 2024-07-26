@@ -80,6 +80,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(Health > 0 && !isImmortal)
         {
+            StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             isImmortal = true;
             // jumping after getting damage
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
@@ -150,7 +151,8 @@ public class GameManager : Singleton<GameManager>
 
      private void initalizeEnemies()
     {
-            enemiesList.Add(
+            
+        enemiesList.Add(
             new EnemyStructure(
                 "Frog",
                 0.5f,
@@ -167,6 +169,15 @@ public class GameManager : Singleton<GameManager>
                10f,
                1.7f,
                0.1f));
+
+        enemiesList.Add(
+          new EnemyStructure(
+              "Cannon",
+              0.5f,
+              0.5f,
+              2f,
+              1.7f,
+              0.4f));
 
         initalisedEnemys = true;
 
