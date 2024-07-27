@@ -112,15 +112,6 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    // i think we need to change location of this function, also function for itself, for now it is only for testing
-    public void RestartGame()
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        SceneManager.LoadScene(currentSceneName);
-    }
-
-
     public void SpawnCheckPoints()
     {
 
