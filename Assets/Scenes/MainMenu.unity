@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 90369157831d5b446a52b026cf45ef20, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 75ee2618b1583174fbf79f06da7bf381, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 315e790e652c6a14aba3af7102b63a1b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -280,14 +280,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ba59d33922e8c34a91a8dc4b0fda40a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2552785107233f4eba283525bae25f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2791,7 +2791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965412727
 RectTransform:
   m_ObjectHideFlags: 0
