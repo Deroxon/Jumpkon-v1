@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -13,8 +14,10 @@ public class GameManager : Singleton<GameManager>
     private int health;
     public bool isAlive;
     public bool isImmortal;
-    public GameObject backgroundGameOver;
-    [SerializeField] private GameObject backgroundVictory;
+    [SerializeField] private GameObject background;
+    [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject victoryMenu;
+    [SerializeField] private GameObject mainMenu;
 
 
     // Checkpoints section
@@ -72,7 +75,11 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Cancel") && isAlive)
+        {
+            mainMenu.SetActive(!mainMenu.activeInHierarchy);
+            background.SetActive(!background.activeInHierarchy);
+        }
     }
 
     [ContextMenu("Minus Health")]
@@ -103,13 +110,14 @@ public class GameManager : Singleton<GameManager>
 
     public void Victory()
     {
-        backgroundVictory.SetActive(true);
+        victoryMenu.SetActive(true);
+        background.SetActive(true) ;
     }
 
     public void Death()
     {
-        backgroundGameOver.SetActive(true);
-
+        gameOverMenu.SetActive(true);
+        background.SetActive(true);
     }
 
     public void SpawnCheckPoints()

@@ -9,8 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ResolutionButton;
     [SerializeField] private TextMeshProUGUI ModeButton;
-    //1 is borderless, 2 is fullscreen, 3 is windowed
-    private int[] modes = new int[3] { 1, 2, 3 };
+    //0 is borderless, 1 is fullscreen, 2 is windowed
     private int currentMode;
     private Resolution[] resolutions;
     private int resolutionsCount;
@@ -22,6 +21,7 @@ public class MainMenu : MonoBehaviour
         resolutions = temp.ToArray();
         resolutionsCount = resolutions.Length;
         LoadSettings();
+        ModeButtonRender();
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
     }
     public void PlayGame()
@@ -32,6 +32,10 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void NextResolution()
@@ -58,12 +62,7 @@ public class MainMenu : MonoBehaviour
             currentMode++;
         else 
             currentMode = 0;
-        if (currentMode == 0)
-            ModeButton.text = "BORDERLESS";
-        else if (currentMode == 1)
-            ModeButton.text = "FULLSCREEN";
-        else if (currentMode == 2)
-            ModeButton.text = "WINDOWED";
+        ModeButtonRender();
     }
     public void PreviousMode()
     {
@@ -71,17 +70,23 @@ public class MainMenu : MonoBehaviour
             currentMode--;
         else
             currentMode = 2;
+        ModeButtonRender();
+    }
+    public void ModeButtonRender()
+    {
         if (currentMode == 0)
             ModeButton.text = "BORDERLESS";
         else if (currentMode == 1)
             ModeButton.text = "FULLSCREEN";
         else if (currentMode == 2)
             ModeButton.text = "WINDOWED";
+        else 
+            ModeButton.text = "error";
     }
 
     public void ChangeResolution()
     {
-        //1 is borderless, 2 is fullscreen, 3 is windowed
+        //0 is borderless, 1 is fullscreen, 2 is windowed
         if (currentMode == 0)
             Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.FullScreenWindow);
         else if (currentMode == 1)
@@ -89,13 +94,14 @@ public class MainMenu : MonoBehaviour
         else if (currentMode == 2)
             Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.Windowed);
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        ModeButtonRender();
         SaveSettings();
     }
     
     public void LoadSettings()
     {
         currentResolution = PlayerPrefs.GetInt("resolution", resolutionsCount - 1);
-        currentMode = PlayerPrefs.GetInt("screenMode");
+        currentMode = PlayerPrefs.GetInt("screenMode", 0);
     }
 
     public void SaveSettings()
@@ -103,5 +109,12 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("resolution", currentResolution);
         PlayerPrefs.SetInt("screenMode", currentMode);
         PlayerPrefs.Save();
+    }
+
+    public void ResetSettings()
+    {
+        PlayerPrefs.DeleteAll();
+        LoadSettings();
+        ChangeResolution();
     }
 }
