@@ -1,0 +1,107 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using System.Linq;
+
+public class MainMenu : MonoBehaviour
+{
+    [SerializeField] private TextMeshProUGUI ResolutionButton;
+    [SerializeField] private TextMeshProUGUI ModeButton;
+    //1 is borderless, 2 is fullscreen, 3 is windowed
+    private int[] modes = new int[3] { 1, 2, 3 };
+    private int currentMode;
+    private Resolution[] resolutions;
+    private int resolutionsCount;
+    private int currentResolution;
+    void Start()
+    {
+        //Getting all supported resolutions without duplicates, skipping framerate
+        var temp = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct();
+        resolutions = temp.ToArray();
+        resolutionsCount = resolutions.Length;
+        LoadSettings();
+        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+    }
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void NextResolution()
+    {
+        if (currentResolution < resolutionsCount -1)
+            currentResolution ++;
+        else
+            currentResolution = 0;
+        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+    }
+
+    public void PreviousResolution()
+    {
+        if (currentResolution > 0)
+            currentResolution --;
+        else
+            currentResolution = resolutionsCount -1;
+        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+    }
+
+    public void NextMode()
+    {
+        if (currentMode < 2)
+            currentMode++;
+        else 
+            currentMode = 0;
+        if (currentMode == 0)
+            ModeButton.text = "BORDERLESS";
+        else if (currentMode == 1)
+            ModeButton.text = "FULLSCREEN";
+        else if (currentMode == 2)
+            ModeButton.text = "WINDOWED";
+    }
+    public void PreviousMode()
+    {
+        if (currentMode > 0)
+            currentMode--;
+        else
+            currentMode = 2;
+        if (currentMode == 0)
+            ModeButton.text = "BORDERLESS";
+        else if (currentMode == 1)
+            ModeButton.text = "FULLSCREEN";
+        else if (currentMode == 2)
+            ModeButton.text = "WINDOWED";
+    }
+
+    public void ChangeResolution()
+    {
+        //1 is borderless, 2 is fullscreen, 3 is windowed
+        if (currentMode == 0)
+            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.FullScreenWindow);
+        else if (currentMode == 1)
+            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.ExclusiveFullScreen);
+        else if (currentMode == 2)
+            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.Windowed);
+        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        SaveSettings();
+    }
+    
+    public void LoadSettings()
+    {
+        currentResolution = PlayerPrefs.GetInt("resolution", resolutionsCount - 1);
+        currentMode = PlayerPrefs.GetInt("screenMode");
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetInt("resolution", currentResolution);
+        PlayerPrefs.SetInt("screenMode", currentMode);
+        PlayerPrefs.Save();
+    }
+}
