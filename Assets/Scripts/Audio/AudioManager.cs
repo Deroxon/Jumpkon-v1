@@ -44,14 +44,26 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySFX(string name)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
-        if (s == null)
+        Sound playerSFX = Array.Find(sfxSounds, x => x.name == name);
+        Sound monsterSFX = Array.Find(sfxSounds, x => x.name == name);
+        if (playerSFX == null)
         {
-            Debug.LogError("SFX Not Found: " + name);
+            if (monsterSFX == null)
+            {
+
+                Debug.LogError("Monster SFX Not Found: " + name);
+            }
+            else
+            {
+                Debug.LogError("Player SFX Not Found: " + name + " but found monster SFX");
+                sfxSource.PlayOneShot(monsterSFX.clip);
+            }
+
+            
         }
         else
         {
-            sfxSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(playerSFX.clip);
         }
     }
 
