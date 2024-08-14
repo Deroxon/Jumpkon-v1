@@ -8,10 +8,12 @@ public class InGameMenu : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Instance.PauseGame();
     }
 
     public void QuitButton()
     {
         SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.PauseGame();
     }
 }
