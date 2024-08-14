@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     // All section
     private int health;
     public bool isAlive;
+    public bool isPaused = false;
     public bool isImmortal;
     [SerializeField] private GameObject background;
     [SerializeField] private GameObject gameOverMenu;
@@ -76,10 +77,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && isAlive)
-        {
-            mainMenu.SetActive(!mainMenu.activeInHierarchy);
-            background.SetActive(!background.activeInHierarchy);
-        }
+            PauseMenu();
     }
 
     [ContextMenu("Minus Health")]
@@ -111,13 +109,15 @@ public class GameManager : Singleton<GameManager>
     public void Victory()
     {
         victoryMenu.SetActive(true);
-        background.SetActive(true) ;
+        background.SetActive(true);
+        PauseGame();
     }
 
     public void Death()
     {
         gameOverMenu.SetActive(true);
         background.SetActive(true);
+        PauseGame();
     }
 
     public void SpawnCheckPoints()
@@ -182,6 +182,22 @@ public class GameManager : Singleton<GameManager>
 
         if(enemiesList.Count > 0) { Debug.Log("Initialized"); }
         else { throw new System.Exception("The enemies were not initialized"); }
+    }
+
+    private void PauseMenu()
+    {
+        mainMenu.SetActive(!mainMenu.activeInHierarchy);
+        background.SetActive(!background.activeInHierarchy);
+        PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 1)
+            Time.timeScale = 0;
+        else if(Time.timeScale == 0)
+            Time.timeScale = 1;
+        isPaused = !isPaused;
     }
 
 }

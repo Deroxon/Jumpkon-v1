@@ -30,7 +30,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.isAlive)
+        if (GameManager.Instance.isAlive && !GameManager.Instance.isPaused)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
 
