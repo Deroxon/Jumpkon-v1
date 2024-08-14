@@ -15,10 +15,7 @@ public class GameManager : Singleton<GameManager>
     public bool isAlive;
     public bool isPaused = false;
     public bool isImmortal;
-    [SerializeField] private GameObject background;
-    [SerializeField] private GameObject gameOverMenu;
-    [SerializeField] private GameObject victoryMenu;
-    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
 
     // Checkpoints section
