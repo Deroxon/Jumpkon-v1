@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,9 +13,9 @@ public class GameManager : Singleton<GameManager>
     // All section
     private int health;
     public bool isAlive;
+    public bool isPaused = false;
     public bool isImmortal;
-    public GameObject backgroundGameOver;
-    [SerializeField] private GameObject backgroundVictory;
+    [SerializeField] private GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
 
     // Checkpoints section
@@ -72,7 +73,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Cancel") && isAlive)
+            PauseMenu();
     }
 
     [ContextMenu("Minus Health")]
@@ -103,23 +105,17 @@ public class GameManager : Singleton<GameManager>
 
     public void Victory()
     {
-        backgroundVictory.SetActive(true);
+        victoryMenu.SetActive(true);
+        background.SetActive(true);
+        PauseGame();
     }
 
     public void Death()
     {
-        backgroundGameOver.SetActive(true);
-
+        gameOverMenu.SetActive(true);
+        background.SetActive(true);
+        PauseGame();
     }
-
-    // i think we need to change location of this function, also function for itself, for now it is only for testing
-    public void RestartGame()
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        SceneManager.LoadScene(currentSceneName);
-    }
-
 
     public void SpawnCheckPoints()
     {
@@ -183,6 +179,22 @@ public class GameManager : Singleton<GameManager>
 
         if(enemiesList.Count > 0) { Debug.Log("Initialized"); }
         else { throw new System.Exception("The enemies were not initialized"); }
+    }
+
+    private void PauseMenu()
+    {
+        mainMenu.SetActive(!mainMenu.activeInHierarchy);
+        background.SetActive(!background.activeInHierarchy);
+        PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 1)
+            Time.timeScale = 0;
+        else if(Time.timeScale == 0)
+            Time.timeScale = 1;
+        isPaused = !isPaused;
     }
 
 }
