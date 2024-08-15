@@ -6,26 +6,93 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public Slider musicSlider, sfxSlider;
+    public Slider musicSlider, sfxSlider, monsterSlider;
     public GameObject musicSettings;
     public GameObject settingsUiButton;
     public Boolean isMusicSettingsOn = false;
+    public Sprite[] MusicImages;
+    public GameObject MusicIcon, SfxIcon, MonsterSfxIcon;
 
     private void Start()
     {
         AudioManager.Instance.ControlMusicVolume(musicSlider.value);
-        AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
+      //  AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
     }
 
-    public void ToggleMusic()
+
+    // jedna funkcja dla wszystkich slideów
+    public void IdentifySlides(Transform parent)
     {
-        AudioManager.Instance.ToggleMusic();
+        Transform iconImage = parent.Find("Icon");
+        AudioSource currentAudioSource = null;
+        Image currentImage = null;
+
+        // assigning values
+        switch (parent.name)
+        {
+            case "Music":
+                currentAudioSource = AudioManager.Instance.musicSource;
+                currentImage = MusicIcon.GetComponent<Image>();
+                break;
+
+            case "SFX":
+                currentAudioSource = AudioManager.Instance.sfxSource;
+                currentImage = MusicIcon.GetComponent<Image>();
+                break;
+
+            case "SFXMonsters":
+                currentAudioSource = AudioManager.Instance.sfxMonsterSource;
+                currentImage = MusicIcon.GetComponent<Image>();
+                break;
+        }
+        ToggleIcons(currentAudioSource, currentImage);
+        ToggleSlides(parent.name);
     }
 
-    public void ToggleSFX()
+    private void ToggleIcons(AudioSource currentAudioSource, Image currentImage)
     {
-        AudioManager.Instance.ToggleSFX();
+        if (currentAudioSource != null)
+        {
+            if (currentImage != null)
+            {
+                if (currentAudioSource.mute)
+                {
+                    currentImage.sprite = MusicImages[0];
+                }
+                else
+                {
+                    currentImage.sprite = MusicImages[1];
+                }
+            }
+            else
+            {
+                Debug.LogError("Variable currentImage has been not written");
+            }
+        }
+        else
+        {
+            Debug.LogError("Variable currentAudioSource has been not written");
+        }
     }
+
+    private void ToggleSlides(string parent)
+    {
+        switch (parent)
+        {
+            case "Music":
+                AudioManager.Instance.ToggleMusic();
+            break;
+
+            case "SFX":
+                AudioManager.Instance.ToggleSFX();
+            break;
+
+            case "SFXMonsters":
+                AudioManager.Instance.ToggleMonsterSFX();
+            break;
+        }
+    }
+
 
     public void MusicVolume()
     {
@@ -35,6 +102,11 @@ public class UIController : MonoBehaviour
     public void SfxVolume()
     {
         AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
+    }
+
+    public void SfxMonsterVolume()
+    {
+        AudioManager.Instance.ControlSFXVolume(monsterSlider.value);
     }
 
     public void ToggleAudioController()
