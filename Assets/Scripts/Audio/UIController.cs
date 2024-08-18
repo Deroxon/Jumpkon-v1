@@ -15,9 +15,11 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         // read setted value
-        AudioManager.Instance.ControlMusicVolume(musicSlider.value);
-        AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
-        AudioManager.Instance.ControlMonsterSFXVolume(monsterSlider.value);
+        AudioManager.Instance.LoadSettings();
+        // Load values of sliders
+        musicSlider.value = PlayerPrefs.GetFloat("Music");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        monsterSlider.value = PlayerPrefs.GetFloat("SFXMonsterVolume");
     }
 
 
@@ -38,12 +40,12 @@ public class UIController : MonoBehaviour
 
             case "SFX":
                 currentAudioSource = AudioManager.Instance.sfxSource;
-                currentImage = MusicIcon.GetComponent<Image>();
+                currentImage = SfxIcon.GetComponent<Image>();
                 break;
 
             case "SFXMonsters":
                 currentAudioSource = AudioManager.Instance.sfxMonsterSource;
-                currentImage = MusicIcon.GetComponent<Image>();
+                currentImage = MonsterSfxIcon.GetComponent<Image>();
                 break;
         }
         ToggleIcons(currentAudioSource, currentImage);
