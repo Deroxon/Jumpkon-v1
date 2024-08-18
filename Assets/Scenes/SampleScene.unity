@@ -11571,7 +11571,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResolutionButton: {fileID: 1169126361}
   ModeButton: {fileID: 476024391}
-  Instance: {fileID: 1248064697}
 --- !u!1 &1324323469
 GameObject:
   m_ObjectHideFlags: 0

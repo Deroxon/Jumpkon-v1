@@ -83,6 +83,7 @@ public class AudioManager : MonoBehaviour
 
     public void ControlMusicVolume(float volume)
     {
+        Debug.Log(volume);
         musicSource.volume = volume;
         SaveSettings("Music", volume);
     }
