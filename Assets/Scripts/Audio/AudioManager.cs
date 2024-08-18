@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMusic("GameMenuTheme");
+        LoadSettings();
     }
 
     public Sound[] musicSounds, sfxSounds, sfxMonsters;
@@ -83,16 +84,45 @@ public class AudioManager : MonoBehaviour
     public void ControlMusicVolume(float volume)
     {
         musicSource.volume = volume;
+        SaveSettings("Music", volume);
     }
     public void ControlSFXVolume(float volume)
     {
         sfxSource.volume = volume;
+        SaveSettings("SFXVolume", volume);
     }
 
     public void ControlMonsterSFXVolume(float volume)
     {
         sfxMonsterSource.volume = volume;
+        SaveSettings("SFXMonsterVolume", volume);
     }
 
+
+    public void SaveSettings(string key, float value)
+    {
+        // Saving the value in the PlayerPrefs
+        MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+    }
+
+    [ContextMenu("LoadSettings")]
+    public void LoadSettings()
+    {
+        string[] namesSettingstoLoad = { "Music", "SFXVolume", "SFXMonsterVolume" };
+        // Initalize array with keyvaluePair
+        var settingstoLoad = new KeyValuePair<string, float>[namesSettingstoLoad.Length];
+
+        for (int i = 0; i< namesSettingstoLoad.Length; i++)
+        {
+            string settingName = namesSettingstoLoad[i];
+            float settingValue = PlayerPrefs.GetFloat(settingName);
+            settingstoLoad[i] = new KeyValuePair<string, float>(settingName, settingValue);
+        }
+        // Loading Music, SFX, MonsterSFX
+        ControlMusicVolume(settingstoLoad[0].Value);
+        ControlSFXVolume(settingstoLoad[1].Value);
+        ControlMonsterSFXVolume(settingstoLoad[2].Value);
+
+    }
 
 }

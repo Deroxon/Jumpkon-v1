@@ -8,15 +8,16 @@ public class UIController : MonoBehaviour
 {
     public Slider musicSlider, sfxSlider, monsterSlider;
     public GameObject musicSettings;
-    public GameObject settingsUiButton;
     public Boolean isMusicSettingsOn = false;
     public Sprite[] MusicImages;
     public GameObject MusicIcon, SfxIcon, MonsterSfxIcon;
 
     private void Start()
     {
+        // read setted value
         AudioManager.Instance.ControlMusicVolume(musicSlider.value);
-      //  AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
+        AudioManager.Instance.ControlSFXVolume(sfxSlider.value);
+        AudioManager.Instance.ControlMonsterSFXVolume(monsterSlider.value);
     }
 
 
@@ -106,14 +107,13 @@ public class UIController : MonoBehaviour
 
     public void SfxMonsterVolume()
     {
-        AudioManager.Instance.ControlSFXVolume(monsterSlider.value);
+        AudioManager.Instance.ControlMonsterSFXVolume(monsterSlider.value);
     }
 
     public void ToggleAudioController()
     {
         isMusicSettingsOn = !isMusicSettingsOn;
         musicSettings.SetActive(isMusicSettingsOn);
-        settingsUiButton.SetActive(!isMusicSettingsOn);
     }
 
 
