@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
                 currentImage = SfxIcon.GetComponent<Image>();
                 break;
 
-            case "SFXMonsters":
+            case "MonsterSFX":
                 currentAudioSource = AudioManager.Instance.sfxMonsterSource;
                 currentImage = MonsterSfxIcon.GetComponent<Image>();
                 break;
