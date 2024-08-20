@@ -26,7 +26,7 @@ public class PlayerManager : Singleton<PlayerManager>
             PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         } 
 
-        if (CountFalled < -30)
+        if (CountFalled < -50)
         {
             FallDamage();
         }

@@ -15,6 +15,7 @@ public class FallingPlatform : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             FallingPlatformAnimator.SetTrigger("isStanding");
+            AudioManager.Instance.PlaySFX("PlatformBreak");
             StartCoroutine(deletePlatform());
         }
     }
