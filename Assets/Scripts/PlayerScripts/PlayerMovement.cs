@@ -37,6 +37,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             if (Input.GetButtonDown("Jump") && IsGrounded())
             {
                 playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, jumpingPower);
+                AudioManager.Instance.PlaySFX("Jump");
             }
 
             if (Input.GetButtonUp("Jump") && playerRigidbody2D.velocity.y > 0f)
@@ -70,6 +71,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     // Ground check if we can jump from GroundLayer/GroundLayer2/platformsLayer
     private bool IsGrounded()
     {
+        PlayerManager.Instance.CountFalled = 0;
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer) );
     }
 

@@ -17,9 +17,9 @@ public class UIController : MonoBehaviour
         // read setted value
         AudioManager.Instance.LoadSettings();
         // Load values of sliders
-        musicSlider.value = PlayerPrefs.GetFloat("Music");
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        monsterSlider.value = PlayerPrefs.GetFloat("SFXMonsterVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("Music", 0f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0f);
+        monsterSlider.value = PlayerPrefs.GetFloat("SFXMonsterVolume", 0f);
     }
 
 

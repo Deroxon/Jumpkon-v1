@@ -55,7 +55,6 @@ public class DynamicCollider : MonoBehaviour
 
     public IEnumerator extract()
     {
-
         if(!extracted )
         {
             extracted = true;
@@ -65,11 +64,10 @@ public class DynamicCollider : MonoBehaviour
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 40);
             trampolineAnimator.SetBool("isStand", false);
             extracted = false;
-
+            AudioManager.Instance.PlaySFX("Trampoline");
         }
-
-        
     }
 
+    
 
 }
