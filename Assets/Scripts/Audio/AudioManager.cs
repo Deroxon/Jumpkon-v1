@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("SFX Not Found: " + name + " but found monster SFX");
+                Debug.Log("SFX Not Found: " + name + " but found monster SFX");
                 sfxSource.PlayOneShot(monsterSFX.clip);
             }
         }
@@ -83,7 +83,6 @@ public class AudioManager : MonoBehaviour
 
     public void ControlMusicVolume(float volume)
     {
-        Debug.Log(volume);
         musicSource.volume = volume;
         SaveSettings("Music", volume);
     }
