@@ -8,15 +8,16 @@ public class FallingPlatform : MonoBehaviour
 
     private bool triggeredStand;
     public Animator FallingPlatformAnimator;
-
+    private bool isStanding = true;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") && isStanding)
         {
             FallingPlatformAnimator.SetTrigger("isStanding");
             AudioManager.Instance.PlaySFX("PlatformBreak");
             StartCoroutine(deletePlatform());
+            isStanding = false;
         }
     }
 

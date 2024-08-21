@@ -85,6 +85,7 @@ public class EnemyLogicScript : MonoBehaviour
         // Attack Animation/ Separate stun action for Barrel
         if(currentEnemy.Tag == "Barrel")
         {
+            PlayMonsterSound("Stunned");
             EnemyAnimator.SetBool("isStunned", true);
             yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
             EnemyAnimator.SetBool("isStunned", false);
@@ -92,13 +93,17 @@ public class EnemyLogicScript : MonoBehaviour
         else 
         {
             yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+            PlayMonsterSound("FrogPunch");
             EnemyAnimator.SetTrigger("Attack");
+
 
             // Additional Cannon attack for cannon enemys
             if (currentEnemy.Tag == "Cannon")
             {
                 yield return new WaitForSeconds(currentEnemy.OffsetAttackAnimation);
+                PlayMonsterSound("CannonShot");
                 StartCoroutine(CannonBallAtack());
+
             }
 
         }
@@ -150,6 +155,11 @@ public class EnemyLogicScript : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+    }
+
+    private void PlayMonsterSound(string sound)
+    {
+        AudioManager.Instance.PlaySFX(sound);
     }
 
 }

@@ -27,4 +27,9 @@ public class AnimationDelay : MonoBehaviour
         }
     }
 
+    void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX("ElectricTrap");
+    }
+
 }
