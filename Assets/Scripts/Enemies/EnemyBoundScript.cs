@@ -11,7 +11,6 @@ public class EnemyBoundScript : MonoBehaviour
     {
         enemyLogicScript = Enemy.GetComponent<EnemyLogicScript>();
         EnemyContainer = transform.parent;
-        Debug.Log(EnemyContainer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +18,6 @@ public class EnemyBoundScript : MonoBehaviour
         // need to think if we need to change it to finding by "Tag" in the Objects list
         if (GameManager.Instance.EnemiesTags.Contains(collision.tag) &&  collision.transform.IsChildOf(EnemyContainer) )
         {
-            Debug.Log("triggered");
             StartCoroutine(enemyLogicScript.Bounce());
         }
     }
