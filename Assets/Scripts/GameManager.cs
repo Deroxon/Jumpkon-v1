@@ -145,7 +145,6 @@ public class GameManager : Singleton<GameManager>
         {
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
-        
     }
 
      private void initalizeEnemies()
