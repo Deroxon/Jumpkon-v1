@@ -6965,26 +6965,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9281b65f9d8e50743b7ad4d95f937c66, type: 3}
   - name: HitOnWood
     clip: {fileID: 8300000, guid: 9d38aa4321684d847891a2cec816c762, type: 3}
-  - name: HitOnBrick
-    clip: {fileID: 8300000, guid: 1ce36f14f24d468468ae0a1a4e173830, type: 3}
   - name: Checkpoint
     clip: {fileID: 8300000, guid: 93418930e3ca8df449933e4f1b02f7bf, type: 3}
   - name: LandingGrass
     clip: {fileID: 8300000, guid: e57342d09963adb40bf8767969b1cd8b, type: 3}
-  - name: StepOnStone1
-    clip: {fileID: 8300000, guid: 9dc393d81d0375145a285862bd77ef84, type: 3}
-  - name: StepOnStone2
-    clip: {fileID: 8300000, guid: fa9b417102589d04a824628c1b31bc6a, type: 3}
-  - name: StepOnDirt1
-    clip: {fileID: 8300000, guid: 32a5d5aca5535444780e7257bfa10c75, type: 3}
-  - name: StepOnDirt2
-    clip: {fileID: 8300000, guid: aa1ef6291c026a54e80cfaa6fdaeefe5, type: 3}
-  - name: StepOnGrass
-    clip: {fileID: 8300000, guid: 5a9645c5d6de10e488103ef698eb08a8, type: 3}
-  - name: StepOnGrass2
-    clip: {fileID: 8300000, guid: d99fbfb3bb4bdfa46aa1e1d598793faa, type: 3}
-  - name: StepOnGrass3
-    clip: {fileID: 8300000, guid: a2a80ee765a25144fa5f72f707bf807a, type: 3}
   sfxMonsters:
   - name: Stunned
     clip: {fileID: 8300000, guid: 3114ba7ba13b68744851aaf421ef6b41, type: 3}
@@ -6999,7 +6983,7 @@ MonoBehaviour:
   - name: CannonShot
     clip: {fileID: 8300000, guid: 8842935bac054c145a645fdbe12edfad, type: 3}
   - name: CannonFootSteps
-    clip: {fileID: 8300000, guid: bee830951f96b2d429393bd98c31ded4, type: 3}
+    clip: {fileID: 8300000, guid: 3e78d4c9af605174ebc4b4627d10b654, type: 3}
   musicSource: {fileID: 1429255908}
   sfxSource: {fileID: 753961870}
   sfxMonsterSource: {fileID: 425710133}

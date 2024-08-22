@@ -43,7 +43,8 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
     }
-    public void PlaySFX(string name)
+    // Little chaotic function, the most important is to return monsterSFX Sound to EnemyLogicScript to use it for separate audioSources
+    public Sound PlaySFX(string name)
     {
         Sound playerSFX = Array.Find(sfxSounds, x => x.name == name);
         Sound monsterSFX = Array.Find(sfxMonsters, x => x.name == name);
@@ -53,16 +54,18 @@ public class AudioManager : MonoBehaviour
             {
 
                 Debug.LogError("Monster SFX Not Found: " + name);
+                return new Sound();
             }
             else
             {
                 Debug.Log("SFX Not Found: " + name + " but found monster SFX");
-                sfxSource.PlayOneShot(monsterSFX.clip);
+                return monsterSFX;
             }
         }
         else
         {
             sfxSource.PlayOneShot(playerSFX.clip);
+            return new Sound();
         }
     }
 
