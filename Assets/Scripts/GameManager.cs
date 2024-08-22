@@ -56,7 +56,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        
+
     }
 
     // Start is called before the first frame update
@@ -95,6 +95,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // Start coroutine with a delay  
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine(backToCheckPoint());
             yield return new WaitForSeconds(0.5f);
             isImmortal = false;
@@ -134,12 +135,12 @@ public class GameManager : Singleton<GameManager>
         checkpointposition = new Vector3Double(transform.position.x, transform.position.y, 0);
     }
 
-
+    [ContextMenu("test")]
     public IEnumerator backToCheckPoint()
     {
         if (isAlive)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0);
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
         
