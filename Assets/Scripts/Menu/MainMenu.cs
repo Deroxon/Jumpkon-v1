@@ -23,6 +23,9 @@ public class MainMenu : MonoBehaviour
         LoadSettings();
         ModeButtonRender();
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        // Reseting GUI and Game Manager
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            DontDestroy.Instance.menu();
     }
     public void PlayGame()
     {
