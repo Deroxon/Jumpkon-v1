@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 
 public class InGameMenu : MonoBehaviour
 {
-    public void RestartButton()
+    public void NextLevel()
     {
-        GameManager.Instance.victoryMenu.SetActive(!GameManager.Instance.victoryMenu.activeInHierarchy);
-        GameManager.Instance.background.SetActive(!GameManager.Instance.background.activeInHierarchy);
-        GameManager.Instance.PauseGame();
+        GameManager.Instance.victoryMenu.SetActive(false);
+        GameManager.Instance.background.SetActive(false);
         GameManager.Instance.backToCheckPoint();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.Instance.PauseGame();
 
     }
 
@@ -20,10 +20,5 @@ public class InGameMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         GameManager.Instance.PauseGame();
-    }
-
-    public void NextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

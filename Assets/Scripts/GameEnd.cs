@@ -11,7 +11,6 @@ public class GameEnd : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.Instance.Victory();
-            GameManager.Instance.isAlive = false;
             endAnimation.SetTrigger("Interact");
         }
     }
