@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioMixer audioMixer;
 
     private void Awake()
     {
@@ -81,7 +83,7 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleMonsterSFX()
     {
-        sfxMonsterSource.mute = !sfxMonsterSource.mute;
+        audioMixer.SetFloat("VolumeMonsterSFX", -80);
     }
 
     public void ControlMusicVolume(float volume)
@@ -97,7 +99,10 @@ public class AudioManager : MonoBehaviour
 
     public void ControlMonsterSFXVolume(float volume)
     {
-        sfxMonsterSource.volume = volume;
+        // there is separate audioSource for each enemy, so we need to have an influence of the audioMixer and not the AudiosourceVolume 
+        float volumeInDb = Mathf.Log10(volume) * 20;
+        if(volume < 0.02) { volumeInDb = -80; } // save check to not have Infinity value in Db
+        audioMixer.SetFloat("VolumeMonsterSFX", volumeInDb);
         SaveSettings("SFXMonsterVolume", volume);
     }
 

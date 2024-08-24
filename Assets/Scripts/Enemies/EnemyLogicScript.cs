@@ -14,6 +14,7 @@ public class EnemyLogicScript : MonoBehaviour
     private AudioSource enemyAudioSource;
 
     private GameObject parentForAudio;
+    public AudioMixer audioMixer;
 
 
     private bool isFacingRight = true;
@@ -40,12 +41,13 @@ public class EnemyLogicScript : MonoBehaviour
         // getting audiosource of Monsters
         parentForAudio = GameObject.Find("MonstersSFX");
         enemyAudioSource.clip = AudioManager.Instance.PlaySFX("CannonFootSteps").clip;
+
     }
 
 
     private void Update()
     {
-        enemyAudioSource.volume = parentForAudio.GetComponent<AudioSource>().volume;
+  
     }
 
     IEnumerator loadEnemy()
@@ -54,8 +56,18 @@ public class EnemyLogicScript : MonoBehaviour
         EnemyAnimator = gameObject.GetComponent<Animator>();
         // get rigidBody
         EnemyRigidBody2D = gameObject.GetComponent<Rigidbody2D>();
+
         // Adding the AudioSource
         enemyAudioSource = gameObject.AddComponent<AudioSource>();
+        // Adding the Calculating distance function
+        this.gameObject.AddComponent<VolumeBasedOnDistance>();
+
+        // setting audioMixer
+        audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
+        // setting AudioMixer group for the AudioMixer
+        AudioMixerGroup[] foundGroups = audioMixer.FindMatchingGroups("MonsterSFX");
+        enemyAudioSource.outputAudioMixerGroup = foundGroups[0];
+
 
         yield return new WaitForSeconds(0.4f);
         // find the Enemy by Current tag
