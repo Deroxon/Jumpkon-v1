@@ -6937,6 +6937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef48389aa7ddc439797b9bb36256ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 91b60e6e27d00184699684cb74978e3f, type: 2}
   musicSounds:
   - name: GameMenuTheme
     clip: {fileID: 8300000, guid: 72b9b8e0e8085154daf1eec7729076b1, type: 3}

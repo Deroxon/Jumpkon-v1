@@ -7,7 +7,7 @@ MonoImporter:
   - EnemyRigidBody2D: {instanceID: 0}
   - EnemyAnimator: {instanceID: 0}
   - enemyAudioSource: {instanceID: 0}
-  - parentAudioMixer: {fileID: -5408478594028679841, guid: 91b60e6e27d00184699684cb74978e3f, type: 2}
+  - audioMixer: {fileID: 24100000, guid: 91b60e6e27d00184699684cb74978e3f, type: 2}
   - cannonBall: {instanceID: 0}
   executionOrder: 300
   icon: {instanceID: 0}

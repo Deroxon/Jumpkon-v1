@@ -55,7 +55,9 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 4750a64764a061649b8a331ca04ad86a
+    name: VolumeMonsterSFX
   m_AudioMixerGroupViews:
   - guids:
     - 450e2226cc429b94d8e77b8da236db58
@@ -111,8 +113,10 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 09dcd210c0efc1f46bd4e8857d955b8c
   m_FloatValues:
+    4750a64764a061649b8a331ca04ad86a: -0.6039428
     a7f21c4a2c41968459593691cd06f04d: -20
     0e59510bb2ca5854e9ba842ebf259757: -20
+    a59ad97b11cec734ba4a18123fb53c9d: 0
   m_TransitionOverrides: {}
 --- !u!244 &2964644223935229841
 AudioMixerEffectController:

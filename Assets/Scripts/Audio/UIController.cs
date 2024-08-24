@@ -80,6 +80,7 @@ public class UIController : MonoBehaviour
 
     private void ToggleSlides(string parent)
     {
+        Debug.Log(parent);
         switch (parent)
         {
             case "Music":
@@ -90,7 +91,7 @@ public class UIController : MonoBehaviour
                 AudioManager.Instance.ToggleSFX();
             break;
 
-            case "SFXMonsters":
+            case "MonsterSFX":
                 AudioManager.Instance.ToggleMonsterSFX();
             break;
         }
