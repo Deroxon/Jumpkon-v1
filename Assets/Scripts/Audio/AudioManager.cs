@@ -26,7 +26,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMusic("GameMenuTheme");
-        LoadSettings();
     }
 
     public Sound[] musicSounds, sfxSounds, sfxMonsters;
@@ -83,18 +82,29 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleMonsterSFX()
     {
-        audioMixer.SetFloat("VolumeMonsterSFX", -80);
+        float currentValueDb;
+        bool audioMixerDbValue = audioMixer.GetFloat("VolumeMonsterSFX",  out currentValueDb);
+
+        if(currentValueDb == -80)
+        {
+            audioMixer.SetFloat("VolumeMonsterSFX", PlayerPrefs.GetFloat("SavedDbMonsterValue",0f));
+        } else
+        {
+            SaveAudioSettings("SavedDbMonsterValue", currentValueDb);
+            audioMixer.SetFloat("VolumeMonsterSFX", -80);
+        }
+        sfxMonsterSource.mute = !sfxMonsterSource.mute;
     }
 
     public void ControlMusicVolume(float volume)
     {
         musicSource.volume = volume;
-        SaveSettings("Music", volume);
+        SaveAudioSettings("Music", volume);
     }
     public void ControlSFXVolume(float volume)
     {
         sfxSource.volume = volume;
-        SaveSettings("SFXVolume", volume);
+        SaveAudioSettings("SFXVolume", volume);
     }
 
     public void ControlMonsterSFXVolume(float volume)
@@ -103,12 +113,14 @@ public class AudioManager : MonoBehaviour
         float volumeInDb = Mathf.Log10(volume) * 20;
         if(volume < 0.02) { volumeInDb = -80; } // save check to not have Infinity value in Db
         audioMixer.SetFloat("VolumeMonsterSFX", volumeInDb);
-        SaveSettings("SFXMonsterVolume", volume);
+        SaveAudioSettings("SFXMonsterVolume", volume);
     }
 
 
-    public void SaveSettings(string key, float value)
+    public void SaveAudioSettings(string key, float value)
     {
+        Debug.Log(key);
+        Debug.Log(value);
         // Saving the value in the PlayerPrefs
         MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
     }
@@ -124,7 +136,7 @@ public class AudioManager : MonoBehaviour
         {
             string settingName = namesSettingstoLoad[i];
             float settingValue = PlayerPrefs.GetFloat(settingName);
-            settingstoLoad[i] = new KeyValuePair<string, float>(settingName, settingValue);
+            settingstoLoad[i] = new KeyValuePair<string, float>(settingName, settingValue); 
         }
         // Loading Music, SFX, MonsterSFX
         ControlMusicVolume(settingstoLoad[0].Value);

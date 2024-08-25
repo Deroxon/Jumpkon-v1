@@ -117,6 +117,7 @@ public class MainMenu : Singleton<MainMenu>
 
     public void SaveSettings(KeyValuePair<string, float>[] ItemsToSave)
     {
+        
         foreach(var pair in ItemsToSave)
         {
             PlayerPrefs.SetFloat(pair.Key, pair.Value);
