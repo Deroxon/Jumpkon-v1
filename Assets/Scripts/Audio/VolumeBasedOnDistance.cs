@@ -8,6 +8,7 @@ public class VolumeBasedOnDistance : MonoBehaviour
     private GameObject player;
 
     private AudioSource audioSource;
+    public AudioMixer audioMixer;
 
     private float maxDistance = 30f;
     private float minDistance = 2f;
@@ -22,6 +23,10 @@ public class VolumeBasedOnDistance : MonoBehaviour
             Debug.LogError("There is no audio source for this");
             return;
         }
+        audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
+        // setting AudioMixer group for the AudioMixer
+        AudioMixerGroup[] foundGroups = audioMixer.FindMatchingGroups("MonsterSFX");
+        audioSource.outputAudioMixerGroup = foundGroups[0];
     }
 
     // Update is called once per frame
