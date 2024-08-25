@@ -8,11 +8,13 @@ public class AnimationDelay : MonoBehaviour
     public Animator animator;
     public string triggerName;
     public float delay = 2.0f;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(PlayAnimationWithDelay());
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,9 +29,10 @@ public class AnimationDelay : MonoBehaviour
         }
     }
 
-    void PlaySFX()
+    public void PlaySFX()
     {
-        AudioManager.Instance.PlaySFX("ElectricTrap");
+        audioSource.PlayOneShot(AudioManager.Instance.PlaySFX("ElectricTrap").clip);
+
     }
 
 }

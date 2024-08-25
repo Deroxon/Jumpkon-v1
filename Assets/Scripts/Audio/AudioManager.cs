@@ -114,13 +114,12 @@ public class AudioManager : MonoBehaviour
         if(volume < 0.02) { volumeInDb = -80; } // save check to not have Infinity value in Db
         audioMixer.SetFloat("VolumeMonsterSFX", volumeInDb);
         SaveAudioSettings("SFXMonsterVolume", volume);
+        SaveAudioSettings("SFXMonsterVolumeDb", volumeInDb);
     }
 
 
     public void SaveAudioSettings(string key, float value)
     {
-        Debug.Log(key);
-        Debug.Log(value);
         // Saving the value in the PlayerPrefs
         MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
     }
@@ -128,7 +127,7 @@ public class AudioManager : MonoBehaviour
     [ContextMenu("LoadSettings")]
     public void LoadSettings()
     {
-        string[] namesSettingstoLoad = { "Music", "SFXVolume", "SFXMonsterVolume" };
+        string[] namesSettingstoLoad = { "Music", "SFXVolume", "SFXMonsterVolumeDb" };
         // Initalize array with keyvaluePair
         var settingstoLoad = new KeyValuePair<string, float>[namesSettingstoLoad.Length];
 
@@ -139,10 +138,12 @@ public class AudioManager : MonoBehaviour
             settingstoLoad[i] = new KeyValuePair<string, float>(settingName, settingValue); 
         }
         // Loading Music, SFX, MonsterSFX
-        ControlMusicVolume(settingstoLoad[0].Value);
-        ControlSFXVolume(settingstoLoad[1].Value);
-        ControlMonsterSFXVolume(settingstoLoad[2].Value);
+        musicSource.volume = settingstoLoad[0].Value;
+        sfxSource.volume = settingstoLoad[1].Value;
 
+        if (settingstoLoad[2].Value < 0.02) { audioMixer.SetFloat("SFXMonsterVolumeDb", -80); } // save check to not have Infinity value in Db
+
+        audioMixer.SetFloat("VolumeMonsterSFX", settingstoLoad[2].Value);
     }
 
 }

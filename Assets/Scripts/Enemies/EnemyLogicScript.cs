@@ -62,13 +62,6 @@ public class EnemyLogicScript : MonoBehaviour
         // Adding the Calculating distance function
         this.gameObject.AddComponent<VolumeBasedOnDistance>();
 
-        // setting audioMixer
-        audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
-        // setting AudioMixer group for the AudioMixer
-        AudioMixerGroup[] foundGroups = audioMixer.FindMatchingGroups("MonsterSFX");
-        enemyAudioSource.outputAudioMixerGroup = foundGroups[0];
-
-
         yield return new WaitForSeconds(0.4f);
         // find the Enemy by Current tag
         EnemyStructure foundEnemy = GameManager.Instance.enemiesList.Find(enemy => enemy.Tag == gameObject.tag);
@@ -186,9 +179,5 @@ public class EnemyLogicScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    private void PlayMonsterSound(string sound)
-    {
-        AudioManager.Instance.PlaySFX(sound);
-    }
 
 }

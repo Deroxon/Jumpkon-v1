@@ -12,14 +12,12 @@ public class UIController : MonoBehaviour
     public Sprite[] MusicImages;
     public GameObject MusicIcon, SfxIcon, MonsterSfxIcon;
 
+    public static UIController Instance;
+
     private void Start()
     {
         // read setted value
         AudioManager.Instance.LoadSettings();
-        // Load values of sliders
-        musicSlider.value = PlayerPrefs.GetFloat("Music", 0f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0f);
-        monsterSlider.value = PlayerPrefs.GetFloat("SFXMonsterVolume", 0f);
     }
 
 
@@ -117,6 +115,13 @@ public class UIController : MonoBehaviour
     {
         isMusicSettingsOn = !isMusicSettingsOn;
         musicSettings.SetActive(isMusicSettingsOn);
+    }
+
+    public void LoadSlidersValue()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat("Music", 0f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0f);
+        monsterSlider.value = PlayerPrefs.GetFloat("SFXMonsterVolume", 0f);
     }
 
 
