@@ -141,9 +141,13 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = settingstoLoad[0].Value;
         sfxSource.volume = settingstoLoad[1].Value;
 
-        if (settingstoLoad[2].Value < 0.02) { audioMixer.SetFloat("SFXMonsterVolumeDb", -80); } // save check to not have Infinity value in Db
+        if (settingstoLoad[2].Key == "SFXMonsterVolumeDb")
+        {
+            if (settingstoLoad[2].Value < 0.02) { audioMixer.SetFloat("VolumeMonsterSFX", -80); } // save check to not have Infinity value in Db
 
-        audioMixer.SetFloat("VolumeMonsterSFX", settingstoLoad[2].Value);
+            audioMixer.SetFloat("VolumeMonsterSFX", settingstoLoad[2].Value);
+        }
+       
     }
 
 }
