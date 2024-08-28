@@ -17,7 +17,11 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         // read setted value
-        AudioManager.Instance.LoadSettings();
+        if(GameObject.Find("AudioManager"))
+        {
+            AudioManager.Instance.LoadSettings();
+        }
+        
     }
 
 
