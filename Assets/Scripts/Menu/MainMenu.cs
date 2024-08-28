@@ -29,7 +29,6 @@ public class MainMenu : Singleton<MainMenu>
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        AudioManager.Instance.LoadSettings();
     }
 
     public void QuitGame()
