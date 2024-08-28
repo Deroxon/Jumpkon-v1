@@ -24,6 +24,7 @@ public class CheckPointScript : MonoBehaviour
             animator.SetTrigger("isChecked");
             isCheck = !isCheck;
             GameManager.Instance.setCheckPoint(this.gameObject.transform);
+            AudioManager.Instance.PlaySFX("Checkpoint");
         }
     }
 
