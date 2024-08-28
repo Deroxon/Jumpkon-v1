@@ -76,6 +76,10 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetButtonDown("Cancel") && isAlive)
             PauseMenu();
     }
+    public void AddHealth()
+    {
+        Health++;
+    }
 
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
@@ -100,8 +104,6 @@ public class GameManager : Singleton<GameManager>
             yield return new WaitForSeconds(0.5f);
             isImmortal = false;
         }
-        
-
     }
 
     public void Victory()
