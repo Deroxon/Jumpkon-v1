@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
-using System;
 
-public class MainMenu : Singleton<MainMenu>
+public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ResolutionButton;
     [SerializeField] private TextMeshProUGUI ModeButton;
@@ -15,7 +14,6 @@ public class MainMenu : Singleton<MainMenu>
     private Resolution[] resolutions;
     private int resolutionsCount;
     private int currentResolution;
-
     void Start()
     {
         //Getting all supported resolutions without duplicates, skipping framerate
@@ -101,14 +99,7 @@ public class MainMenu : Singleton<MainMenu>
             Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.Windowed);
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
         ModeButtonRender();
-
-        var savingValues = new KeyValuePair<string, float>[]
-        {
-            new KeyValuePair<string, float>("resolution", currentResolution),
-            new KeyValuePair<string, float>("screenMode", currentMode)
-        };
-
-        SaveSettings(savingValues);
+        SaveSettings();
     }
     
     public void LoadSettings()
@@ -117,13 +108,10 @@ public class MainMenu : Singleton<MainMenu>
         currentMode = PlayerPrefs.GetInt("screenMode", 0);
     }
 
-    public void SaveSettings(KeyValuePair<string, float>[] ItemsToSave)
+    public void SaveSettings()
     {
-        
-        foreach(var pair in ItemsToSave)
-        {
-            PlayerPrefs.SetFloat(pair.Key, pair.Value);
-        }
+        PlayerPrefs.SetInt("resolution", currentResolution);
+        PlayerPrefs.SetInt("screenMode", currentMode);
         PlayerPrefs.Save();
     }
 

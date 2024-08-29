@@ -3,12 +3,7 @@ guid: 46f78d8b93069a84594a3d676dec3ad1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - EnemyRigidBody2D: {instanceID: 0}
-  - EnemyAnimator: {instanceID: 0}
-  - enemyAudioSource: {instanceID: 0}
-  - audioMixer: {fileID: 24100000, guid: 91b60e6e27d00184699684cb74978e3f, type: 2}
-  - cannonBall: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 300
   icon: {instanceID: 0}
   userData: 
