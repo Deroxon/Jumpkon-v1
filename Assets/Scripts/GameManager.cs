@@ -95,6 +95,7 @@ public class GameManager : Singleton<GameManager>
 
             if (Health <= 0)
             {
+                TimerScript.Instance.SaveTime();
                 isAlive = false;
                 Death();
             }
