@@ -129,7 +129,8 @@ public class MainMenu : Singleton<MainMenu>
 
     public void ResetSettings()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("resolution");
+        PlayerPrefs.DeleteKey("screenMode");
         LoadSettings();
         ChangeResolution();
     }
