@@ -90,8 +90,9 @@ public class GameManager : Singleton<GameManager>
             // jumping after getting damage
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
             Health = Health - i;
+            AudioManager.Instance.PlaySFX("Hitdamage");
 
-            if(Health <= 0)
+            if (Health <= 0)
             {
                 isAlive = false;
                 Death();
@@ -112,12 +113,14 @@ public class GameManager : Singleton<GameManager>
         victoryMenu.SetActive(true);
         background.SetActive(true);
         PauseGame();
+        AudioManager.Instance.PlaySFX("Finish");
     }
 
     public void Death()
     {
         gameOverMenu.SetActive(true);
         background.SetActive(true);
+        AudioManager.Instance.PlaySFX("LoseAllHealths");
         PauseGame();
     }
 
