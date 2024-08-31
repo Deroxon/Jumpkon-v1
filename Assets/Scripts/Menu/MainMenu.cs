@@ -25,6 +25,9 @@ public class MainMenu : Singleton<MainMenu>
         LoadSettings();
         ModeButtonRender();
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        // Reseting GUI and Game Manager
+        if (SceneManager.GetActiveScene().name == "MainMenu" && DontDestroy.Instance != null)
+            DontDestroy.Instance.menu();
     }
     public void PlayGame()
     {
@@ -126,7 +129,8 @@ public class MainMenu : Singleton<MainMenu>
 
     public void ResetSettings()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("resolution");
+        PlayerPrefs.DeleteKey("screenMode");
         LoadSettings();
         ChangeResolution();
     }

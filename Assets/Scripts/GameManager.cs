@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     public bool isAlive;
     public bool isPaused = false;
     public bool isImmortal;
-    [SerializeField] private GameObject background, gameOverMenu, victoryMenu, mainMenu;
+    public GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
     private bool victoryGame = false;
 
@@ -63,6 +63,9 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
+        // Generating GUI
+        if (SceneManager.GetActiveScene().name == "GUI")
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         initalizeEnemies(); // testing
         health = 5;
         isImmortal = false;
@@ -100,8 +103,9 @@ public class GameManager : Singleton<GameManager>
                 Death();
             }
 
-            // Start coroutine with a delay  
-            StartCoroutine(backToCheckPoint());
+            // Start coroutine with a delay
+            yield return new WaitForSeconds(0.5f);
+            backToCheckPoint();
             yield return new WaitForSeconds(0.5f);
             isImmortal = false;
         }
@@ -147,14 +151,12 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public IEnumerator backToCheckPoint()
+    public void backToCheckPoint()
     {
         if (isAlive)
         {
-            yield return new WaitForSeconds(0.5f);
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
-        
     }
 
      private void initalizeEnemies()
