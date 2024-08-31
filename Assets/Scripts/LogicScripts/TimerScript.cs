@@ -15,26 +15,10 @@ public class TimerScript : MonoBehaviour
     public static TimerScript Instance;
     // Start is called before the first frame update
 
-    // needs to be deleted after merge
     private void Awake()
-    {
-       
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
-        }
-        else
-        {
-            Destroy(gameObject); 
-        }
-    }
-
-    void Start()
     {
         textMesh = gameObject.GetComponent<TextMeshProUGUI>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -78,15 +62,6 @@ public class TimerScript : MonoBehaviour
             PlayerPrefs.SetString("HighScore", currentTimeInString);
         }
         
-    }
-
-    [ContextMenu("GetTime")]
-
-    public string[] GetTimes()
-    {
-        string[] arrayStrings = PlayerPrefs.GetString("HighScore", "").Replace(" ","").Split("W");
-
-        return arrayStrings;  
     }
 
     // Only for debbugging
