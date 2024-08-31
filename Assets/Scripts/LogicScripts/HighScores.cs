@@ -20,7 +20,8 @@ public class HighScores : MonoBehaviour
     [ContextMenu("Load Highscores")]
     public void LoadHighscores()
     {
-        string[] GetAllHighscores = TimerScript.Instance.GetTimes();
+        // getting all Highcorse, make sure there are no empty space and split them
+        string[] GetAllHighscores = PlayerPrefs.GetString("HighScore", "").Replace(" ", "").Split("W");
         string displayedHighscore = "";
 
         // Sorting List by Converting values to Miliseconds
