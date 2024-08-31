@@ -10,14 +10,15 @@ using UnityEngine;
 public class HighScores : MonoBehaviour
 {
     private TextMeshProUGUI textMesh;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         textMesh = GameObject.Find("HighScoreList").GetComponent<TextMeshProUGUI>();
     }
 
+
     [ContextMenu("Load Highscores")]
-    private void LoadHighscores()
+    public void LoadHighscores()
     {
         string[] GetAllHighscores = TimerScript.Instance.GetTimes();
         string displayedHighscore = "";
@@ -25,12 +26,20 @@ public class HighScores : MonoBehaviour
         // Sorting List by Converting values to Miliseconds
          var sortedTimeStrings = GetAllHighscores.OrderBy(timeStr => ConvertToMilliseconds(timeStr)).ToArray();
 
+        // taking first 10 places
+        sortedTimeStrings = sortedTimeStrings.Take(10).ToArray();
 
-         for (int i = 0; i < sortedTimeStrings.Length - 1; i++)
-         {
-            displayedHighscore = displayedHighscore + (i + 1) + ". Name  |  " + sortedTimeStrings[i] + "<br>";
+
+        for (int i = 0; i < sortedTimeStrings.Length; i++)
+        {
+            if (i == 9)
+            {
+                displayedHighscore = displayedHighscore + (i + 1) + ". |  " + sortedTimeStrings[i] + "<br>";
+                break;
+            }
+            displayedHighscore = displayedHighscore + (i + 1) + ". |  " + sortedTimeStrings[i] + "<br>";
          }
-     
+
         textMesh.text = displayedHighscore;
     }
 
