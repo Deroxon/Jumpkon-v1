@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     public bool isImmortal;
     [SerializeField] private GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
+    private bool victoryGame = false;
 
     // Checkpoints section
     private Vector3Double checkpointposition;
@@ -95,7 +96,6 @@ public class GameManager : Singleton<GameManager>
 
             if (Health <= 0)
             {
-                TimerScript.Instance.SaveTime();
                 isAlive = false;
                 Death();
             }
@@ -113,7 +113,13 @@ public class GameManager : Singleton<GameManager>
         background.SetActive(true);
         PauseGame();
         AudioManager.Instance.PlaySFX("Finish");
+        // if player win game, then we save his time
+        if(victoryGame)
+        {
+            TimerScript.Instance.SaveTime();
+        }
     }
+
 
     public void Death()
     {

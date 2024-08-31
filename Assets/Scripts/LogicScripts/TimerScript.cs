@@ -86,10 +86,7 @@ public class TimerScript : MonoBehaviour
     {
         string[] arrayStrings = PlayerPrefs.GetString("HighScore", "").Replace(" ","").Split("W");
 
-        Debug.Log(arrayStrings);
-
-        return arrayStrings;
-       
+        return arrayStrings;  
     }
 
     // Only for debbugging
