@@ -21,6 +21,13 @@ public class HighScores : MonoBehaviour
     {
         // getting all Highcorse, make sure there are no empty space and split them
         string[] GetAllHighscores = PlayerPrefs.GetString("HighScore", "").Replace(" ", "").Split("W");
+   
+        // just in case we don't have any HighScore
+        if (GetAllHighscores[0] == "")
+        {
+            return;
+        }
+
         string displayedHighscore = "";
 
         // Sorting List by Converting values to Miliseconds
