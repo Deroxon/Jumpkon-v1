@@ -593,6 +593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyRigidBody2D: {fileID: 1338732117005824332}
   EnemyAnimator: {fileID: 3119097653102441886}
+  enemyAudioSource: {fileID: 0}
+  audioMixer: {fileID: 0}
   rightSpriteOffset: {x: -0.2, y: 0}
   leftSpriteOffset: {x: 0.2, y: 0}
-  cannonBall: {fileID: 5116944531021330773, guid: fb0d211cfbee62548965300d92e216ad, type: 3}
+  cannonBall: {fileID: 4104238349667700270, guid: fb0d211cfbee62548965300d92e216ad, type: 3}
