@@ -6,6 +6,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject player;
     public double CountFalled;
+    private bool isGettingDamage = false;
     [SerializeField] public Rigidbody2D playerRigidbody2D;
     [SerializeField] public CapsuleCollider2D playerCollider;
 
@@ -26,7 +27,11 @@ public class PlayerManager : Singleton<PlayerManager>
             PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         } 
 
-        if (CountFalled < -50)
+        if (CountFalled < -35 && !isGettingDamage)
+        {
+            isGettingDamage = !isGettingDamage;
+        }
+        if(CountFalled == 0)
         {
             FallDamage();
         }
@@ -36,12 +41,12 @@ public class PlayerManager : Singleton<PlayerManager>
 
    private void FallDamage()
     {
-        if(PlayerMovement.Instance.currentGameObject != null)
+        if(isGettingDamage)
         {
             StartCoroutine(GameManager.Instance.LoseHealth(1));
-            CountFalled = 0;
+            isGettingDamage = !isGettingDamage;
         }
-           
+             
     }
 
 }
