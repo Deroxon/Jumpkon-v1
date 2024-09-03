@@ -27,7 +27,7 @@ public class PlayerManager : Singleton<PlayerManager>
             PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         } 
 
-        if (CountFalled < -35 && !isGettingDamage)
+        if (CountFalled < -30 && !isGettingDamage)
         {
             isGettingDamage = !isGettingDamage;
         }
@@ -41,12 +41,11 @@ public class PlayerManager : Singleton<PlayerManager>
 
    private void FallDamage()
     {
-        if(isGettingDamage)
+        if(isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Trampoline")
         {
             StartCoroutine(GameManager.Instance.LoseHealth(1));
-            isGettingDamage = !isGettingDamage;
         }
-             
+        isGettingDamage = false;
     }
 
 }
