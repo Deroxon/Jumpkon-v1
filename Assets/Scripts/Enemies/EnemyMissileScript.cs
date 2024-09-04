@@ -8,10 +8,13 @@ public class EnemyMissileScript : MonoBehaviour
     private float MissileDirection;
     private float timer = 0f;
     private float interval = 0.2f;
+    private Animator missileAnimator;
+
     private void Start()
     {
+        missileAnimator = gameObject.GetComponent<Animator>();
         enemyMissileRigidBody2d = gameObject.GetComponent<Rigidbody2D>();
-        if(enemyMissileRigidBody2d.velocity.x > 0)
+        if (enemyMissileRigidBody2d.velocity.x > 0)
         {
             MissileDirection = 2f;
         } else
@@ -42,13 +45,23 @@ public class EnemyMissileScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            enemyMissileRigidBody2d.velocity = new Vector2(0, 0);
+            missileAnimator.SetTrigger("destroy");
             StartCoroutine(GameManager.Instance.LoseHealth(1));
-            Destroy(gameObject);
+            StartCoroutine(destroyMissile());
         }
         else if (collision.name == "Ground" || collision.name == "Obstacles" )
         {
-            Destroy(gameObject);
+            enemyMissileRigidBody2d.velocity = new Vector2(0, 0);
+            missileAnimator.SetTrigger("destroy");
+            StartCoroutine(destroyMissile());
         }
+    }
+
+    private IEnumerator destroyMissile()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
     }
 
 }
