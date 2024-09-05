@@ -8,7 +8,8 @@ public class CrushScript : Singleton<CrushScript>
     {
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
         if (layerName != "BoundLayer" && layerName != "PlatformsLayer" && layerName != "CheckPointLayer")
-        { 
+        {
+            Debug.Log("LOL");
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             StartCoroutine(GameManager.Instance.LoseHealth(1));
         }

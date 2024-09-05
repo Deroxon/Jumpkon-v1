@@ -798,7 +798,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 310.39
   m_PointLightOuterAngle: 336.53
-  m_PointLightInnerRadius: 1
+  m_PointLightInnerRadius: 1.2
   m_PointLightOuterRadius: 4
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -9607,7 +9607,8 @@ MonoBehaviour:
   CheckpointLister: {fileID: 1690540816}
   EnemiesTags:
   - Frog
-  - Explosiver
+  - Barrel
+  - Cannon
   initalisedEnemys: 0
   healthTxt: {fileID: 5859449}
 --- !u!4 &2065979539
