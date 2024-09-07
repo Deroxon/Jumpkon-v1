@@ -43,12 +43,7 @@ public class MainMenu : Singleton<MainMenu>
     {
         Application.Quit();
     }
-    public void ToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-        GameManager.Instance.PauseGame();
-    }
-
+  
     public void NextResolution()
     {
         if (currentResolution < resolutionsCount -1)

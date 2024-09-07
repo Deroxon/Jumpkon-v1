@@ -9,6 +9,16 @@ public class SavesHandling : Singleton<SavesHandling>
     public static new SavesHandling Instance;
     public bool saveExists;
     public bool saveLoaded = false;
+    //List of keys cleared by function DeleteSave()
+    List<string> keys = new List<string>()
+    {
+        "currentLevelID",
+        "health",
+        "timer",
+        "spawnPositionX",
+        "spawnPositionY",
+        "spawnPositionZ"
+    };
     private void Awake()
     {
         if (Instance != null)
@@ -27,11 +37,14 @@ public class SavesHandling : Singleton<SavesHandling>
 
     public void Save(bool nextLevel = false)
     {
-        Debug.Log("test");
         if (nextLevel)
+        {
             PlayerPrefs.SetInt("currentLevelID", SceneManager.GetActiveScene().buildIndex + 1);
+        }
         else
+        {
             PlayerPrefs.SetInt("currentLevelID", SceneManager.GetActiveScene().buildIndex);
+        }
         PlayerPrefs.SetInt("saveExists", 1);
         PlayerPrefs.SetInt("health", GameManager.Instance.Health);
         PlayerPrefs.SetFloat("timer", TimerScript.Instance.GetTime());
@@ -58,11 +71,9 @@ public class SavesHandling : Singleton<SavesHandling>
     {
         PlayerPrefs.SetInt("saveExists", 0);
         saveExists = false;
-        PlayerPrefs.DeleteKey("currentLevelID");
-        PlayerPrefs.DeleteKey("health");
-        PlayerPrefs.DeleteKey("timer");
-        PlayerPrefs.DeleteKey("spawnPositionX");
-        PlayerPrefs.DeleteKey("spawnPositionY");
-        PlayerPrefs.DeleteKey("spawnPositionZ");
+        foreach(var key in keys)
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
     }
 }
