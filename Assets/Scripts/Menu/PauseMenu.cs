@@ -38,6 +38,7 @@ public class PauseMenu : Singleton<PauseMenu>
     public void ToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        SavesHandling.Instance.saveLoaded = false;
         GameManager.Instance.PauseGame();
     }
 
