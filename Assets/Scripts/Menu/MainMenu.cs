@@ -29,10 +29,7 @@ public class MainMenu : Singleton<MainMenu>
         // Reseting GUI and Game Manager
         if (DontDestroy.Instance != null)
             DontDestroy.Instance.menu();
-    }
-    private void Update()
-    {
-            ContinueButtonVisibility();
+        ContinueButtonVisibility();
     }
     public void PlayGame()
     {
