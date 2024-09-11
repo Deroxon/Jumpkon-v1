@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameEnd : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameEnd : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SavesHandling.Instance.Save(true);
             GameManager.Instance.Victory();
             endAnimation.SetTrigger("Interact");
         }
