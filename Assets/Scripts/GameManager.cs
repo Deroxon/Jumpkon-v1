@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     private bool victoryGame = false;
 
     // Checkpoints section
-    private Vector3Double checkpointposition;
+    public Vector3Double checkpointposition;
     [SerializeField]
     private GameObject prefabCheckpoint, CheckpointLister;
 
@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        
+        SavesHandling.Instance.Load();
     }
 
     // Start is called before the first frame update
@@ -67,7 +67,7 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "GUI")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         initalizeEnemies(); // testing
-        health = 5;
+        health = PlayerPrefs.GetInt("health", 5);
         isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
@@ -96,12 +96,14 @@ public class GameManager : Singleton<GameManager>
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
             Health = Health - i;
             AudioManager.Instance.PlaySFX("Hitdamage");
-
+            SavesHandling.Instance.Save();
             if (Health <= 0)
             {
+                SavesHandling.Instance.DeleteSave();
                 isAlive = false;
                 Death();
             }
+
 
             // Start coroutine with a delay
             yield return new WaitForSeconds(0.5f);
@@ -210,5 +212,4 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 1;
         isPaused = !isPaused;
     }
-
 }

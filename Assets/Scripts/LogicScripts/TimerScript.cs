@@ -5,14 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerScript : MonoBehaviour
+public class TimerScript : Singleton<TimerScript>
 {
     private TextMeshProUGUI textMesh;
-    private float currentTime;
+    public float currentTime;
     private string currentTimeInString;
     private bool isRunning =true;
 
-    public static TimerScript Instance;
+    //public static TimerScript Instance;
     // Start is called before the first frame update
 
     private void Awake()
@@ -69,5 +69,10 @@ public class TimerScript : MonoBehaviour
     public void ClearPlayerPrefTimes()
     {
         PlayerPrefs.DeleteKey("HighScore");
+    }
+
+    public float GetTime()
+    {
+        return currentTime;
     }
 }
