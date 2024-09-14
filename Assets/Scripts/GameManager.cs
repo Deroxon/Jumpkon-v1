@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class GameManager : Singleton<GameManager>
 {
-    // add colliders to the falling platform collider, make it same logic to disable collision from it, and if player stands on it, delete this gameobject from the game (czat podpowiada jak to zrobiæ)
+    // add colliders to the falling platform collider, make it same logic to disable collision from it, and if player stands on it, delete this gameobject from the game (czat podpowiada jak to zrobi?)
 
     // All section
     private int health;
@@ -25,11 +25,12 @@ public class GameManager : Singleton<GameManager>
     private GameObject prefabCheckpoint, CheckpointLister;
 
     // positions of checkpoint of the double type
-    List<Vector3Double> checkPointsList = new List<Vector3Double>
+    /* List<Vector3Double> checkPointsList = new List<Vector3Double>
     {
     new Vector3Double(12.95, 33.52, 0),
     new Vector3Double(6.99, 79.53, 0),
     };
+    */
     // All valids tags of enemies
     public List<string> EnemiesTags = new List<string>();
 
@@ -71,7 +72,6 @@ public class GameManager : Singleton<GameManager>
         isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
-        SpawnCheckPoints();  
     }
 
     // Update is called once per frame
@@ -135,6 +135,7 @@ public class GameManager : Singleton<GameManager>
         PauseGame();
     }
 
+    /* Not usable anymore
     public void SpawnCheckPoints()
     {
 
@@ -145,7 +146,7 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
-
+    */
 
     public void setCheckPoint(Transform transform)
     {
