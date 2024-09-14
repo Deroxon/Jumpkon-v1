@@ -129,7 +129,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
         Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider);
         // wait a small amount of time
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         // No longer ignore the collission
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
         Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider, false);
