@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -121,8 +123,14 @@ public class AudioManager : MonoBehaviour
 
     public void SaveAudioSettings(string key, float value)
     {
-        // Saving the value in the PlayerPrefs
-        MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        } else
+        {
+            PauseMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        }
+        
     }
 
     [ContextMenu("LoadSettings")]
