@@ -8306,6 +8306,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1833296814}
     - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
+      propertyPath: jumpingPower
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 1833296812}
