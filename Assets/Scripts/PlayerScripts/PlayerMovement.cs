@@ -6,7 +6,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     private float horizontal;
     private float speed = 9f;
-    [SerializeField] private float jumpingPower = 18f;
+    [SerializeField] private float jumpingPower = 18.5f;
     private bool isFacingRight = true;
     [SerializeField] public Animator animator;
     private Rigidbody2D playerRigidbody2D;
