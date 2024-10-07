@@ -55,13 +55,10 @@ public class AudioManager : MonoBehaviour
         {
             if (monsterSFX == null)
             {
-
-                Debug.LogError("Monster SFX Not Found: " + name);
                 return new Sound();
             }
             else
             {
-                Debug.Log("SFX Not Found: " + name + " but found monster SFX");
                 return monsterSFX;
             }
         }
