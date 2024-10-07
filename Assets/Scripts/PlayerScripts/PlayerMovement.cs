@@ -6,7 +6,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     private float horizontal;
     private float speed = 9f;
-    [SerializeField] private float jumpingPower = 18f;
+    [SerializeField] private float jumpingPower = 18.5f;
     private bool isFacingRight = true;
     [SerializeField] public Animator animator;
     private Rigidbody2D playerRigidbody2D;
@@ -129,7 +129,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
         Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider);
         // wait a small amount of time
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         // No longer ignore the collission
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
         Physics2D.IgnoreCollision(gameObject.GetComponentInChildren<CircleCollider2D>(), platformCollider, false);

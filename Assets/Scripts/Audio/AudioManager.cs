@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -54,13 +55,10 @@ public class AudioManager : MonoBehaviour
         {
             if (monsterSFX == null)
             {
-
-                Debug.LogError("Monster SFX Not Found: " + name);
                 return new Sound();
             }
             else
             {
-                Debug.Log("SFX Not Found: " + name + " but found monster SFX");
                 return monsterSFX;
             }
         }
@@ -121,8 +119,14 @@ public class AudioManager : MonoBehaviour
 
     public void SaveAudioSettings(string key, float value)
     {
-        // Saving the value in the PlayerPrefs
-        MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            MainMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        } else
+        {
+            PauseMenu.Instance.SaveSettings(new KeyValuePair<string, float>[] { new KeyValuePair<string, float>(key, value), });
+        }
+        
     }
 
     [ContextMenu("LoadSettings")]
