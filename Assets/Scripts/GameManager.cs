@@ -104,7 +104,7 @@ public class GameManager : Singleton<GameManager>
                 Death();
             }
 
-            Debug.Log("WUT");
+
             // Start coroutine with a delay
             yield return new WaitForSeconds(0.5f);
             backToCheckPoint();
@@ -158,7 +158,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (isAlive)
         {
-            Debug.Log("Backed");
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
     }
