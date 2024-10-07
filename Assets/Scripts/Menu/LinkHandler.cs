@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(TMP_Text))]
 public class LinkHandler : MonoBehaviour, IPointerClickHandler
 {
     private TMP_Text tmpTextBox;
@@ -30,12 +31,12 @@ public class LinkHandler : MonoBehaviour, IPointerClickHandler
         Vector3 mousePosition = new Vector3(eventData.position.x, eventData.position.y, 0);
         var linkTargetedText = TMP_TextUtilities.FindIntersectingLink(tmpTextBox, mousePosition, cameraToUse);
 
-        if (linkTargetedText != -1) return;
+        if (linkTargetedText == -1) return;
 
         TMP_LinkInfo linkInfo = tmpTextBox.textInfo.linkInfo[linkTargetedText];
 
         string linkID = linkInfo.GetLinkID();
-        if (linkID.Contains("http"))
+        if (linkID.Contains("https"))
         {
             Application.OpenURL(linkID);
             return;

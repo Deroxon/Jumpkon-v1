@@ -427,12 +427,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Graphics
-
-    <link="https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art">https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/</link>'
+  m_text: "Code\nDaniel Lasek\nDominik Ja\u0144czak\n\nGraphics\nKamil Zi\u0119tek\n\nAssets
+    used\n<color=\"blue\"><u><i><link=\"https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art\">https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/</link>\n<link=\"https://nectanebo.itch.io/menu-buttons\">https://nectanebo.itch.io/menu-buttons</link>\n<link=\"https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack\">https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack</link>\n<link=\"https://gameburp.itch.io/free-game-sound-fx\">https://gameburp.itch.io/free-game-sound-fx</link>\n<link=\"https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack\">https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack</link>\n<link=\"https://hzsmith.itch.io/free-sfx-pack-vol-1\">https://hzsmith.itch.io/free-sfx-pack-vol-1</link>\n<link=\"https://fallenblood.itch.io/50-sfx\">https://fallenblood.itch.io/50-sfx</link>\n<link=\"https://void1gaming.itch.io/platformer-music-pack-lite\">https://void1gaming.itch.io/platformer-music-pack-lite</link></u></i></color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -456,8 +455,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
