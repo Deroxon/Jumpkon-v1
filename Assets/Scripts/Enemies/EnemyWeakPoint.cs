@@ -6,6 +6,7 @@ public class EnemyWeakPoint : MonoBehaviour
 {
     private Transform EnemyContainer;
     private Transform Enemy;
+    private AudioSource enemyAudioSource;
 
     // The implementation works for this structure, the hitbox is nested in "enemy" by itself which has the Animator and grabing the EnemyContainer is Resposible for the grabing all thing and Destroying it 
 
@@ -14,6 +15,7 @@ public class EnemyWeakPoint : MonoBehaviour
         // grabing parents of nested gameobject
         EnemyContainer = transform.parent.parent;
         Enemy = transform.parent;
+        enemyAudioSource = transform.parent.GetComponent<AudioSource>();
     }
     
 
@@ -30,6 +32,7 @@ public class EnemyWeakPoint : MonoBehaviour
 
    private IEnumerator DestroyEnemy()
     {
+        enemyAudioSource.PlayOneShot(AudioManager.Instance.PlaySFX("EnemyHitDamage").clip);
         destroyEnemyAnimation();
         yield return new WaitForSeconds(0.5f);
         Destroy(EnemyContainer.gameObject);
