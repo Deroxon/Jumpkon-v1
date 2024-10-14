@@ -33,11 +33,8 @@ public class FallingPlatform : MonoBehaviour
     {
         if (gameObject.CompareTag("RespawnPlatform") )
         {
-            Debug.Log("Destroyed");
-            
             yield return new WaitForSeconds(1.2f);
             GameManager.Instance.InitializeSpawnPlatform(GameObjectPosition, gameObject);
-
         } else
         {
             yield return new WaitForSeconds(1.2f);
