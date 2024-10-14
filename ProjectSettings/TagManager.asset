@@ -10,6 +10,7 @@ TagManager:
   - Barrel
   - Cannon
   - Menu
+  - RespawnPlatform
   layers:
   - Default
   - TransparentFX
