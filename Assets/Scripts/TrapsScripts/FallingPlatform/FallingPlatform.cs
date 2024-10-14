@@ -9,6 +9,13 @@ public class FallingPlatform : MonoBehaviour
     private bool triggeredStand;
     public Animator FallingPlatformAnimator;
     private bool isStanding = true;
+    private Vector3 GameObjectPosition;
+    public GameObject repawnPlatform;
+
+    private void Start()
+    {
+        GameObjectPosition = new Vector3Double(gameObject.transform.position.x, gameObject.transform.position.y, 0).ToVector3();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,9 +31,18 @@ public class FallingPlatform : MonoBehaviour
 
     public IEnumerator deletePlatform()
     {
+        if (gameObject.CompareTag("RespawnPlatform") )
+        {
+            Debug.Log("Destroyed");
+            
+            yield return new WaitForSeconds(1.2f);
+            GameManager.Instance.InitializeSpawnPlatform(GameObjectPosition, gameObject);
 
-        yield return new WaitForSeconds(1.2f);
-        Destroy(this.gameObject);
+        } else
+        {
+            yield return new WaitForSeconds(1.2f);
+            Destroy(this.gameObject);
+        }
     }
 
 
