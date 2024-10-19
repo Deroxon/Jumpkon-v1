@@ -1333,6 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c88d991c3c06d4cbb62e929ae73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetIntensity: 0.8
 --- !u!1 &280251794
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,7 +5615,7 @@ GameObject:
   - component: {fileID: 1268583634}
   - component: {fileID: 1268583635}
   m_Layer: 0
-  m_Name: Global Light
+  m_Name: GlobalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
