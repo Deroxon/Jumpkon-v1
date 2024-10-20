@@ -151,10 +151,8 @@ public class GameManager : Singleton<GameManager>
 
     public void backToCheckPoint()
     {
-        Debug.Log("Trying to back");
         if (isAlive)
         {
-            Debug.Log("Backed");
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
     }
