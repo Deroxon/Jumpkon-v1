@@ -1333,7 +1333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c88d991c3c06d4cbb62e929ae73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetIntensity: 0.8
 --- !u!1 &280251794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8314,6 +8313,10 @@ PrefabInstance:
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 1833296812}
+    - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
+      propertyPath: hayLayer.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 256

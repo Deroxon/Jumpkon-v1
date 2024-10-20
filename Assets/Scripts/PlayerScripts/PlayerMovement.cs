@@ -15,6 +15,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
+    [SerializeField] private LayerMask hayLayer;
     [SerializeField] private LayerMask movingPlatformsLayer;
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
@@ -72,7 +73,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool IsGrounded()
     {
         PlayerManager.Instance.CountFalled = 0;
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer) );
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer ) );
     }
 
     private void Animations()
