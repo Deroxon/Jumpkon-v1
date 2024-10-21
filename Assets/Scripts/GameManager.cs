@@ -80,20 +80,18 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetButtonDown("Cancel") && isAlive)
             PauseMenu();
     }
-    public void AddHealth()
-    {
-        Health++;
-    }
+    public void AddHealth() => Health++;
 
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
     {
+        Debug.Log("Hitted");
         if(Health > 0 && !isImmortal)
         {
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             isImmortal = true;
             // jumping after getting damage
-            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
+            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 16);
             Health = Health - i;
             AudioManager.Instance.PlaySFX("Hitdamage");
             SavesHandling.Instance.Save();
@@ -103,12 +101,9 @@ public class GameManager : Singleton<GameManager>
                 isAlive = false;
                 Death();
             }
-
-            Debug.Log("WUT");
-            // Start coroutine with a delay
-            yield return new WaitForSeconds(0.5f);
+            // Start coroutine with a delay, it needs to be exactly 0.3 to make animation looks well and did not ruin the damage appliance from bullets
+            yield return new WaitForSeconds(0.30f);
             backToCheckPoint();
-            yield return new WaitForSeconds(0.5f);
             isImmortal = false;
         }
     }
@@ -156,6 +151,7 @@ public class GameManager : Singleton<GameManager>
 
     public void backToCheckPoint()
     {
+        Debug.Log("Trying to back");
         if (isAlive)
         {
             Debug.Log("Backed");
