@@ -10,6 +10,7 @@ TagManager:
   - Barrel
   - Cannon
   - Menu
+  - RespawnPlatform
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - MovingPlatformsLayer
   - BoundLayer
   - CheckPointLayer
-  - 
+  - HayLayer
   - 
   - 
   - 

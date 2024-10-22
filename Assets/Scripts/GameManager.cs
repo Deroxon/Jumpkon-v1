@@ -151,10 +151,8 @@ public class GameManager : Singleton<GameManager>
 
     public void backToCheckPoint()
     {
-        Debug.Log("Trying to back");
         if (isAlive)
         {
-            Debug.Log("Backed");
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
     }
@@ -210,4 +208,19 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 1;
         isPaused = !isPaused;
     }
+
+    // It needs to be in GameManager because it cause the issues when it is in PlatformScript
+    public void InitializeSpawnPlatform(Vector3 positionToPass, GameObject objectToPass)
+    {
+        StartCoroutine(SpawnPlatform(positionToPass, objectToPass));
+    }
+    public IEnumerator SpawnPlatform(Vector3 position, GameObject obiektZniszczenia)
+    {
+        Destroy(obiektZniszczenia);
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Creating Object");
+        GameObject respawningPlatform = Resources.Load<GameObject>("Prefabs/Traps/RespawningPlatform");
+        Instantiate(respawningPlatform, new Vector3(position.x, position.y, 0), Quaternion.identity);
+    }
+
 }
