@@ -78,7 +78,10 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && isAlive)
+        {
             PauseMenu();
+        }
+            
     }
     public void AddHealth()
     {
