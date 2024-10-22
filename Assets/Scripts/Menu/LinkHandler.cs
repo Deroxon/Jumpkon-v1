@@ -21,9 +21,14 @@ public class LinkHandler : MonoBehaviour, IPointerClickHandler
         canvasToCheck = GetComponentInParent<Canvas>();
 
         if (canvasToCheck.renderMode == RenderMode.ScreenSpaceOverlay)
+        {
             cameraToUse = null;
+        }
         else
+        {
             cameraToUse = canvasToCheck.worldCamera;
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
