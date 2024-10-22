@@ -41,10 +41,16 @@ public class PlayerManager : Singleton<PlayerManager>
 
    private void FallDamage()
     {
-        if(isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Trampoline")
+        if( (isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Trampoline") && (isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Hay"))
         {
             StartCoroutine(GameManager.Instance.LoseHealth(1));
         }
+        // jumping on the hay
+        if(isGettingDamage && PlayerMovement.Instance.currentGameObject.name == "Hay")
+        {
+            Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 16);
+        }
+
         isGettingDamage = false;
     }
 

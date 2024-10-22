@@ -83,20 +83,18 @@ public class GameManager : Singleton<GameManager>
         }
             
     }
-    public void AddHealth()
-    {
-        Health++;
-    }
+    public void AddHealth() => Health++;
 
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
     {
+        Debug.Log("Hitted");
         if(Health > 0 && !isImmortal)
         {
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             isImmortal = true;
             // jumping after getting damage
-            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 14);
+            PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 16);
             Health = Health - i;
             AudioManager.Instance.PlaySFX("Hitdamage");
             SavesHandling.Instance.Save();
@@ -106,12 +104,9 @@ public class GameManager : Singleton<GameManager>
                 isAlive = false;
                 Death();
             }
-
-            Debug.Log("WUT");
-            // Start coroutine with a delay
-            yield return new WaitForSeconds(0.5f);
+            // Start coroutine with a delay, it needs to be exactly 0.3 to make animation looks well and did not ruin the damage appliance from bullets
+            yield return new WaitForSeconds(0.30f);
             backToCheckPoint();
-            yield return new WaitForSeconds(0.5f);
             isImmortal = false;
         }
     }
@@ -161,7 +156,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (isAlive)
         {
-            Debug.Log("Backed");
             PlayerManager.Instance.player.transform.position = checkpointposition.ToVector3();
         }
     }
@@ -217,4 +211,19 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 1;
         isPaused = !isPaused;
     }
+
+    // It needs to be in GameManager because it cause the issues when it is in PlatformScript
+    public void InitializeSpawnPlatform(Vector3 positionToPass, GameObject objectToPass)
+    {
+        StartCoroutine(SpawnPlatform(positionToPass, objectToPass));
+    }
+    public IEnumerator SpawnPlatform(Vector3 position, GameObject obiektZniszczenia)
+    {
+        Destroy(obiektZniszczenia);
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Creating Object");
+        GameObject respawningPlatform = Resources.Load<GameObject>("Prefabs/Traps/RespawningPlatform");
+        Instantiate(respawningPlatform, new Vector3(position.x, position.y, 0), Quaternion.identity);
+    }
+
 }

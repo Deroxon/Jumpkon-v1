@@ -5614,7 +5614,7 @@ GameObject:
   - component: {fileID: 1268583634}
   - component: {fileID: 1268583635}
   m_Layer: 0
-  m_Name: Global Light
+  m_Name: GlobalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8313,6 +8313,10 @@ PrefabInstance:
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 1833296812}
+    - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
+      propertyPath: hayLayer.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     - target: {fileID: 8818782837513406445, guid: ef037fcd81a81a6458ce6710973c29ae, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 256
