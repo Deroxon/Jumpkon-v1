@@ -72,6 +72,7 @@ public class GameManager : Singleton<GameManager>
         isImmortal = false;
         isAlive = true;
         checkpointposition = new Vector3Double(-18, -3, 1);
+        StartCoroutine(CheckIfPlayerIsNotInvicible());
     }
 
     // Update is called once per frame
@@ -80,8 +81,7 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetButtonDown("Cancel") && isAlive)
         {
             PauseMenu();
-        }
-            
+        }   
     }
     public void AddHealth() => Health++;
 
@@ -224,6 +224,19 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Creating Object");
         GameObject respawningPlatform = Resources.Load<GameObject>("Prefabs/Traps/RespawningPlatform");
         Instantiate(respawningPlatform, new Vector3(position.x, position.y, 0), Quaternion.identity);
+    }
+
+    // Safety function to avoid getting immortal by all the time
+    private IEnumerator CheckIfPlayerIsNotInvicible()
+    {
+        while (true)
+        {
+            if(isImmortal)
+            {
+                isImmortal = !isImmortal;
+            }
+            yield return new WaitForSeconds(4f);
+        }
     }
 
 }
