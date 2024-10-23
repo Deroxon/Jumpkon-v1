@@ -20,6 +20,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
     private Rigidbody2D platformRigidbody2D;
+
+    public ParticleSystem dust;
+
     void Start()
     {
         playerRigidbody2D = PlayerManager.Instance.playerRigidbody2D;
@@ -39,6 +42,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             {
                 playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, jumpingPower);
                 AudioManager.Instance.PlaySFX("Jump");
+                dust.Play();
             }
 
             if (Input.GetButtonUp("Jump") && playerRigidbody2D.velocity.y > 0f)
@@ -85,6 +89,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+        if(IsGrounded())
+        {
+            dust.Play();
+        }
+
         animator.SetBool("grounded", IsGrounded());
         animator.SetInteger("horizontal", Mathf.Abs((int) horizontal));
     }

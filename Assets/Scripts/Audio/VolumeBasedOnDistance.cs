@@ -10,7 +10,7 @@ public class VolumeBasedOnDistance : MonoBehaviour
     private AudioSource audioSource;
     public AudioMixer audioMixer;
 
-    private float maxDistance = 30f;
+    private float maxDistance = 20f;
     private float minDistance = 2f;
 
 
