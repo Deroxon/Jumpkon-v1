@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class CreditsScript : MonoBehaviour
 {
-
+ 
     private void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            AudioManager.Instance.StopMusic();
             SceneManager.LoadScene("MainMenu");
         }
     }
 
-    public Animator screenAnimator;  // Przypisz tutaj Animator z Image
+    public Animator screenAnimator;  
     public GameObject ThanksForPlaying;
     public GameObject Credits;
     public GameObject BlackScreen;
@@ -25,6 +26,7 @@ public class CreditsScript : MonoBehaviour
 
     private void Start()
     {
+        if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         StartCoroutine(FadeToClear());
        
     }
@@ -34,7 +36,7 @@ public class CreditsScript : MonoBehaviour
         Debug.Log("FadeToClear");
         yield return new WaitForSeconds(1f);
         screenAnimator.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(creditsAgain == 1 ? 20f : 9f);
         StartCoroutine(FadeToBlack());
     }
 
@@ -54,6 +56,7 @@ public class CreditsScript : MonoBehaviour
             StartCoroutine(FadeToClear());
         } else if (creditsAgain == 2)
         {
+            AudioManager.Instance.StopMusic();
             SceneManager.LoadScene("MainMenu");
         }
     }
