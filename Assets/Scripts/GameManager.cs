@@ -89,7 +89,6 @@ public class GameManager : Singleton<GameManager>
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
     {
-        Debug.Log("Hitted");
         if(Health > 0 && !isImmortal)
         {
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
@@ -233,7 +232,7 @@ public class GameManager : Singleton<GameManager>
     {
         Destroy(obiektZniszczenia);
         yield return new WaitForSeconds(2f);
-        Debug.Log("Creating Object");
+
         GameObject respawningPlatform = Resources.Load<GameObject>("Prefabs/Traps/RespawningPlatform");
         Instantiate(respawningPlatform, new Vector3(position.x, position.y, 0), Quaternion.identity);
     }
