@@ -9076,7 +9076,7 @@ GameObject:
   - component: {fileID: 1900485523}
   - component: {fileID: 1900485522}
   m_Layer: 5
-  m_Name: Text
+  m_Name: VictoryTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9121,7 +9121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VICTORY!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -9148,8 +9148,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 250
-  m_fontSizeBase: 250
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9714,6 +9714,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1880974404}
   victoryMenu: {fileID: 798938459}
   mainMenu: {fileID: 1248064697}
+  victoryGame: 0
   prefabCheckpoint: {fileID: 7714541214422125483, guid: 10ccffe5205f6bf41925a3388ec7e4ce, type: 3}
   CheckpointLister: {fileID: 1690540816}
   EnemiesTags:
