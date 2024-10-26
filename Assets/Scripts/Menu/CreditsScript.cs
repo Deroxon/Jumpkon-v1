@@ -33,7 +33,6 @@ public class CreditsScript : MonoBehaviour
 
     public IEnumerator FadeToClear()
     {
-        Debug.Log("FadeToClear");
         yield return new WaitForSeconds(1f);
         screenAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(creditsAgain == 1 ? 20f : 9f);
@@ -44,7 +43,6 @@ public class CreditsScript : MonoBehaviour
     [ContextMenu("fadeOut")]
     public IEnumerator FadeToBlack()
     {
-        Debug.Log("FadeToBlack");
         yield return new WaitForSeconds(0.2f);
         screenAnimator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1.5f);
