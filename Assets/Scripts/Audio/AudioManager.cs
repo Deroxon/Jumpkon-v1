@@ -10,6 +10,15 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public AudioMixer audioMixer;
+    private AudioSource audioSource;
+    private int currentSong;
+    private List<string> MusicStringList = new List<string>
+    {
+        "GameMenuTheme",
+        "GameMenuTheme2",
+        "GameMenuTheme3",
+        "GameMenuTheme4",
+    };
 
     private void Awake()
     {
@@ -26,8 +35,23 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GameObject.Find("Music").GetComponent<AudioSource>();
         LoadSettings();
         PlayMusic("GameMenuTheme");
+        currentSong = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            if(currentSong  ==  4)
+            {
+                currentSong = 0;
+            }
+            currentSong++;
+            PlayMusic(MusicStringList[currentSong  -1]);
+        }
     }
 
     public Sound[] musicSounds, sfxSounds, sfxMonsters;
@@ -46,6 +70,7 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
     }
+    public void StopMusic() => musicSource.Stop();
     // Little chaotic function, the most important is to return monsterSFX Sound to EnemyLogicScript to use it for separate audioSources
     public Sound PlaySFX(string name)
     {
