@@ -1349,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c88d991c3c06d4cbb62e929ae73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastString: 0
 --- !u!1 &280251794
 GameObject:
   m_ObjectHideFlags: 0
@@ -11194,6 +11195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResolutionButton: {fileID: 1169126361}
   ModeButton: {fileID: 476024391}
+  ContinueButton: {fileID: 0}
 --- !u!1 &1324323469
 GameObject:
   m_ObjectHideFlags: 0
@@ -73147,7 +73149,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2085237340606960950, guid: 618235f587190da419e81a2d03fce791, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.84
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 2085237340606960950, guid: 618235f587190da419e81a2d03fce791, type: 3}
       propertyPath: m_LocalPosition.y

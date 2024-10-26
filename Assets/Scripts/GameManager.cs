@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     public bool isImmortal;
     public GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
-    private bool victoryGame = false;
+    public bool victoryGame;
 
     // Checkpoints section
     public Vector3Double checkpointposition;
@@ -71,6 +71,7 @@ public class GameManager : Singleton<GameManager>
         health = PlayerPrefs.GetInt("health", 5);
         isImmortal = false;
         isAlive = true;
+        victoryGame = false;
         checkpointposition = new Vector3Double(-18, -3, 1);
         StartCoroutine(CheckIfPlayerIsNotInvicible());
     }
@@ -113,15 +114,24 @@ public class GameManager : Singleton<GameManager>
 
     public void Victory()
     {
-        victoryMenu.SetActive(true);
-        background.SetActive(true);
-        PauseGame();
-        AudioManager.Instance.PlaySFX("Finish");
-        // if player win game, then we save his time
-        if(victoryGame)
+        if (victoryGame)
         {
             TimerScript.Instance.SaveTime();
+            SceneManager.LoadScene("Credits");
+            PauseGame();
+        } else
+        {
+            victoryMenu.SetActive(true);
+            background.SetActive(true);
+            PauseGame();
+            AudioManager.Instance.PlaySFX("Finish");
+            InGameMenu.Instance.SetLevelNameToDisplay();
+            // if player win game, then we save his time
         }
+    }
+    public void setVictoryGame()
+    {
+        victoryGame = true;
     }
 
 

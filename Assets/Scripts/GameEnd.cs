@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
@@ -12,8 +13,17 @@ public class GameEnd : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             SavesHandling.Instance.Save(true);
-            GameManager.Instance.Victory();
             endAnimation.SetTrigger("Interact");
+            string LevelName = SceneManager.GetActiveScene().name;
+            char lastString = LevelName[LevelName.Length - 1];
+            string lastStringinString = lastString.ToString();
+  
+            if (lastStringinString == "9")
+            {
+                GameManager.Instance.setVictoryGame();
+
+            }
+                GameManager.Instance.Victory();
         }
     }
 }
