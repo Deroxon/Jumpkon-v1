@@ -33,7 +33,7 @@ public class CreditsScript : MonoBehaviour
 
     public IEnumerator FadeToClear()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         screenAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(creditsAgain == 1 ? 20f : 9f);
         StartCoroutine(FadeToBlack());
