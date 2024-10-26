@@ -117,8 +117,10 @@ public class GameManager : Singleton<GameManager>
         if (victoryGame)
         {
             TimerScript.Instance.SaveTime();
+            AudioManager.Instance.PlaySFX("Finish");
+            AudioManager.Instance.PlayMusic("VictoryGame");
+            SavesHandling.Instance.DeleteSave();
             SceneManager.LoadScene("Credits");
-            PauseGame();
         } else
         {
             victoryMenu.SetActive(true);

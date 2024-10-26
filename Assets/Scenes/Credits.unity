@@ -292,7 +292,6 @@ GameObject:
   - component: {fileID: 331824055}
   - component: {fileID: 331824057}
   - component: {fileID: 331824056}
-  - component: {fileID: 331824058}
   m_Layer: 5
   m_Name: ThanksForPlaying
   m_TagString: Untagged
@@ -359,27 +358,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331824054}
   m_CullTransparentMesh: 1
---- !u!95 &331824058
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331824054}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b233e585e9c4f114e902eaab78ec514b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &415481731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1497,7 @@ MonoBehaviour:
   ThanksForPlaying: {fileID: 331824054}
   Credits: {fileID: 415481731}
   BlackScreen: {fileID: 1840100789}
+  creditsAgain: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

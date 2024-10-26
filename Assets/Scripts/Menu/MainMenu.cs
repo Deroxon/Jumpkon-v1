@@ -27,8 +27,7 @@ public class MainMenu : Singleton<MainMenu>
         ModeButtonRender();
         ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
         // Reseting GUI and Game Manager
-        if (DontDestroy.Instance != null)
-            DontDestroy.Instance.menu();
+        if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         ContinueButtonVisibility();
     }
     public void PlayGame()

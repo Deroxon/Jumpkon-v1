@@ -1416,7 +1416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c88d991c3c06d4cbb62e929ae73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastString: 102
 --- !u!1 &280251794
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,7 +5652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1248064698
 Transform:
   m_ObjectHideFlags: 0
@@ -8292,7 +8291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1754639216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9715,6 +9714,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1880974404}
   victoryMenu: {fileID: 798938459}
   mainMenu: {fileID: 1248064697}
+  victoryGame: 0
   prefabCheckpoint: {fileID: 7714541214422125483, guid: 10ccffe5205f6bf41925a3388ec7e4ce, type: 3}
   CheckpointLister: {fileID: 1690540816}
   EnemiesTags:
