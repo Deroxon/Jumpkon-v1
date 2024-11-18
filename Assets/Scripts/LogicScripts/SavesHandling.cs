@@ -31,7 +31,7 @@ public class SavesHandling : Singleton<SavesHandling>
         saveExists = PlayerPrefs.GetInt("saveExists") == 1 ? true : false;
     }
 
-    private void Update()
+    private void Start()
     {
     }
 
