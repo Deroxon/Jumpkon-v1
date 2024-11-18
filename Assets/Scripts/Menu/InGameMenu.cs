@@ -9,7 +9,15 @@ public class InGameMenu : Singleton<InGameMenu>
 {
     private char lastString;
     private GameObject VictoryTxt;
- 
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && !GameManager.Instance.isAlive)
+        {
+            PlayAgain();
+        }
+    }
+
     public void NextLevel()
     {
         GameManager.Instance.victoryMenu.SetActive(false);
