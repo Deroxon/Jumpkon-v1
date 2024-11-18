@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "GUI")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         initalizeEnemies(); // testing
-        health = PlayerPrefs.GetInt("health", 10);
+        health = PlayerPrefs.GetInt("health", 1);
         isImmortal = false;
         isAlive = true;
         victoryGame = false;
@@ -102,6 +102,7 @@ public class GameManager : Singleton<GameManager>
             {
                 SavesHandling.Instance.DeleteSave();
                 isAlive = false;
+                yield return new WaitForSeconds(0.50f);
                 Death();
             }
             // Start coroutine with a delay, it needs to be exactly 0.3 to make animation looks well and did not ruin the damage appliance from bullets
