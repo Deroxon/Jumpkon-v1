@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "GUI")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         initalizeEnemies(); // testing
-        health = PlayerPrefs.GetInt("health", 5);
+        health = PlayerPrefs.GetInt("health", 10);
         isImmortal = false;
         isAlive = true;
         victoryGame = false;

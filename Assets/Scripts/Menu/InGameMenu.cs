@@ -25,6 +25,15 @@ public class InGameMenu : Singleton<InGameMenu>
         SceneManager.LoadScene("MainMenu");
         GameManager.Instance.PauseGame();
     }
+
+    public void PlayAgain()
+    {
+        PlayerPrefs.SetInt("PlayAgain", 1);
+        PlayerPrefs.Save();
+        GameManager.Instance.PauseGame();
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void SetLevelNameToDisplay()
     {
         VictoryTxt = GameObject.Find("VictoryTxt");

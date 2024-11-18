@@ -17,6 +17,7 @@ public class MainMenu : Singleton<MainMenu>
     private int resolutionsCount;
     private int currentResolution;
 
+
     void Start()
     {
         //Getting all supported resolutions without duplicates, skipping framerate
@@ -29,6 +30,12 @@ public class MainMenu : Singleton<MainMenu>
         // Reseting GUI and Game Manager
         if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         ContinueButtonVisibility();
+        if(PlayerPrefs.GetInt("PlayAgain") == 1)
+        {
+            PlayerPrefs.SetInt("PlayAgain", 0);
+            PlayerPrefs.Save();
+            PlayGame();
+        }
     }
     public void PlayGame()
     {
