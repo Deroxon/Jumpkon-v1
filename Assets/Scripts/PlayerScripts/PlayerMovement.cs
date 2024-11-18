@@ -6,12 +6,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     private float horizontal;
     private float speed = 9f;
-    [SerializeField] private float jumpingPower = 18.5f;
+    [SerializeField] private float jumpingPower = 18.7f;
     private bool isFacingRight = true;
     [SerializeField] public Animator animator;
     private Rigidbody2D playerRigidbody2D;
     private CapsuleCollider2D playerCollider;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private CapsuleCollider2D groundCheckBox;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
@@ -20,6 +20,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
     private Rigidbody2D platformRigidbody2D;
+    
 
     public ParticleSystem dust;
 
@@ -51,7 +52,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             }
 
             // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
-            if (Input.GetAxisRaw("Vertical") < 0 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, platformsLayer))
+            if (Input.GetAxisRaw("Vertical") < 0 && IsGrounded())
             {
                 if (currentGameObject != null)
                 {
@@ -77,7 +78,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool IsGrounded()
     {
         PlayerManager.Instance.CountFalled = 0;
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer ) );
+        return groundCheckBox.IsTouchingLayers(groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer );
     }
 
     private void Animations()
