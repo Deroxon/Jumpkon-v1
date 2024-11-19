@@ -27,13 +27,14 @@ public class PlayerManager : Singleton<PlayerManager>
             PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         } 
 
-        if (CountFalled < -30 && !isGettingDamage)
+        if (CountFalled < -38 && !isGettingDamage)
         {
             isGettingDamage = !isGettingDamage;
         }
         if(CountFalled == 0)
         {
             FallDamage();
+            PlayerMovement.Instance.animator.SetFloat("velocityY", (float)CountFalled);
         }
       
     }
