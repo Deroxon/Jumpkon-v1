@@ -11,7 +11,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] public Animator animator;
     private Rigidbody2D playerRigidbody2D;
     private CapsuleCollider2D playerCollider;
-    [SerializeField] private CapsuleCollider2D groundCheckBox;
+    [SerializeField] private BoxCollider2D groundCheckBox;
+    [SerializeField] private Transform ground;
+
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
@@ -78,7 +80,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool IsGrounded()
     {
         PlayerManager.Instance.CountFalled = 0;
-        return groundCheckBox.IsTouchingLayers(groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer );
+        bool overlapGround = Physics2D.OverlapCircle(ground.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer));
+        bool colliderTouching = groundCheckBox.IsTouchingLayers(groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer);
+
+        return overlapGround || colliderTouching;
+
     }
 
     private void Animations()
@@ -111,23 +117,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
             playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Checking if currently LayerMask is a PlatformsLayer
-            currentGameObject = collision.gameObject;
-
-     
-
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        // Checking if player exit from collider (platformLayer)
-        // New implementation idea? Can we ue Physic2D.OverlapCircle instead this implementation?
-            currentGameObject = null;
-
-    }
 
     // this function can be useful when we wanna Disable any collision
     private IEnumerator DisableCollision()
