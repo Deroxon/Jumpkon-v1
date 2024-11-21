@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEditor;
 
 public class MainMenu : Singleton<MainMenu>
 {
@@ -12,10 +13,10 @@ public class MainMenu : Singleton<MainMenu>
     [SerializeField] private TextMeshProUGUI ModeButton;
     [SerializeField] GameObject ContinueButton;
     //0 is borderless, 1 is fullscreen, 2 is windowed
-    private int currentMode;
+    private float currentMode;
     private Resolution[] resolutions;
     private int resolutionsCount;
-    private int currentResolution;
+    private float currentResolution;
 
 
     void Start()
@@ -26,7 +27,7 @@ public class MainMenu : Singleton<MainMenu>
         resolutionsCount = resolutions.Length;
         LoadSettings();
         ModeButtonRender();
-        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
         // Reseting GUI and Game Manager
         if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         ContinueButtonVisibility();
@@ -36,6 +37,18 @@ public class MainMenu : Singleton<MainMenu>
             PlayerPrefs.Save();
             PlayGame();
         }
+    }
+
+    [ContextMenu("Load")]
+    public void LoadTxt()
+    {
+        LoadSettings();
+        Debug.Log("Loading");
+        Debug.Log(currentResolution);
+        Debug.Log(currentMode);
+
+        ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
+        ModeButtonRender();
     }
     public void PlayGame()
     {
@@ -58,7 +71,7 @@ public class MainMenu : Singleton<MainMenu>
             currentResolution ++;
         else
             currentResolution = 0;
-        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
     }
 
     public void PreviousResolution()
@@ -67,7 +80,7 @@ public class MainMenu : Singleton<MainMenu>
             currentResolution --;
         else
             currentResolution = resolutionsCount -1;
-        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+        ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
     }
 
     public void NextMode()
@@ -102,12 +115,12 @@ public class MainMenu : Singleton<MainMenu>
     {
         //0 is borderless, 1 is fullscreen, 2 is windowed
         if (currentMode == 0)
-            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.FullScreenWindow);
+            Screen.SetResolution(resolutions[(int)currentResolution].width, resolutions[(int)currentResolution].height, FullScreenMode.FullScreenWindow);
         else if (currentMode == 1)
-            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.ExclusiveFullScreen);
+            Screen.SetResolution(resolutions[(int)currentResolution].width, resolutions[(int)currentResolution].height, FullScreenMode.ExclusiveFullScreen);
         else if (currentMode == 2)
-            Screen.SetResolution(resolutions[currentResolution].width, resolutions[currentResolution].height, FullScreenMode.Windowed);
-        ResolutionButton.text = resolutions[currentResolution].width + "x" + resolutions[currentResolution].height;
+            Screen.SetResolution(resolutions[(int)currentResolution].width, resolutions[(int)currentResolution].height, FullScreenMode.Windowed);
+        ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
         ModeButtonRender();
 
         var savingValues = new KeyValuePair<string, float>[]
@@ -118,11 +131,12 @@ public class MainMenu : Singleton<MainMenu>
 
         SaveSettings(savingValues);
     }
-    
+
+
     public void LoadSettings()
     {
-        currentResolution = PlayerPrefs.GetInt("resolution", resolutionsCount - 1);
-        currentMode = PlayerPrefs.GetInt("screenMode", 0);
+        currentResolution = PlayerPrefs.GetFloat("resolution");
+        currentMode = PlayerPrefs.GetFloat("screenMode");
     }
 
     public void SaveSettings(KeyValuePair<string, float>[] ItemsToSave)
@@ -131,6 +145,8 @@ public class MainMenu : Singleton<MainMenu>
         foreach(var pair in ItemsToSave)
         {
             PlayerPrefs.SetFloat(pair.Key, pair.Value);
+            Debug.Log(pair.Key);
+            Debug.Log(pair.Value);
         }
         PlayerPrefs.Save();
     }
