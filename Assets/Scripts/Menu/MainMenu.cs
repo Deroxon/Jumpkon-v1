@@ -57,7 +57,7 @@ public class MainMenu : Singleton<MainMenu>
 
     public void Credits()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("thanks");
     }
 
     public void QuitGame()
