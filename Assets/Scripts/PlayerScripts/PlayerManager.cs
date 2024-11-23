@@ -29,7 +29,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
         if (CountFalled < -38 && !isGettingDamage)
         {
-            isGettingDamage = !isGettingDamage;
+            isGettingDamage = true;
         }
         if(CountFalled == 0)
         {
@@ -42,9 +42,12 @@ public class PlayerManager : Singleton<PlayerManager>
 
    private void FallDamage()
     {
-        if( (isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Trampoline") && (isGettingDamage && PlayerMovement.Instance.currentGameObject.name != "Hay"))
+        if(isGettingDamage)
         {
-            StartCoroutine(GameManager.Instance.LoseHealth(1));
+            if (!PlayerMovement.Instance.currentGameObject.name.Contains("Trampoline") && PlayerMovement.Instance.currentGameObject.name != "Hay") {
+                StartCoroutine(GameManager.Instance.LoseHealth(1));
+            }
+           
         }
         // jumping on the hay
         if(isGettingDamage && PlayerMovement.Instance.currentGameObject.name == "Hay")
