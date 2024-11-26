@@ -20,18 +20,44 @@ public class HighScores : MonoBehaviour
     public void LoadHighscores()
     {
         // getting all Highcorse, make sure there are no empty space and split them
-        string[] GetAllHighscores = PlayerPrefs.GetString("HighScore", "").Replace(" ", "").Split("W");
-   
-        // just in case we don't have any HighScore
-        if (GetAllHighscores[0] == "")
+        List<HighScore> GetAllHighscores = new List<HighScore>();
+
+        string savedData = PlayerPrefs.GetString("Highscores", "");
+        Debug.Log(savedData);
+
+        if(!string.IsNullOrEmpty(savedData))
         {
+            string[] records = savedData.Split('|');
+
+
+            foreach(string record in records)
+            {
+                string[] fields = record.Split(';');
+
+                if (fields.Length ==2)
+                {
+                    string playerName = fields[0];
+                    string time = fields[1];
+
+                    HighScore highscore = new HighScore(playerName, time);
+                    GetAllHighscores.Add(highscore);
+                }
+            }
+
+        }
+        // just in case we don't have any HighScore
+        if (GetAllHighscores.Count == 0)
+        {
+            Debug.LogWarning("No high scores available.");
+            textMesh.text = "";
             return;
         }
 
         string displayedHighscore = "";
 
+
         // Sorting List by Converting values to Miliseconds
-         var sortedTimeStrings = GetAllHighscores.OrderBy(timeStr => ConvertToMilliseconds(timeStr)).ToArray();
+         var sortedTimeStrings = GetAllHighscores.OrderBy(timeStr => ConvertToMilliseconds(timeStr.time)).ToArray();
 
         // taking first 10 places
         sortedTimeStrings = sortedTimeStrings.Take(10).ToArray();
@@ -39,12 +65,15 @@ public class HighScores : MonoBehaviour
 
         for (int i = 0; i < sortedTimeStrings.Length; i++)
         {
+            string playerName = sortedTimeStrings[i].playerName;
+            string time = sortedTimeStrings[i].time;
+
             if (i == 9)
             {
-                displayedHighscore = displayedHighscore + (i + 1) + ". |  " + sortedTimeStrings[i] + "<br>";
+                displayedHighscore = displayedHighscore + (i + 1) + ". " + playerName + " |  " + time + "<br>";
                 break;
             }
-            displayedHighscore = displayedHighscore + (i + 1) + ". |  " + sortedTimeStrings[i] + "<br>";
+            displayedHighscore = displayedHighscore + (i + 1) + ". " + playerName + " |  "+ time + "<br>";
          }
 
         textMesh.text = displayedHighscore;
