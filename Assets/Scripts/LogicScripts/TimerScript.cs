@@ -50,18 +50,12 @@ public class TimerScript : Singleton<TimerScript>
         currentTimeInString = string.Format("{0:0}:{1:00}:{2:00}:{3:000}", hours, minutes, seconds, miliseconds);
         textMesh.text = currentTimeInString;
     }
+
     [ContextMenu("SaveTime")]
     public void SaveTime()
     {
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            string currentStringsInHistory = PlayerPrefs.GetString("HighScore", "");
-            PlayerPrefs.SetString("HighScore", (currentStringsInHistory + " W " + currentTimeInString));
-        } else
-        {
-            PlayerPrefs.SetString("HighScore", currentTimeInString);
-        }
-        
+        string playerName = "daniel";
+        DataBaseManager.Instance.SaveHighScore(playerName, currentTimeInString);    
     }
 
     // Only for debbugging
