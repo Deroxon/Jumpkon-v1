@@ -52,10 +52,9 @@ public class TimerScript : Singleton<TimerScript>
     }
 
     [ContextMenu("SaveTime")]
-    public void SaveTime()
+    public void SaveTime(string userName  = "Player")
     {
-        string playerName = "daniel";
-        DataBaseManager.Instance.SaveHighScore(playerName, currentTimeInString);    
+        DataBaseManager.Instance.SaveHighScore(userName, currentTimeInString);    
     }
 
     // Only for debbugging

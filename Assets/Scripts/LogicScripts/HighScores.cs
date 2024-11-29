@@ -29,6 +29,8 @@ public class HighScores : MonoBehaviour
 
         string savedData = PlayerPrefs.GetString("Highscores", "");
 
+        Debug.Log(savedData);
+
         if(!string.IsNullOrEmpty(savedData))
         {
             string[] records = savedData.Split('|');

@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using System;
+using Unity.VisualScripting.FullSerializer;
 
 
 public class DataBaseManager : MonoBehaviour
@@ -32,20 +33,34 @@ public class DataBaseManager : MonoBehaviour
 
     private void Start()
     {
-        FirebaseApp.Create(new AppOptions()
+        string configFilePath = "config"; // Plik config.json w Resources
+        TextAsset configTextAsset = Resources.Load<TextAsset>(configFilePath);
+
+        if (configTextAsset != null)
         {
-            ApiKey = "AIzaSyDu6Yxf1QkJHxJrMMWSuxljHVWQUUmWX7c",
-            DatabaseUrl = new System.Uri("https://mariusz-the-game-default-rtdb.europe-west1.firebasedatabase.app"),
-            ProjectId = "mariusz-the-game",
-            StorageBucket = "mariusz-the-game.firebasestorage.app",
-            AppId = "1:974350079432:web:8a4b2780993bf3334fdcfd",
-        });
+            Config config = JsonUtility.FromJson<Config>(configTextAsset.text);
 
-        // Po³¹cz siê z Realtime Database
-        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+            FirebaseApp.Create(new AppOptions()
+            {
+                ApiKey = config.ApiKey,
+                DatabaseUrl = new System.Uri(config.DatabaseUrl),
+                ProjectId = config.ProjectId,
+                StorageBucket = config.ProjectId,
+                AppId = config.AppId
+            });
 
-        Debug.Log("Firebase initialized successfully!");
-        CheckPossibilitytoFetch();
+            // Po³¹cz siê z Realtime Database
+            databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+
+            Debug.Log("Firebase initialized successfully!");
+            CheckPossibilitytoFetch();
+        }
+        else
+        {
+            Debug.LogError("Couldn't load firebase configuration");
+        }
+
+
     }
 
     private void Update()
@@ -141,6 +156,8 @@ public class DataBaseManager : MonoBehaviour
        // Debug.Log("savingPlayerPrefs");
         string swapArrayToString = "";
 
+        PlayerPrefs.DeleteKey("Highscores");
+
         foreach (HighScore highscore in highScoreList)
         {
             string record = highscore.playerName + ";" + highscore.time;
@@ -165,5 +182,15 @@ public class DataBaseManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
+
+        [System.Serializable]
+        public class Config
+        {
+        public string ApiKey;
+        public string DatabaseUrl;
+        public string ProjectId;
+        public string StorageBucket;
+        public string AppId;
+        }
 
 }

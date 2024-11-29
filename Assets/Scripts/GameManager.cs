@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject background, gameOverMenu, victoryMenu, mainMenu;
 
     public bool victoryGame;
+    public GameObject menuVictoryGame;
 
     // Checkpoints section
     public Vector3Double checkpointposition;
@@ -69,6 +70,7 @@ public class GameManager : Singleton<GameManager>
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         initalizeEnemies(); // testing
         health = PlayerPrefs.GetInt("health", 10);
+        menuVictoryGame.SetActive(false);
         isImmortal = false;
         isAlive = true;
         victoryGame = false;
@@ -117,10 +119,12 @@ public class GameManager : Singleton<GameManager>
         if (victoryGame)
         {
             TimerScript.Instance.SaveTime();
-            AudioManager.Instance.PlaySFX("Finish");
-            AudioManager.Instance.PlayMusic("VictoryGame");
             SavesHandling.Instance.DeleteSave();
-            SceneManager.LoadScene("Credits");
+            AudioManager.Instance.StopAllAudio();
+            AudioManager.Instance.PlaySFX("Finish");
+            menuVictoryGame.SetActive(true);
+            background.SetActive(true);
+            PauseGame();
         } else
         {
             victoryMenu.SetActive(true);

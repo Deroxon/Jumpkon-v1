@@ -21,7 +21,6 @@ public class RefreshButton : MonoBehaviour
     public void refresh()
     {
         dbGM.CheckPossibilitytoFetch();
-        Debug.Log("refreshed");
     }
 
 }
