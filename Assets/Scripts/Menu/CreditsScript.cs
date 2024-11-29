@@ -6,26 +6,35 @@ using UnityEngine.UI;
 
 public class CreditsScript : MonoBehaviour
 {
- 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            AudioManager.Instance.StopMusic();
-            SceneManager.LoadScene("MainMenu");
-        }
-    }
-
-    public Animator screenAnimator;  
+    private GameObject thanksForPlayingBackground;
+    public Animator screenAnimator;
     public GameObject ThanksForPlaying;
     public GameObject Credits;
     public GameObject BlackScreen;
-    public int creditsAgain = 0;
+
+    private void Update()
+    {
+        thanksForPlayingBackground = GameObject.Find("ThanksForPlaying");
+        if (thanksForPlayingBackground != null)
+        {
+            if (thanksForPlayingBackground.activeInHierarchy)
+            {
+                if(Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.Space) )
+                {
+                    SceneManager.LoadScene("Credits");
+                }
+            }
+        }
+        
+    }
+
+ 
 
     // Funkcja do wywo³ania efektu fade in
 
     private void Start()
     {
+        thanksForPlayingBackground = GameObject.Find("Credits");
         if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         StartCoroutine(FadeToClear());
        
@@ -35,7 +44,7 @@ public class CreditsScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         screenAnimator.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(creditsAgain == 1 ? 20f : 9f);
+        yield return new WaitForSeconds(thanksForPlayingBackground == null ? 15f : 3f);
         StartCoroutine(FadeToBlack());
     }
 
@@ -46,17 +55,23 @@ public class CreditsScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         screenAnimator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1.5f);
-        ThanksForPlaying.SetActive(false);
-        creditsAgain++;
-        if (creditsAgain == 1)
+        if(ThanksForPlaying != null)
         {
-            Credits.SetActive(true);
-            StartCoroutine(FadeToClear());
-        } else if (creditsAgain == 2)
-        {
-            AudioManager.Instance.StopMusic();
-            SceneManager.LoadScene("MainMenu");
+             ThanksForPlaying.SetActive(false);
+            thanksForPlayingBackground = null;
         }
+       
+
+        Debug.Log("fadeBlack ended");
+         if (Credits == null)
+         {
+            AudioManager.Instance.StopMusic();
+            SceneManager.LoadScene("Credits");
+            
+          } else
+            {
+            SceneManager.LoadScene("MainMenu");
+            }
     }
 
 

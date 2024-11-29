@@ -9,7 +9,15 @@ public class InGameMenu : Singleton<InGameMenu>
 {
     private char lastString;
     private GameObject VictoryTxt;
- 
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && !GameManager.Instance.isAlive)
+        {
+            PlayAgain();
+        }
+    }
+
     public void NextLevel()
     {
         GameManager.Instance.victoryMenu.SetActive(false);
@@ -25,6 +33,15 @@ public class InGameMenu : Singleton<InGameMenu>
         SceneManager.LoadScene("MainMenu");
         GameManager.Instance.PauseGame();
     }
+
+    public void PlayAgain()
+    {
+        PlayerPrefs.SetInt("PlayAgain", 1);
+        PlayerPrefs.Save();
+        GameManager.Instance.PauseGame();
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void SetLevelNameToDisplay()
     {
         VictoryTxt = GameObject.Find("VictoryTxt");

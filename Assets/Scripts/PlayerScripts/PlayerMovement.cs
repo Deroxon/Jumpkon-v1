@@ -6,12 +6,14 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     private float horizontal;
     private float speed = 9f;
-    [SerializeField] private float jumpingPower = 18.5f;
+    [SerializeField] private float jumpingPower = 18.7f;
     private bool isFacingRight = true;
     [SerializeField] public Animator animator;
     private Rigidbody2D playerRigidbody2D;
     private CapsuleCollider2D playerCollider;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private BoxCollider2D groundCheckBox;
+    [SerializeField] private Transform ground;
+
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask platformsLayer;
@@ -20,6 +22,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] public GameObject currentGameObject;
     [SerializeField] private bool isHit;
     private Rigidbody2D platformRigidbody2D;
+    
 
     public ParticleSystem dust;
 
@@ -51,7 +54,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             }
 
             // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
-            if (Input.GetAxisRaw("Vertical") < 0 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, platformsLayer))
+            if (Input.GetAxisRaw("Vertical") < 0 && IsGrounded())
             {
                 if (currentGameObject != null)
                 {
@@ -77,7 +80,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool IsGrounded()
     {
         PlayerManager.Instance.CountFalled = 0;
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer ) );
+        bool overlapGround = Physics2D.OverlapCircle(ground.position, 0.2f, (groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer));
+        bool colliderTouching = groundCheckBox.IsTouchingLayers(groundLayer | obstacleLayer | platformsLayer | movingPlatformsLayer | hayLayer);
+
+        return overlapGround || colliderTouching;
+
     }
 
     private void Animations()
@@ -110,23 +117,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
             playerRigidbody2D.velocity = new Vector2(horizontal * speed, playerRigidbody2D.velocity.y);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Checking if currently LayerMask is a PlatformsLayer
-            currentGameObject = collision.gameObject;
-
-     
-
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        // Checking if player exit from collider (platformLayer)
-        // New implementation idea? Can we ue Physic2D.OverlapCircle instead this implementation?
-            currentGameObject = null;
-
-    }
 
     // this function can be useful when we wanna Disable any collision
     private IEnumerator DisableCollision()
