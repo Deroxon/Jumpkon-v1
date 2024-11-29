@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public AudioMixer audioMixer;
     private AudioSource audioSource;
+    private bool isApplicationPaused;
     private int currentSong;
     private List<string> MusicStringList = new List<string>
     {
@@ -43,14 +44,14 @@ public class AudioManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (audioSource != null && !audioSource.isPlaying)
+        if (audioSource != null && !audioSource.isPlaying && !isApplicationPaused)
         {
-            if(currentSong  ==  4)
-            {
-                currentSong = 0;
-            }
-            currentSong++;
-            PlayMusic(MusicStringList[currentSong  -1]);
+                if (currentSong == 4)
+                {
+                    currentSong = 0;
+                }
+                currentSong++;
+                PlayMusic(MusicStringList[currentSong - 1]);
         }
     }
 
@@ -92,6 +93,13 @@ public class AudioManager : MonoBehaviour
             sfxSource.PlayOneShot(playerSFX.clip);
             return new Sound();
         }
+    }
+
+    public void StopAllAudio()
+    {
+        musicSource.Stop();
+        sfxMonsterSource.Stop();
+        sfxSource.Stop();
     }
 
     public void ToggleMusic()
@@ -179,5 +187,11 @@ public class AudioManager : MonoBehaviour
         }
        
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        isApplicationPaused = !focus;
+    }
+
 
 }
