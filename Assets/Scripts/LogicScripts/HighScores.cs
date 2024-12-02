@@ -15,14 +15,20 @@ public class HighScores : MonoBehaviour
         textMesh = GameObject.Find("HighScoreList").GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        LoadHighscoresUI();
+    }
+
 
     [ContextMenu("Load Highscores")]
-    public void LoadHighscores()
+    public void LoadHighscoresUI()
     {
         // getting all Highcorse, make sure there are no empty space and split them
         List<HighScore> GetAllHighscores = new List<HighScore>();
 
         string savedData = PlayerPrefs.GetString("Highscores", "");
+
         Debug.Log(savedData);
 
         if(!string.IsNullOrEmpty(savedData))

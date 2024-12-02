@@ -4,13 +4,19 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
-using UnityEngine;
+using System;
+using Unity.VisualScripting.FullSerializer;
+
 
 public class DataBaseManager : MonoBehaviour
 {
     private DatabaseReference databaseReference;
     public static DataBaseManager Instance;
     public List<HighScore> highScoreList;
+
+    public float cooldownTime = 2f;  // Na przyk³ad 5 sekund cooldownu
+
+    private DateTime lastRequestTime = DateTime.MinValue;
 
     private void Awake()
     {
@@ -27,20 +33,34 @@ public class DataBaseManager : MonoBehaviour
 
     private void Start()
     {
-        FirebaseApp.Create(new AppOptions()
+        string configFilePath = "config"; // Plik config.json w Resources
+        TextAsset configTextAsset = Resources.Load<TextAsset>(configFilePath);
+
+        if (configTextAsset != null)
         {
-            ApiKey = "AIzaSyDu6Yxf1QkJHxJrMMWSuxljHVWQUUmWX7c",
-            DatabaseUrl = new System.Uri("https://mariusz-the-game-default-rtdb.europe-west1.firebasedatabase.app"),
-            ProjectId = "mariusz-the-game",
-            StorageBucket = "mariusz-the-game.firebasestorage.app",
-            AppId = "1:974350079432:web:8a4b2780993bf3334fdcfd",
-        });
+            Config config = JsonUtility.FromJson<Config>(configTextAsset.text);
 
-        // Po³¹cz siê z Realtime Database
-        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+            FirebaseApp.Create(new AppOptions()
+            {
+                ApiKey = config.ApiKey,
+                DatabaseUrl = new System.Uri(config.DatabaseUrl),
+                ProjectId = config.ProjectId,
+                StorageBucket = config.ProjectId,
+                AppId = config.AppId
+            });
 
-        Debug.Log("Firebase initialized successfully!");
-        GetHighScores();
+            // Po³¹cz siê z Realtime Database
+            databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+
+            Debug.Log("Firebase initialized successfully!");
+            CheckPossibilitytoFetch();
+        }
+        else
+        {
+            Debug.LogError("Couldn't load firebase configuration");
+        }
+
+
     }
 
     private void Update()
@@ -67,8 +87,25 @@ public class DataBaseManager : MonoBehaviour
                 });
         }
 
+    public void CheckPossibilitytoFetch()
+    {
+        TimeSpan timeSinceLastRequest = DateTime.UtcNow - lastRequestTime;
 
-   
+        if (timeSinceLastRequest.TotalSeconds >= cooldownTime)
+        {
+            // Jeœli min¹³ cooldown, wykonujemy zapytanie
+            GetHighScores();
+
+            // Ustawiamy czas ostatniego zapytania na teraz
+            lastRequestTime = DateTime.UtcNow;
+        }
+        else
+        {
+            // Jeœli u¿ytkownik próbuje wywo³aæ funkcjê zbyt szybko, wyœwietlamy komunikat
+            Debug.Log("Musisz poczekaæ, aby ponownie pobraæ wyniki.");
+        }
+    }
+
     public void GetHighScores()
     {
 
@@ -116,14 +153,14 @@ public class DataBaseManager : MonoBehaviour
 
     public IEnumerator saveHighScoresToPlayerPrefs()
     {
-
+       // Debug.Log("savingPlayerPrefs");
         string swapArrayToString = "";
-        yield return new WaitForSeconds(2f);
+
+        PlayerPrefs.DeleteKey("Highscores");
 
         foreach (HighScore highscore in highScoreList)
         {
             string record = highscore.playerName + ";" + highscore.time;
-
             //  checking is string is not null or empty
             if (!string.IsNullOrEmpty(swapArrayToString))
             {
@@ -133,11 +170,27 @@ public class DataBaseManager : MonoBehaviour
             swapArrayToString += record;
         }
 
-        Debug.Log("saved " + swapArrayToString);
         PlayerPrefs.SetString("Highscores", swapArrayToString);
         PlayerPrefs.Save();
 
+        GameObject grabHighScoreUI = GameObject.Find("HighScoreMenu");
+
+        if(grabHighScoreUI != null)
+        {
+                grabHighScoreUI.transform.GetChild(1).GetComponent<HighScores>().LoadHighscoresUI();
+        }
+        yield return new WaitForSeconds(0.5f);
     }
 
+
+        [System.Serializable]
+        public class Config
+        {
+        public string ApiKey;
+        public string DatabaseUrl;
+        public string ProjectId;
+        public string StorageBucket;
+        public string AppId;
+        }
 
 }
