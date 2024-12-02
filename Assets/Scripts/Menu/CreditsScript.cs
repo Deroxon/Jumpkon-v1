@@ -17,7 +17,6 @@ public class CreditsScript : MonoBehaviour
         thanksForPlayingBackground = GameObject.Find("ThanksForPlaying");
         if (thanksForPlayingBackground != null)
         {
-            Debug.Log("isnt null");
             if (thanksForPlayingBackground.activeInHierarchy)
             {
                 if(Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.Space) )
@@ -45,7 +44,7 @@ public class CreditsScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         screenAnimator.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(thanksForPlayingBackground == null ? 15f : 4f);
+        yield return new WaitForSeconds(thanksForPlayingBackground == null ? 15f : 3f);
         StartCoroutine(FadeToBlack());
     }
 
