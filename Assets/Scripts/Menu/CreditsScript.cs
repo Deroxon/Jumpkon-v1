@@ -44,7 +44,7 @@ public class CreditsScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         screenAnimator.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(thanksForPlayingBackground == null ? 15f : 3f);
+        yield return new WaitForSeconds(thanksForPlayingBackground == null ? 7f : 3f);
         StartCoroutine(FadeToBlack());
     }
 

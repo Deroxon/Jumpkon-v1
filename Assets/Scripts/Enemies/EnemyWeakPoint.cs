@@ -32,7 +32,7 @@ public class EnemyWeakPoint : MonoBehaviour
 
    private IEnumerator DestroyEnemy()
     {
-        enemyAudioSource.PlayOneShot(AudioManager.Instance.PlaySFX("EnemyHitDamage").clip);
+        AudioManager.Instance.PlaySFX("EnemyHitDamage");
         destroyEnemyAnimation();
         yield return new WaitForSeconds(0.5f);
         Destroy(EnemyContainer.gameObject);
