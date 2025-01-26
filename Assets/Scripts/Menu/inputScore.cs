@@ -21,6 +21,7 @@ public class inputScore : MonoBehaviour
         ActivateChildren(this.gameObject);
     }
 
+    [ContextMenu("save to database")]
     public void saveHighScore()
     {
 
