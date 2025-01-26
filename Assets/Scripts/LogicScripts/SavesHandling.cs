@@ -75,5 +75,6 @@ public class SavesHandling : Singleton<SavesHandling>
         {
             PlayerPrefs.DeleteKey(key);
         }
+        PlayerPrefs.DeleteAll();
     }
 }
