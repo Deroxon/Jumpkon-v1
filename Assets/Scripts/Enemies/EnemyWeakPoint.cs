@@ -34,6 +34,10 @@ public class EnemyWeakPoint : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX("EnemyHitDamage");
         destroyEnemyAnimation();
+        if (!PlayerPrefs.HasKey("First_blood"))
+        {
+            SavesHandling.Instance.SaveAchievementPrefs("First_blood");
+        }
         yield return new WaitForSeconds(0.5f);
         Destroy(EnemyContainer.gameObject);
     }

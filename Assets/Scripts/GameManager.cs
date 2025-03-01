@@ -37,6 +37,7 @@ public class GameManager : Singleton<GameManager>
 
     public List<EnemyStructure> enemiesList = new List<EnemyStructure>();
     public bool initalisedEnemys = false;
+    public int numberOfJumps;
 
 
     // Health section
@@ -76,6 +77,26 @@ public class GameManager : Singleton<GameManager>
         victoryGame = false;
         checkpointposition = new Vector3Double(-18, -3, 1);
         StartCoroutine(CheckIfPlayerIsNotInvicible());
+
+
+        // Steam initialization of achievements terms
+        if(!PlayerPrefs.HasKey("MariuszDeaths"))
+        {
+            PlayerPrefs.SetInt("MariuszDeaths", 0);
+        }
+
+        if(!PlayerPrefs.HasKey("Welcome"))
+        {
+            SavesHandling.Instance.SaveAchievementPrefs("Welcome");
+        }
+
+        if(PlayerPrefs.HasKey("NumberOfJumps"))
+        {
+            numberOfJumps = PlayerPrefs.GetInt("NumberOfJumps");
+        } else
+        {
+            numberOfJumps = 0;
+        }
     }
 
     // Update is called once per frame
@@ -83,22 +104,40 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetButtonDown("Cancel") && isAlive)
         {
+            PlayerPrefs.SetInt("NumberOfJumps", numberOfJumps);
+            PlayerPrefs.Save();
             PauseMenu();
-        }   
+        }
     }
     public void AddHealth() => Health++;
 
     [ContextMenu("Minus Health")]
     public IEnumerator LoseHealth(int i)
     {
+        if(Health == 10 && !PlayerPrefs.HasKey("First_death"))
+        {
+            AchievementHandling.Instance.setGameAchievement("First_death");
+            PlayerPrefs.SetString("First_death", "true");
+            PlayerPrefs.Save();
+        }
+
         if(Health > 0 && !isImmortal)
         {
+            PlayerPrefs.SetString("FinishHARD", "true"); // Setting this playerPref to avoid situation that user get the achievement for free
+
             StartCoroutine(PlayerMovement.Instance.AnimationDamage());
             isImmortal = true;
             // jumping after getting damage
             PlayerManager.Instance.playerRigidbody2D.velocity = new Vector2(PlayerManager.Instance.playerRigidbody2D.velocity.x, 16);
             Health = Health - i;
             AudioManager.Instance.PlaySFX("Hitdamage");
+
+            // achievement section
+            TimerScript.Instance.countTimeAchievement = 0;
+            TimerScript.Instance.countHealth = Health;
+            PlayerPrefs.SetInt("MariuszDeaths", PlayerPrefs.GetInt("MariuszDeaths") + 1);
+            AchievementHandling.Instance.checkDeathAchievements();
+
             SavesHandling.Instance.Save();
             if (Health <= 0)
             {
@@ -118,6 +157,10 @@ public class GameManager : Singleton<GameManager>
     {
         if (victoryGame)
         {
+            if(!PlayerPrefs.HasKey("FinishHARD"))
+            {
+                SavesHandling.Instance.SaveAchievementPrefs("FinishHARD");
+            }
             TimerScript.Instance.SaveTime();
             SavesHandling.Instance.DeleteSave();
             AudioManager.Instance.StopAllAudio();

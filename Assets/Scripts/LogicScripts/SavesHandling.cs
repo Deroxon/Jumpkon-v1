@@ -17,7 +17,23 @@ public class SavesHandling : Singleton<SavesHandling>
         "timer",
         "spawnPositionX",
         "spawnPositionY",
-        "spawnPositionZ"
+        "spawnPositionZ",
+        "FinishHARD",
+
+        // steam commented but leaving for testing
+       /* "NumberOfJumps",
+        "Welcome",
+        "First_death",
+        "Invincible",
+        "First_blood",
+        "Finish",
+        "Finish1h",
+        "Finish30",
+        "MariuszDeaths",
+        "Hard",
+        "Hard1",
+        "Hard2"*/
+
     };
     private void Awake()
     {
@@ -46,11 +62,39 @@ public class SavesHandling : Singleton<SavesHandling>
             PlayerPrefs.SetInt("currentLevelID", SceneManager.GetActiveScene().buildIndex);
         }
         PlayerPrefs.SetInt("saveExists", 1);
+        PlayerPrefs.SetInt("NumberOfJumps", GameManager.Instance.numberOfJumps);
         PlayerPrefs.SetInt("health", GameManager.Instance.Health);
         PlayerPrefs.SetFloat("timer", TimerScript.Instance.GetTime());
         PlayerPrefs.SetFloat("spawnPositionX", GameManager.Instance.checkpointposition.ToVector3().x);
         PlayerPrefs.SetFloat("spawnPositionY", GameManager.Instance.checkpointposition.ToVector3().y);
         PlayerPrefs.SetFloat("spawnPositionZ", GameManager.Instance.checkpointposition.ToVector3().z);
+        PlayerPrefs.Save();
+    }
+
+    // player prefs without clearing
+    /// <summary>
+    /// Steam Achievements:
+    /// - Welcome
+    /// - First_death
+    /// - Invincible
+    /// - First_blood
+    /// - Finish
+    /// - Finish1h
+    /// - Finish30
+    /// - Hard
+    /// - Hard1
+    /// - Hard2
+    /// - MariuszDeaths
+    /// </summary>
+    /// 
+
+    // Player prefs with clearing important!
+    ///
+    /// - FinishHARD
+    public void SaveAchievementPrefs(string achievement_name)
+    {
+        AchievementHandling.Instance.setGameAchievement(achievement_name);
+        PlayerPrefs.SetString(achievement_name, "true");
         PlayerPrefs.Save();
     }
 
@@ -75,6 +119,6 @@ public class SavesHandling : Singleton<SavesHandling>
         {
             PlayerPrefs.DeleteKey(key);
         }
-        PlayerPrefs.DeleteAll();
+        
     }
 }
