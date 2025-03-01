@@ -11,6 +11,8 @@ public class TimerScript : Singleton<TimerScript>
     public float currentTime;
     private string currentTimeInString;
     private bool isRunning =true;
+    public int countHealth;
+    public float countTimeAchievement;
 
     //public static TimerScript Instance;
     // Start is called before the first frame update
@@ -19,6 +21,10 @@ public class TimerScript : Singleton<TimerScript>
     {
         textMesh = gameObject.GetComponent<TextMeshProUGUI>();
     }
+    public void Start()
+    {
+        countHealth = GameManager.Instance.Health;
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +32,9 @@ public class TimerScript : Singleton<TimerScript>
         if (isRunning)
         {
             currentTime += Time.deltaTime;
+            countTimeAchievement += Time.deltaTime; // for only achievemnt purpose
             UpdateTimeDisplayed(currentTime);
+            checkTimeAchievements();
         }
     }
 
@@ -54,7 +62,24 @@ public class TimerScript : Singleton<TimerScript>
     [ContextMenu("SaveTime")]
     public void SaveTime(string userName  = "Player")
     {
-        DataBaseManager.Instance.SaveHighScore(userName, currentTimeInString);    
+        DataBaseManager.Instance.SaveHighScore(userName, currentTimeInString);
+        
+
+        // Steam achievemnt handling
+        if(!PlayerPrefs.HasKey("Finish"))
+        {
+            AchievementHandling.Instance.setGameAchievement("Finish");
+        }
+        if(!PlayerPrefs.HasKey("Finish1h") && currentTime < 3600)
+        {
+            AchievementHandling.Instance.setGameAchievement("Finish1h");
+        }
+        if (!PlayerPrefs.HasKey("Finish30") && currentTime < 1800)
+        {
+            AchievementHandling.Instance.setGameAchievement("Finish30");
+        }
+
+
     }
 
     // Only for debbugging
@@ -67,5 +92,14 @@ public class TimerScript : Singleton<TimerScript>
     public float GetTime()
     {
         return currentTime;
+    }
+
+
+    public void checkTimeAchievements()
+    {
+        if (countTimeAchievement > 300 && countHealth >= GameManager.Instance.Health && !PlayerPrefs.HasKey("Invincible"))
+        {
+            SavesHandling.Instance.SaveAchievementPrefs("Invincible");
+        }
     }
 }

@@ -46,11 +46,38 @@ public class PlayerMovement : Singleton<PlayerMovement>
                 playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, jumpingPower);
                 AudioManager.Instance.PlaySFX("Jump");
                 dust.Play();
+                GameManager.Instance.numberOfJumps++;
+                if (GameManager.Instance.numberOfJumps == 100)
+                {
+                    AchievementHandling.Instance.setGameAchievement("100_jumps");
+                }
+                if (GameManager.Instance.numberOfJumps == 1000)
+                {
+                    AchievementHandling.Instance.setGameAchievement("1000_jumps");
+                }
+                if (GameManager.Instance.numberOfJumps == 10000)
+                {
+                    AchievementHandling.Instance.setGameAchievement("10000_jumps");
+                }
             }
 
             if (Input.GetButtonUp("Jump") && playerRigidbody2D.velocity.y > 0f)
             {
                 playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, playerRigidbody2D.velocity.y * 0.5f);
+                GameManager.Instance.numberOfJumps++;
+
+                if(GameManager.Instance.numberOfJumps == 100)
+                {
+                    AchievementHandling.Instance.setGameAchievement("100_jumps");
+                }
+                if (GameManager.Instance.numberOfJumps == 1000)
+                {
+                    AchievementHandling.Instance.setGameAchievement("1000_jumps");
+                }
+                if (GameManager.Instance.numberOfJumps == 10000)
+                {
+                    AchievementHandling.Instance.setGameAchievement("10000_jumps");
+                }
             }
 
             // If The player click "S" or "arrowDown" key and  if in circle area we detect the platform layer
