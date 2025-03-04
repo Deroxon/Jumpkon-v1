@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: in_game_strings_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c5873f941b209574aa8268fa337d5227, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 100932390912
+    m_Localized: Basic movement SpaceBar/W SAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320458067968
+    m_Localized: Press spacebar and release to do small jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522992619520
+    m_Localized: Press and don't release spacebar to do higher jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5620829392896
+    m_Localized: In this game there can be hidden passages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5829919641600
+    m_Localized: Checkpoints can be activated only one time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6051697659904
+    m_Localized: Be careful, in this game there is fall damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6330836979712
+    m_Localized: On your way you can meet enemies that can hurt you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15959293825024
+    m_Localized: You can kill every enemy by jumping on their head
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16473205116928
+    m_Localized: "You have only 10 hearts. If you lose them all, you\u2019ll have
+      to start the whole game over"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16824184475648
+    m_Localized: 'Make sure you will get the highest possible time record to beat
+      this game
+
+      Good luck ;)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17053017313280
+    m_Localized: There are 9 levels in this game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25675403235328
+    m_Localized: Will you get it?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25874175496192
+    m_Localized: The first enemies are waiting for your mistake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26255391592448
+    m_Localized: You didn't give up yet?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26599202885632
+    m_Localized: I prepared something special for you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26753804931072
+    m_Localized: 'Damn..
+
+      You are doing good'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27017643429888
+    m_Localized: Just joking, the tutorial is over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27171318534144
+    m_Localized: You almost got it, there are 6 more levels only ;)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34252272570368
+    m_Localized: Sometimes not killing the monster is the correct choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34399928848384
+    m_Localized: Okay that was easy, it was the last hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34515469340672
+    m_Localized: Hope these give you a little charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34657610108928
+    m_Localized: Red platforms are used one-time, the others are respawning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34928738308096
+    m_Localized: Will you take a risk?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35121156198400
+    m_Localized: Okay i guess you won't get beaten that easily
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35355089309696
+    m_Localized: I'm not impressed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35500359028736
+    m_Localized: Okay, you won't pass this level anyway
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35651899232256
+    m_Localized: Okay.. how about the climbing?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35845634134016
+    m_Localized: I'm little impressed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35996696186880
+    m_Localized: "Just a little!\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36168100614144
+    m_Localized: I see that you are not giving up that easily
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36297746550784
+    m_Localized: I prepared something for you ;)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36575614996480
+    m_Localized: Okay okay hero..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36734830776320
+    m_Localized: The next level is your last
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36884072501248
+    m_Localized: Well done, you almost did it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37144463282176
+    m_Localized: There is short way on the right, that leads to finish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37280643944448
+    m_Localized: Just joking! :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37737827274752
+    m_Localized: Was it worth?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37934783401984
+    m_Localized: I promise, I won't lie again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38095332970496
+    m_Localized: Do you have the patience for this?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38311331237888
+    m_Localized: Why are you afraid? There are only bullets which are coming in your
+      direction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38476008001536
+    m_Localized: Did you missed me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38618429788160
+    m_Localized: Okay okay, this is the last level with the final mechanic. You can
+      fall into this hay to avoid fall damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38761027735552
+    m_Localized: 'Press "s"
+
+
+      believe me'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38928854421504
+    m_Localized: believe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39036119552000
+    m_Localized: The final stretch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39167967498240
+    m_Localized: This will hurt you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39338222686208
+    m_Localized: No way
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39462667685888
+    m_Localized: Impossible..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39580292747264
+    m_Localized: 'Oh my sweet god, you got this.
+
+      I don''t believe it'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

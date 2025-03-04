@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Game_Strings Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Game_Strings
+  m_TableCollectionNameGuidString: 33d9f37f5ed280742a3ad77221162261
+  m_Entries:
+  - m_Id: 30652633088
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12501576716288
+    m_Key: New_game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12884848021504
+    m_Key: High_score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13148753629184
+    m_Key: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13427934892032
+    m_Key: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13589205880832
+    m_Key: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18997546979328
+    m_Key: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19557096493056
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19750919475200
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19864262152192
+    m_Key: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20028796309504
+    m_Key: Borderless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21727703339008
+    m_Key: Default
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21957517643776
+    m_Key: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22002564468736
+    m_Key: Full_screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22183380914176
+    m_Key: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22385827385344
+    m_Key: Next_level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22600726745088
+    m_Key: Main_menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28755360354304
+    m_Key: Play_again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28904140705792
+    m_Key: Game_over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29368760537088
+    m_Key: Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29476516401152
+    m_Key: Input_highscore_tip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29701234626560
+    m_Key: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 374528027529216
+    m_Key: Sfxm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 400394338045952
+    m_Key: Name
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1433443244319440920
+  references:
+    version: 2
+    RefIds:
+    - rid: 1433443244319440920
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1740851925019

@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: in_game_strings_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: c5873f941b209574aa8268fa337d5227, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 100932390912
+    m_Localized: Mouvement de base Espace/W SAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320458067968
+    m_Localized: "Appuyez sur espace et rel\xE2chez pour un petit saut"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522992619520
+    m_Localized: Maintenez espace pour un saut plus haut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5620829392896
+    m_Localized: "Il peut y avoir des passages cach\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5829919641600
+    m_Localized: "Les points de contr\xF4le ne peuvent \xEAtre activ\xE9s qu'une
+      seule fois"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6051697659904
+    m_Localized: "Attention, il y a des d\xE9g\xE2ts de chute dans ce jeu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6330836979712
+    m_Localized: Sur votre chemin, vous pouvez rencontrer des ennemis qui peuvent
+      vous blesser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15959293825024
+    m_Localized: "Vous pouvez tuer chaque ennemi en sautant sur sa t\xEAte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16473205116928
+    m_Localized: "Vous avez seulement 10 c\u0153urs. Si vous les perdez tous, vous
+      devrez recommencer le jeu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16824184475648
+    m_Localized: 'Assurez-vous d''obtenir le meilleur temps possible pour terminer
+      ce jeu
+
+      Bonne chance ;)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17053017313280
+    m_Localized: Il y a 9 niveaux dans ce jeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25675403235328
+    m_Localized: Allez-vous y arriver ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25874175496192
+    m_Localized: Les premiers ennemis attendent votre erreur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26255391592448
+    m_Localized: "Vous n'avez pas encore abandonn\xE9 ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26599202885632
+    m_Localized: "J'ai pr\xE9par\xE9 quelque chose de sp\xE9cial pour vous"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26753804931072
+    m_Localized: "Zut..\nVous vous d\xE9brouillez bien"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27017643429888
+    m_Localized: "Je plaisante, le tutoriel est termin\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27171318534144
+    m_Localized: "Vous y \xEAtes presque, il ne reste que 6 niveaux ;)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34252272570368
+    m_Localized: Parfois, ne pas tuer le monstre est le bon choix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34399928848384
+    m_Localized: "D'accord, c'\xE9tait facile, c'\xE9tait le dernier indice"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34515469340672
+    m_Localized: "J'esp\xE8re que cela vous motive un peu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34657610108928
+    m_Localized: "Les plateformes rouges ne sont utilis\xE9es qu'une seule fois,
+      les autres r\xE9apparaissent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34928738308096
+    m_Localized: Allez-vous prendre un risque ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35121156198400
+    m_Localized: D'accord, je suppose que vous ne serez pas battu aussi facilement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35355089309696
+    m_Localized: "Je ne suis pas impressionn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35500359028736
+    m_Localized: "D'accord, de toute fa\xE7on, vous ne passerez pas ce niveau"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35651899232256
+    m_Localized: D'accord... que diriez-vous de l'escalade ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35845634134016
+    m_Localized: "Je suis un peu impressionn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35996696186880
+    m_Localized: Juste un peu !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36168100614144
+    m_Localized: Je vois que vous ne vous abandonnez pas si facilement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36297746550784
+    m_Localized: "J'ai pr\xE9par\xE9 quelque chose pour vous ;)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36575614996480
+    m_Localized: "D'accord, d'accord, h\xE9ros.."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36734830776320
+    m_Localized: Le prochain niveau est le dernier pour vous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36884072501248
+    m_Localized: "Bien jou\xE9, vous avez presque r\xE9ussi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37144463282176
+    m_Localized: "Il y a un chemin court \xE0 droite, qui m\xE8ne \xE0 la fin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37280643944448
+    m_Localized: Je rigole ! :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37737827274752
+    m_Localized: "Est-ce que \xE7a valait le coup ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37934783401984
+    m_Localized: Je promets, je ne mentirai plus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38095332970496
+    m_Localized: "Avez-vous la patience pour \xE7a ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38311331237888
+    m_Localized: Pourquoi avez-vous peur ? Il n'y a que des balles qui viennent dans
+      votre direction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38476008001536
+    m_Localized: "M'avez-vous manqu\xE9 ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38618429788160
+    m_Localized: "D'accord, d'accord, c'est le dernier niveau avec la m\xE9canique
+      finale. Vous pouvez tomber dans cette paille pour \xE9viter les d\xE9g\xE2ts
+      de chute"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38761027735552
+    m_Localized: 'Appuyez sur "s"
+
+
+      croyez-moi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38928854421504
+    m_Localized: croyez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39036119552000
+    m_Localized: Le dernier sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39167967498240
+    m_Localized: Cela va vous faire mal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39338222686208
+    m_Localized: Pas question
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39462667685888
+    m_Localized: Impossible..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39580292747264
+    m_Localized: 'Oh mon dieu, tu l''as fait.
+
+      Je n''y crois pas'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

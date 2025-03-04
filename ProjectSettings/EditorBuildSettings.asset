@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GUI.unity
     guid: f6b0d5941c84006478d49666ad7d6aea
   - enabled: 1
+    path: Assets/Scenes/LevelDesignv9.unity
+    guid: 915be694d0177124994762b10ca62af3
+  - enabled: 1
     path: Assets/Scenes/LevelDesignv1.unity
     guid: cf771f5bfb1065e48ad3885f7000bdc3
   - enabled: 1
@@ -35,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelDesignv8.unity
     guid: 29c80b1dbdff8ec4dbd527d51ccf4c38
-  - enabled: 1
-    path: Assets/Scenes/LevelDesignv9.unity
-    guid: 915be694d0177124994762b10ca62af3
   - enabled: 0
     path: Assets/Scenes/Scene1.unity
     guid: 70e6153ae11613b439b97e731d96db06
@@ -50,4 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: ec3ddb46fce3eed468458f6b00c9b1cd
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: e2fc70f5a297949459da27321f159aea, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 692d38aa1acd14248becb02ab56b9d2c, type: 2}
