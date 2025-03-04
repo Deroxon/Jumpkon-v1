@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
@@ -17,6 +19,7 @@ public class MainMenu : Singleton<MainMenu>
     private Resolution[] resolutions;
     private int resolutionsCount;
     private float currentResolution;
+    public LocalizedString localizedString;
 
 
     void Start()
@@ -28,6 +31,8 @@ public class MainMenu : Singleton<MainMenu>
         LoadSettings();
         ModeButtonRender();
         ResolutionButton.text = resolutions[(int)currentResolution].width + "x" + resolutions[(int)currentResolution].height;
+
+        localizedString.TableReference = "Game_Strings";
         // Reseting GUI and Game Manager
         if (DontDestroy.Instance != null) DontDestroy.Instance.menu();
         ContinueButtonVisibility();
@@ -37,6 +42,7 @@ public class MainMenu : Singleton<MainMenu>
             PlayerPrefs.Save();
             PlayGame();
         }
+
     }
 
     [ContextMenu("Load")]
@@ -102,13 +108,29 @@ public class MainMenu : Singleton<MainMenu>
     public void ModeButtonRender()
     {
         if (currentMode == 0)
-            ModeButton.text = "BORDERLESS";
+        {
+            localizedString.TableEntryReference = "Borderless";
+            localizedString.StringChanged += UpdateText;
+            localizedString.RefreshString();
+        }
         else if (currentMode == 1)
-            ModeButton.text = "FULLSCREEN";
+        {
+            localizedString.TableEntryReference = "Full_screen";
+            localizedString.StringChanged += UpdateText;
+            localizedString.RefreshString();
+        }
         else if (currentMode == 2)
-            ModeButton.text = "WINDOWED";
+        {
+            localizedString.TableEntryReference = "Windowed";
+            localizedString.StringChanged += UpdateText;
+            localizedString.RefreshString();
+        }
         else 
             ModeButton.text = "error";
+    }
+    void UpdateText(string value)
+    {
+        ModeButton.text = value;  // Zaktualizuj tekst przycisku
     }
 
     public void ChangeResolution()

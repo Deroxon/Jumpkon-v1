@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: in_game_strings_it
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: c5873f941b209574aa8268fa337d5227, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 100932390912
+    m_Localized: Movimento base Barra spaziatrice/W SAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 320458067968
+    m_Localized: Premi la barra spaziatrice e rilasciala per fare un piccolo salto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522992619520
+    m_Localized: "Tieni premuta la barra spaziatrice per saltare pi\xF9 in alto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5620829392896
+    m_Localized: In questo gioco potrebbero esserci passaggi nascosti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5829919641600
+    m_Localized: I checkpoint possono essere attivati solo una volta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6051697659904
+    m_Localized: "Attenzione, in questo gioco c'\xE8 il danno da caduta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6330836979712
+    m_Localized: Sul tuo cammino puoi incontrare nemici che possono farti male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15959293825024
+    m_Localized: Puoi uccidere ogni nemico saltando sulla sua testa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16473205116928
+    m_Localized: Hai solo 10 cuori. Se li perdi tutti, dovrai ricominciare l'intero
+      gioco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16824184475648
+    m_Localized: 'Assicurati di ottenere il miglior tempo possibile per completare
+      questo gioco
+
+      Buona fortuna ;)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17053017313280
+    m_Localized: In questo gioco ci sono 9 livelli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25675403235328
+    m_Localized: Ce la farai?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25874175496192
+    m_Localized: I primi nemici aspettano un tuo errore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26255391592448
+    m_Localized: Non hai ancora mollato?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26599202885632
+    m_Localized: Ho preparato qualcosa di speciale per te
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26753804931072
+    m_Localized: 'Dannazione..
+
+      Stai facendo bene'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27017643429888
+    m_Localized: "Scherzavo, il tutorial \xE8 finito"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27171318534144
+    m_Localized: Ci sei quasi, mancano solo 6 livelli ;)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34252272570368
+    m_Localized: "A volte non uccidere il mostro \xE8 la scelta giusta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34399928848384
+    m_Localized: Premi la barra spaziatrice e rilasciala per fare un piccolo salto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34515469340672
+    m_Localized: Spero che questo ti dia un po' di carica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34657610108928
+    m_Localized: Le piattaforme rosse sono usabili una sola volta, le altre si rigenerano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34928738308096
+    m_Localized: Vuoi correre un rischio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35121156198400
+    m_Localized: "Ok, immagino che non sarai sconfitto cos\xEC facilmente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35355089309696
+    m_Localized: Non sono impressionato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35500359028736
+    m_Localized: Ok, comunque non passerai questo livello
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35651899232256
+    m_Localized: Ok.. che ne dici della scalata?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35845634134016
+    m_Localized: Sono un po' impressionato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35996696186880
+    m_Localized: Solo un po'!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36168100614144
+    m_Localized: "Vedo che non ti arrendi cos\xEC facilmente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36297746550784
+    m_Localized: Ho preparato qualcosa per te ;)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36575614996480
+    m_Localized: Ok, ok, eroe..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36734830776320
+    m_Localized: "Il prossimo livello \xE8 l'ultimo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36884072501248
+    m_Localized: Ben fatto, ci sei quasi riuscito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37144463282176
+    m_Localized: "C'\xE8 una strada corta a destra che porta al traguardo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37280643944448
+    m_Localized: Scherzavo! :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37737827274752
+    m_Localized: "Ne \xE8 valsa la pena?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37934783401984
+    m_Localized: "Prometto, non mentir\xF2 pi\xF9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38095332970496
+    m_Localized: Hai la pazienza per questo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38311331237888
+    m_Localized: "Perch\xE9 hai paura? Ci sono solo proiettili che arrivano nella
+      tua direzione"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38476008001536
+    m_Localized: Mi sei mancato?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38618429788160
+    m_Localized: "Ok, ok, questo \xE8 l'ultimo livello con la meccanica finale. Puoi
+      cadere in questa paglia per evitare danni da caduta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38761027735552
+    m_Localized: 'Premi "s"
+
+
+      credimi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38928854421504
+    m_Localized: credere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39036119552000
+    m_Localized: L'ultimo tratto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39167967498240
+    m_Localized: "Questo ti far\xE0 male"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39338222686208
+    m_Localized: Assolutamente no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39462667685888
+    m_Localized: Impossibile..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39580292747264
+    m_Localized: 'Oh mio dio, ce l''hai fatta.
+
+      Non ci credo'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

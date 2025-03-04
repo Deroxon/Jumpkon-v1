@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_Strings_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 33d9f37f5ed280742a3ad77221162261, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 30652633088
+    m_Localized: Kontynuuj
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12501576716288
+    m_Localized: Nowa gra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12884848021504
+    m_Localized: "Najwy\u017Csze wyniki"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13148753629184
+    m_Localized: "D\u017Awi\u0119k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13427934892032
+    m_Localized: Wideo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13589205880832
+    m_Localized: "Wyjd\u017A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18997546979328
+    m_Localized: "Napisy ko\u0144cowe\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19557096493056
+    m_Localized: Wstecz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19750919475200
+    m_Localized: Muzyka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19864262152192
+    m_Localized: "Efekty d\u017Awi\u0119kowe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20028796309504
+    m_Localized: Bez ramki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21727703339008
+    m_Localized: "Domy\u015Blne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21957517643776
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22002564468736
+    m_Localized: "Pe\u0142ny ekran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22183380914176
+    m_Localized: Tryb okienkowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22385827385344
+    m_Localized: "Nast\u0119pny poziom"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22600726745088
+    m_Localized: "Menu g\u0142\xF3wne\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28755360354304
+    m_Localized: Zagraj ponownie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28904140705792
+    m_Localized: Koniec gry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29368760537088
+    m_Localized: "Zwyci\u0119stwo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29476516401152
+    m_Localized: "Wpisz sw\xF3j pseudonim, aby zapisa\u0107 najwy\u017Cszy wynik"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29701234626560
+    m_Localized: Zapisz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 374528027529216
+    m_Localized: Sfxm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 400394338045952
+    m_Localized: Nazwa
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

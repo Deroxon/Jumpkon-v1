@@ -227,8 +227,8 @@ public class GameManager : Singleton<GameManager>
                 "Frog",
                 0.5f,
                 0.2f,
-                2f,
-                2f,
+                4f,
+                1f,
                 0.2f));
 
         enemiesList.Add(
@@ -236,8 +236,8 @@ public class GameManager : Singleton<GameManager>
                "Barrel",
                0.5f,
                2f,
-               10f,
-               1.7f,
+               15f,
+               1.3f,
                0.1f));
 
         enemiesList.Add(
@@ -245,8 +245,8 @@ public class GameManager : Singleton<GameManager>
               "Cannon",
               0.5f,
               0.5f,
-              2f,
-              1.7f,
+              3f,
+              1f,
               0.4f));
 
         initalisedEnemys = true;
