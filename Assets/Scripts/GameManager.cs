@@ -102,7 +102,7 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && isAlive)
+        if (Input.GetButtonDown("Cancel") && isAlive && !victoryMenu.activeInHierarchy)
         {
             PlayerPrefs.SetInt("NumberOfJumps", numberOfJumps);
             PlayerPrefs.Save();
