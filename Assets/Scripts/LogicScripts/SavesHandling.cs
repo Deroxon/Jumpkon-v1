@@ -21,18 +21,18 @@ public class SavesHandling : Singleton<SavesHandling>
         "FinishHARD",
 
         // steam commented but leaving for testing
-       /* "NumberOfJumps",
-        "Welcome",
-        "First_death",
-        "Invincible",
-        "First_blood",
-        "Finish",
-        "Finish1h",
-        "Finish30",
-        "MariuszDeaths",
-        "Hard",
-        "Hard1",
-        "Hard2"*/
+        // "NumberOfJumps",
+        // "Welcome",
+        // "First_death",
+        // "Invincible",
+        // "First_blood",
+        // "Finish",
+        // "Finish1h",
+        // "Finish30",
+        // "MariuszDeaths",
+        // "Hard",
+        // "Hard1",
+        // "Hard2"
 
     };
     private void Awake()
